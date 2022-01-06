@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap')
+
+\:root
+  --body-font: 'Montserrat', sans-serif
+  --alt-font: 'Open Sans', sans-serif
+  --global-padding: 4%
+  --color-one: #111
+  --color-two: #fff
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  font-family: var(--body-font)
+
+  a,
+  a:hover
+    text-decoration: none
+    cursor: pointer
+    @extend .transition-3ms
+
+  img
+    max-width: 100%
+    margin: 0 0 -4px 0
+
+.transition-3ms
+  -webkit-transition: all 0.3s ease-in-out
+  -moz-transition: all 0.3s ease-in-out
+  -ms-transition: all 0.3s ease-in-out
+  -o-transition: all 0.3s ease-in-out
+  transition: all 0.3s ease-in-out
+
+header
+  #top-bar
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 16px var(--global-padding)
+    background: var(--color-one)
+    color: var(--color-two)
+    font-size: 13px
+    font-weight: 500
+    text-transform: uppercase
+
+    .ship-to
+      span
+        opacity: 0.8
+
+      .label
+        font-weight: 600
+
+    .site-language
+      span
+        opacity: 0.8
+        margin: 0 0 0 10px
+        display: inline-block
+
+      .current
+        opacity: 0.9
+
+  #bottom-bar
+    padding: 0 var(--global-padding)
+    border-bottom: 2px solid var(--color-one)
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    ul
+      li
+        list-style: none
+        display: inline-flex
+
+    h1
+      font-size: 22px
+      font-weight: 700
+
+      a
+        color: var(--color-one)
+
+    .right-content
+      display: flex
+      align-items: center
+      justify-content: flex-end
+
+      nav
+        border-right: 1px solid var(--color-one)
+
+        ul
+          li
+            margin-right: 26px
+
+            a
+              color: var(--color-one)
+              padding: 19px 0
+              border-top: 3px solid transparent
+              border-bottom: 3px solid transparent
+
+              span
+
+            a:hover
+              border-bottom-color: var(--color-one)
+
+            ol
+              position: absolute
+              margin: 65px 0 0 0
+              opacity: 0
+              background: var(--color-two)
+              width: 100%
+              left: 0
+              padding: 20px var(--global-padding)
+              height: 0
+              overflow: hidden
+              z-index: -1
+              border-bottom: 2px solid var(--color-one)
+              display: flex
+              @extend .transition-3ms
+
+              .box
+                flex: 1
+
+                span
+                  margin: 0 0 10px 0
+                  opacity: 0.8
+                  cursor: default
+                  display: block
+                  font-size: 13px
+
+                li
+                  display: block
+                  margin: 0 0 8px 0
+
+                  a
+                    border: none
+                    padding: 0
+
+                  a:hover
+                    color: red
+
+          li:hover
+            ol
+              opacity: 1
+              z-index: 1
+              height: fit-content
+
+      #search-products
+        padding: 22px
+        border: none
+        border-right: 1px solid var(--color-one)
+        outline: none
+        font-family: var(--body-font)
+        font-size: 16px
+        width: 200px
+
+      .header-admin-buttons
+        ul
+          li
+            padding: 18px 18px
+
+            a
+              color: var(--color-one)
+              font-size: 20px
+
+              span.lnr-cart
+                font-size: 23px
+
+            a:hover
+              opacity: 0.7
+
+          li.cart-link
+            border-right: 1px solid var(--color-one)
+            border-left: 1px solid var(--color-one)
+
+#slide-container
+  border-bottom: 2px solid var(--color-one)
+  display: flex
+
+  .slide
+    position: relative
+    height: 400px
+    overflow: hidden
+    margin-left: 5px
+    flex: 1
+    display: inline-block
+    background-size: cover
+
+    .container
+      position: absolute
+      height: 100%
+      width: 100%
+      padding: 40px
+      top: 0
+      display: flex
+      align-items: flex-end
+      justify-content: center
+      background: rgba(0, 0, 0, 0.6)
+
+      a
+        background: #000
+        color: var(--color-two)
+        font-weight: 500
+        text-transform: uppercase
+        text-align: center
+        min-width: 200px
+        padding: 14px 20px
+        font-size: 13px
+        display: none
+
+  .slide::nth-child(3n)
+    margin-right: 0px
+
+  .active
+    flex: 3
+    margin-left: -5px
+
+    .container
+      background: rgba(0, 0, 0, 0)
+
+      a
+        display: block
