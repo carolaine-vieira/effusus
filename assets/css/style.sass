@@ -172,18 +172,21 @@ header
             border-right: 1px solid var(--color-one)
             border-left: 1px solid var(--color-one)
 
-#slide-container
+#main-slide.slide-container
   border-bottom: 2px solid var(--color-one)
   display: flex
+  overflow-x: hidden
 
   .slide
     position: relative
     height: 400px
     overflow: hidden
     margin-left: 5px
-    flex: 1
+    // flex: 1
+    width: 20%
     display: inline-block
     background-size: cover
+    flex-shrink: 0
 
     .container
       position: absolute
@@ -211,11 +214,76 @@ header
     margin-right: 0px
 
   .active
-    flex: 3
+    // flex: 3
     margin-left: -5px
+    width: 60%
 
     .container
       background: rgba(0, 0, 0, 0)
 
       a
         display: block
+
+#recommended.slide-container
+  padding: 30px var(--global-padding)
+
+  h2
+    text-align: center
+    margin: 0 0 10px 0
+    font-size: 16px
+
+  .slide-wrap
+    display: flex
+    overflow-x: hidden
+    position: relative
+
+    .slide
+      position: relative
+      height: 200px
+      overflow: hidden
+      width: calc( 100% / 6 )
+      display: inline-block
+      background-size: cover
+      flex-shrink: 0
+      -webkit-transition: all 0.4s ease-out
+      -moz-transition: all 0.4s ease-out
+      -ms-transition: all 0.4s ease-out
+      -o-transition: all 0.4s ease-out
+      transition: all 0.4s ease-out
+
+      .container
+        position: absolute
+        height: 100%
+        width: 100%
+        padding: 40px
+        top: 0
+        display: flex
+        align-items: flex-end
+        justify-content: center
+
+        a
+          background: #000
+          color: var(--color-two)
+          font-weight: 500
+          text-transform: uppercase
+          text-align: center
+          min-width: 200px
+          padding: 14px 20px
+          font-size: 13px
+          display: none
+
+    .slide::nth-child(3n)
+      margin-right: 0px
+
+    .slide:hover
+      .container
+        background: rgba(0, 0, 0, 0.6)
+
+        a
+          display: block
+
+    .navigation
+      position: absolute
+      width: 100%
+      height: 100%
+      z-index: 1
