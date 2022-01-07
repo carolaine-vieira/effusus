@@ -1,7 +1,9 @@
 const swipper = () => {
   const slides = document.querySelectorAll("#recommended .slide");
-  const previousButton = document.querySelector("#recommended .previous-item");
-  const nextButton = document.querySelector("#recommended .next-item");
+  const previousButton = document.querySelector(
+    "#recommended .previous-item a"
+  );
+  const nextButton = document.querySelector("#recommended .next-item a");
   const moveSize = 100 / 6;
   let currentSlide = 0;
 
@@ -14,6 +16,12 @@ const swipper = () => {
     currentSlide < maxMove
       ? (slides[currentSlide++].style.marginLeft = `-${moveSize}%`)
       : {};
+  });
+
+  slides.forEach((slide) => {
+    slide.addEventListener("mouseup", () => {
+      console.log(drag);
+    });
   });
 };
 swipper();
