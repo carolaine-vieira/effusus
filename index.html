@@ -35,12 +35,10 @@
                 <a href="">Woman</a>
                 <ol>
                   <div class="box">
-                    <span class="label">Jeans</span>
-                    <li><a href="">Acessories Item 1</a></li>
-                    <li><a href="">Item 2</a></li>
-                    <li><a href="">Item 3</a></li>
-                    <li><a href="">Item 4</a></li>
-                    <li><a href="">Item 5</a></li>
+                    <img
+                      src="https://images.unsplash.com/photo-1637615212982-459337fd74c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                      alt=""
+                    />
                   </div>
 
                   <div class="box">
@@ -306,12 +304,28 @@
     </section>
 
     <section id="main-section">
-      <div class="filters">
+      <div id="content-info">
         <ul class="category">
           <li>Woman</li>
           <li>Top</li>
           <li>Coat</li>
         </ul>
+        <div class="filters">
+          <label for="columns">View:</label>
+          <select name="columns" id="columns-count">
+            <option value="3">3 column</option>
+            <option value="4">4 column</option>
+            <option value="5">5 column</option>
+          </select>
+
+          <label for="order">Order by:</label>
+          <select name="order" id="order">
+            <option value="p-l-h">Price Low to High</option>
+            <option value="p-h-l">Price High to Low</option>
+            <option value="relevance">Relevance</option>
+            <option value="date">Date</option>
+          </select>
+        </div>
       </div>
     </section>
   </body>

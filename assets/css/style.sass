@@ -3,7 +3,7 @@
 \:root
   --body-font: 'Montserrat', sans-serif
   --alt-font: 'Open Sans', sans-serif
-  --global-padding: 4%
+  --global-padding: 5%
   --color-one: #111
   --color-two: #fff
 
@@ -120,16 +120,20 @@ header
               .box
                 flex: 1
 
+                img
+                  max-width: 90%
+
                 span
-                  margin: 0 0 10px 0
-                  opacity: 0.8
+                  margin: 0 0 10px 10px
+                  opacity: 0.5
                   cursor: default
                   display: block
                   font-size: 13px
+                  font-weight: 500
 
                 li
                   display: block
-                  margin: 0 0 8px 0
+                  margin: 0 0 8px 10px
 
                   a
                     border: none
@@ -181,8 +185,7 @@ header
     position: relative
     height: 400px
     overflow: hidden
-    margin-left: 5px
-    // flex: 1
+    margin-left: 4px
     width: 20%
     display: inline-block
     background-size: cover
@@ -214,7 +217,6 @@ header
     margin-right: 0px
 
   .active
-    // flex: 3
     margin-left: -5px
     width: 60%
 
@@ -225,7 +227,7 @@ header
         display: block
 
 #recommended.slide-container
-  padding: 30px var(--global-padding)
+  padding: 30px 0
 
   h2
     text-align: center
@@ -237,6 +239,7 @@ header
     overflow-x: hidden
     position: relative
     height: 100%
+    margin-left: -4px
 
     .slide
       position: relative
@@ -246,6 +249,7 @@ header
       display: inline-block
       background-size: cover
       flex-shrink: 0
+      margin-left: 4px
       -webkit-transition: all 0.4s ease-out
       -moz-transition: all 0.4s ease-out
       -ms-transition: all 0.4s ease-out
@@ -292,10 +296,59 @@ header
       align-items: center
 
       a
-        color: var(--color-one)
+        color: var(--color-two)
+        background: var(--color-one)
+        display: inline-block
+        padding: 10px
 
     .previous-item
-      left: 15px
+      left: 0px
 
     .next-item
-      right: 15px
+      right: 0px
+
+#main-section
+  padding: 30px var(--global-padding) 0 var(--global-padding)
+
+  #content-info
+    padding: 0 0 15px 0
+    border-bottom: 2px solid var(--color-one)
+    display: flex
+    justify-content: space-between
+
+    .category
+      li
+        list-style: none
+        display: inline-block
+        position:
+
+      li:after
+        content: ">"
+        display: inline-block
+        margin: 0 5px 0 7px
+
+      li:last-child
+        font-weight: 600
+
+      li:last-child:after
+        display: none
+
+    .filters
+      select
+        border: none
+        outline: none
+        font-family: var(--body-font)
+        font-size: 16px
+        font-weight: 600
+
+        option
+          border: none
+          outline: none
+          font-family: var(--body-font)
+          font-size: 16px
+          font-weight: 600
+          padding: 15px
+          display: block
+
+      #columns-count
+        margin-right: 15px
