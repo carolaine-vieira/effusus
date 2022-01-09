@@ -14,8 +14,8 @@ const swipper = (props) => {
 
   slides.map((slide) => {
     if (
-      !slide.classList.contains("previous-item") &&
-      !slide.classList.contains("next-item")
+      !slide.classList.contains("previous") &&
+      !slide.classList.contains("next")
     ) {
       specialSize
         ? (slide.style.width = itemSize * 2 + "%")
@@ -31,7 +31,9 @@ const swipper = (props) => {
 
   const handleNextItem = () => {
     if (currentSlide <= maxMove) {
-      slides[currentSlide++].style.marginLeft = `-${itemSize}%`;
+      specialSize
+        ? (slides[currentSlide++].style.marginLeft = `-${itemSize * 2}%`)
+        : (slides[currentSlide++].style.marginLeft = `-${itemSize}%`);
     }
     currentSlideSelector();
   };

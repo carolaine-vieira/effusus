@@ -38,6 +38,7 @@ body a:hover, header #bottom-bar .right-content nav ul li ol {
 header {
   z-index: 5;
   position: relative;
+  background: var(--color-two);
 }
 
 header #top-bar {
@@ -139,7 +140,7 @@ header #bottom-bar .right-content nav ul li a:hover {
 
 header #bottom-bar .right-content nav ul li ol {
   position: absolute;
-  margin: 65px 0 0 0;
+  margin: 35px 0 0 0;
   opacity: 0;
   background: var(--color-two);
   width: 100%;
@@ -183,9 +184,11 @@ header #bottom-bar .right-content nav ul li ol .box li a {
 
 header #bottom-bar .right-content nav ul li ol .box li a:hover {
   color: red;
+  padding-left: 5px;
 }
 
 header #bottom-bar .right-content nav ul li:hover ol {
+  margin: 65px 0 0 0;
   opacity: 1;
   visibility: visible;
 }
@@ -490,7 +493,9 @@ header #bottom-bar .right-content .header-admin-buttons ul li.cart-link {
 }
 
 #main-section #products-section aside {
-  width: 30%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 22%;
+          flex: 0 0 22%;
   margin-right: 5px;
   background: #eee;
   padding: 20px;
@@ -498,17 +503,42 @@ header #bottom-bar .right-content .header-admin-buttons ul li.cart-link {
 
 #main-section #products-section #products {
   text-align: right;
+  margin: 0 0 -20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-#main-section #products-section #products .product {
-  display: inline-block;
-  width: calc(100% / 3 - 25px);
+#main-section #products-section #products a {
+  -ms-flex-preferred-size: calc( 100% / 4 - 20px);
+      flex-basis: calc( 100% / 4 - 20px);
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   margin: 0 0 20px 20px;
-  border: 1px solid #eee;
+  color: var(--color-one);
 }
 
-#main-section #products-section #products .product .product-info {
+#main-section #products-section #products a .product {
+  border: 1px solid #eee;
+  background: var(--color-two);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#main-section #products-section #products a .product .product-info {
   text-align: left;
+  padding: 15px;
+}
+
+#main-section #products-section #products a .product .product-info h3 {
+  font-size: 16px;
+}
+
+#main-section #products-section #products a .product:hover {
+  -webkit-box-shadow: 0 2px 3px 0 #eee;
+          box-shadow: 0 2px 3px 0 #eee;
 }
 
 #navigation {
@@ -542,5 +572,45 @@ header #bottom-bar .right-content .header-admin-buttons ul li.cart-link {
 
 #navigation .count {
   letter-spacing: 5px;
+}
+
+#contact {
+  border-top: 2px solid var(--color-one);
+  padding: 40px var(--global-padding);
+  background: var(--color-two);
+}
+
+#contact h2 {
+  font-size: 18px;
+  margin: 0 0 20px 0;
+}
+
+#contact .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#contact .container input {
+  border: none;
+  outline: none;
+  border: 2px solid var(--color-one);
+  padding: 10px;
+  font-family: var(--body-font);
+  width: 49.5%;
+  font-size: 15px;
+}
+
+#contact .container input:focus {
+  border-color: red;
+}
+
+footer {
+  background: var(--color-one);
+  color: var(--color-two);
+  padding: 30px var(--global-padding);
 }
 /*# sourceMappingURL=style.css.map */

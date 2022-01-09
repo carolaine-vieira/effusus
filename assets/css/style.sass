@@ -35,6 +35,7 @@ body
 header
   z-index: 5
   position: relative
+  background: var(--color-two)
 
   #top-bar
     display: flex
@@ -107,7 +108,7 @@ header
 
             ol
               position: absolute
-              margin: 65px 0 0 0
+              margin: 35px 0 0 0
               opacity: 0
               background: var(--color-two)
               width: 100%
@@ -142,9 +143,11 @@ header
 
                   a:hover
                     color: red
+                    padding-left: 5px
 
           li:hover
             ol
+              margin: 65px 0 0 0
               opacity: 1
               visibility: visible
 
@@ -384,22 +387,39 @@ header
     padding: 25px 0
 
     aside
-      width: 30%
+      flex: 0 0 22%
       margin-right: 5px
       background: #eee
       padding: 20px
 
     #products
       text-align: right
+      margin: 0 0 -20px 0
+      display: flex
+      flex-wrap: wrap
 
-      .product
-        display: inline-block
-        width: calc(100% / 3 - 25px)
+      a
+        flex-basis: calc( 100% / 4 - 20px )
+        flex-shrink: 0
         margin: 0 0 20px 20px
-        border: 1px solid #eee
+        color: var(--color-one)
 
-        .product-info
-          text-align: left
+        .product
+
+          border: 1px solid #eee
+          background: var(--color-two)
+          border-radius: 2px
+          overflow: hidden
+
+          .product-info
+            text-align: left
+            padding: 15px
+
+            h3
+              font-size: 16px
+
+        .product:hover
+          box-shadow: 0 2px 3px 0 #eee
 
 #navigation
   display: flex
@@ -422,3 +442,33 @@ header
 
   .count
     letter-spacing: 5px
+
+#contact
+  border-top: 2px solid var(--color-one)
+  padding: 40px var(--global-padding)
+  background: var(--color-two)
+
+  h2
+    font-size: 18px
+    margin: 0 0 20px 0
+
+  .container
+    display: flex
+    justify-content: space-between
+
+    input
+      border: none
+      outline: none
+      border: 2px solid var(--color-one)
+      padding: 10px
+      font-family: var(--body-font)
+      width: 49.5%
+      font-size: 15px
+
+    input:focus
+      border-color: red
+
+footer
+  background: var(--color-one)
+  color: var(--color-two)
+  padding: 30px var(--global-padding)
