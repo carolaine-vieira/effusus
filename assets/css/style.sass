@@ -399,27 +399,26 @@ header
       flex-wrap: wrap
 
       a
-        flex-basis: calc( 100% / 4 - 20px )
+        flex-basis: calc( 100% / 3 - 20px )
         flex-shrink: 0
         margin: 0 0 20px 20px
         color: var(--color-one)
 
-        .product
+      .product
+        border: 1px solid #eee
+        background: var(--color-two)
+        border-radius: 2px
+        overflow: hidden
 
-          border: 1px solid #eee
-          background: var(--color-two)
-          border-radius: 2px
-          overflow: hidden
+        .product-info
+          text-align: left
+          padding: 15px
 
-          .product-info
-            text-align: left
-            padding: 15px
+          h3
+            font-size: 16px
 
-            h3
-              font-size: 16px
-
-        .product:hover
-          box-shadow: 0 2px 3px 0 #eee
+      .product:hover
+        box-shadow: 0 2px 3px 0 #eee
 
 #navigation
   display: flex
@@ -472,3 +471,31 @@ footer
   background: var(--color-one)
   color: var(--color-two)
   padding: 30px var(--global-padding)
+
+#effusus-single
+  #products-section
+    border-bottom: 2px solid var(--color-one)
+    padding: 0
+    margin: 0 0 40px 0
+
+    #products
+      flex: 1 0 50%
+      margin: 0
+
+      .product
+        width: 100%
+        margin: 0
+        border: none
+        border-radius: none
+
+      .product:hover
+        box-shadow: none
+
+    .product-buttons
+      flex: 1 0 30%
+      padding: 30px
+      border-right: 2px solid var(--color-one)
+
+    .product-recomendation
+      flex: 1 0 20%
+      padding: 30px
