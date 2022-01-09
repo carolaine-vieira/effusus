@@ -1,28 +1,53 @@
-const swipper = (container, slidesCount) => {
-  const slides = Array.from(document.querySelectorAll("#recommended .slide"));
-  const previousButton = document.querySelector(
-    "#recommended .previous-item a"
+const swipper = (props) => {
+  const container = props.container;
+  const slidesCount = props.slidesCount;
+  const specialSize = props.specialSize;
+
+  const slides = Array.from(
+    document.querySelector(container).querySelector(".slide-wrap").children
   );
-  const nextButton = document.querySelector("#recommended .next-item a");
-  const moveSize = 100 / 6;
-  const maxMove = slides.length - 6 - 1;
+  const previousButton = document.querySelector(`${container} .previous a`);
+  const nextButton = document.querySelector(`${container} .next a`);
+  const itemSize = 100 / slidesCount;
+  const maxMove = slides.length - slidesCount - 3;
   let currentSlide = 0;
-  let draggedIndex;
+
+  slides.map((slide) => {
+    if (
+      !slide.classList.contains("previous-item") &&
+      !slide.classList.contains("next-item")
+    ) {
+      specialSize
+        ? (slide.style.width = itemSize * 2 + "%")
+        : (slide.style.width = itemSize + "%");
+    }
+  });
+  slides[0].classList.add("active");
 
   const handlePreviousItem = () => {
     currentSlide > 0 ? (slides[--currentSlide].style.marginLeft = "4px") : null;
+    currentSlideSelector();
   };
 
   const handleNextItem = () => {
-    currentSlide < maxMove
-      ? (slides[currentSlide++].style.marginLeft = `-${moveSize}%`)
-      : {};
+    if (currentSlide <= maxMove) {
+      slides[currentSlide++].style.marginLeft = `-${itemSize}%`;
+    }
+    currentSlideSelector();
+  };
+
+  const currentSlideSelector = () => {
+    slides.forEach((slide) => slide.classList.remove("active"));
+    slides[currentSlide].classList.add("active");
   };
 
   previousButton.addEventListener("click", handlePreviousItem);
   nextButton.addEventListener("click", handleNextItem);
 
   const grabItens = () => {
+    let draggedIndex;
+    let movedFirst = false;
+
     slides.forEach((slide) => {
       const moveSwipper = (e) => {
         slide.style.cursor = "grabbing";
@@ -48,4 +73,15 @@ const swipper = (container, slidesCount) => {
     });
   };
 };
-swipper();
+
+const s1 = swipper({
+  container: "#recommended",
+  slidesCount: 6,
+  specialSize: false,
+});
+
+const s2 = swipper({
+  container: "#main-slide",
+  slidesCount: 3,
+  specialSize: true,
+});

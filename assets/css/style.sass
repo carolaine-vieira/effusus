@@ -33,6 +33,9 @@ body
   transition: all 0.3s ease-in-out
 
 header
+  z-index: 5
+  position: relative
+
   #top-bar
     display: flex
     justify-content: space-between
@@ -110,9 +113,7 @@ header
               width: 100%
               left: 0
               padding: 20px var(--global-padding)
-              height: 0
-              overflow: hidden
-              z-index: -1
+              visibility: hidden
               border-bottom: 2px solid var(--color-one)
               display: flex
               @extend .transition-3ms
@@ -145,8 +146,7 @@ header
           li:hover
             ol
               opacity: 1
-              z-index: 1
-              height: fit-content
+              visibility: visible
 
       #search-products
         padding: 22px
@@ -177,54 +177,78 @@ header
             border-left: 1px solid var(--color-one)
 
 #main-slide.slide-container
-  border-bottom: 2px solid var(--color-one)
-  display: flex
-  overflow-x: hidden
-
-  .slide
+  .slide-wrap
+    display: flex
+    overflow-x: hidden
     position: relative
-    height: 400px
-    overflow: hidden
-    margin-left: 4px
-    width: 20%
-    display: inline-block
-    background-size: cover
-    flex-shrink: 0
+    height: 100%
+    margin-left: -4px
 
-    .container
+    .slide
+      position: relative
+      height: 400px
+      overflow: hidden
+      margin-right: 4px
+      width: calc( (100% / 3) * 2)
+      display: inline-block
+      background-size: cover
+      flex-shrink: 0
+      -webkit-transition: all 0.4s ease-out
+      -moz-transition: all 0.4s ease-out
+      -ms-transition: all 0.4s ease-out
+      -o-transition: all 0.4s ease-out
+      transition: all 0.4s ease-out
+
+      .container
+        position: absolute
+        height: 100%
+        width: 100%
+        padding: 40px
+        top: 0
+        display: flex
+        align-items: flex-end
+        justify-content: center
+        background: rgba(0, 0, 0, 0.6)
+
+        a
+          background: #000
+          color: var(--color-two)
+          font-weight: 500
+          text-transform: uppercase
+          text-align: center
+          min-width: 200px
+          padding: 14px 20px
+          font-size: 13px
+          display: none
+
+    .active
+      .container
+        background: rgba(0, 0, 0, 0)
+
+        a
+          display: block
+
+    .previous,
+    .next
       position: absolute
       height: 100%
-      width: 100%
-      padding: 40px
-      top: 0
+      z-index: 1
       display: flex
-      align-items: flex-end
-      justify-content: center
-      background: rgba(0, 0, 0, 0.6)
+      align-items: center
+      top: 0
 
       a
-        background: #000
         color: var(--color-two)
-        font-weight: 500
-        text-transform: uppercase
-        text-align: center
-        min-width: 200px
-        padding: 14px 20px
-        font-size: 13px
-        display: none
+        background: var(--color-one)
+        display: inline-block
+        padding: 10px
 
-  .slide::nth-child(3n)
-    margin-right: 0px
+    .previous
+      left: 0px
 
-  .active
-    margin-left: -5px
-    width: 60%
-
-    .container
-      background: rgba(0, 0, 0, 0)
-
-      a
-        display: block
+    .next
+      right: 0px
+      justify-content: flex-end
 
 #recommended.slide-container
   padding: 30px 0
@@ -283,12 +307,13 @@ header
     .slide:hover
       .container
         background: rgba(0, 0, 0, 0.6)
+        backdrop-filter: blur(2px)
 
         a
           display: block
 
-    .previous-item,
-    .next-item
+    .previous,
+    .next
       position: absolute
       height: 100%
       z-index: 1
@@ -301,11 +326,12 @@ header
         display: inline-block
         padding: 10px
 
-    .previous-item
+    .previous
       left: 0px
 
-    .next-item
+    .next
       right: 0px
+      justify-content: flex-end
 
 #main-section
   padding: 30px var(--global-padding) 0 var(--global-padding)
@@ -352,3 +378,47 @@ header
 
       #columns-count
         margin-right: 15px
+
+  #products-section
+    display: flex
+    padding: 25px 0
+
+    aside
+      width: 30%
+      margin-right: 5px
+      background: #eee
+      padding: 20px
+
+    #products
+      text-align: right
+
+      .product
+        display: inline-block
+        width: calc(100% / 3 - 25px)
+        margin: 0 0 20px 20px
+        border: 1px solid #eee
+
+        .product-info
+          text-align: left
+
+#navigation
+  display: flex
+  padding: 30px
+  margin: 0 var(--global-padding)
+  background: var(--color-one)
+  color: var(--color-two)
+  justify-content: center
+  text-transform: uppercase
+
+  a
+    color: var(--color-two)
+    display: inline-flex
+
+  .previous
+    margin: 0 40px 0 0
+
+  .next
+    margin: 0 0 0 40px
+
+  .count
+    letter-spacing: 5px
