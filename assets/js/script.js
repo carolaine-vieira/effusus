@@ -1,8 +1,8 @@
 /**
  * Swipper is a function to display a carrousel of divs or anything else.
  * @param  {String} container anchor for the element with .slide-container class.
- * @param  {integer} slidesCount number of elements per view.
- * @param  {integer} specialSize configured custom size following the quantity per view.
+ * @param  {Integer} slidesCount number of elements per view.
+ * @param  {Boolean} specialSize configured custom size following the quantity per view.
  * @return {void} null
  */
 const Swipper = (props) => {
