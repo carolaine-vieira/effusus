@@ -1,4 +1,11 @@
-const swipper = (props) => {
+/**
+ * Swipper is a function to display a carrousel of divs or anything else.
+ * @param  {String} container anchor for the element with .slide-container class.
+ * @param  {integer} slidesCount number of elements per view.
+ * @param  {integer} specialSize configured custom size following the quantity per view.
+ * @return {void} null
+ */
+const Swipper = (props) => {
   const container = props.container;
   const slidesCount = props.slidesCount;
   const specialSize = props.specialSize;
@@ -76,14 +83,28 @@ const swipper = (props) => {
   };
 };
 
-const s1 = swipper({
+const s1 = Swipper({
   container: "#recommended",
   slidesCount: 6,
   specialSize: false,
 });
 
-const s2 = swipper({
+const s2 = Swipper({
   container: "#main-slide",
   slidesCount: 3,
   specialSize: true,
+});
+
+// Dropdown menus
+const dropdownMenus = document.querySelectorAll("[data-dropdown]");
+dropdownMenus.forEach((menu) => {
+  ["touchstart", "click"].forEach((userEvent) => {
+    menu.addEventListener(
+      userEvent,
+      (handleDropdownClick = (e) => {
+        e.preventDefault();
+        e.target.parentNode.classList.toggle("active");
+      })
+    );
+  });
 });
