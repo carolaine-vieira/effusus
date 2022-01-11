@@ -108,7 +108,7 @@ header
 
             ol
               position: absolute
-              margin: 35px 0 0 0
+              margin: 65px 0 0 -20px
               opacity: 0
               background: var(--color-two)
               width: 100%
@@ -119,31 +119,37 @@ header
               display: flex
               @extend .transition-3ms
 
-              .box
-                flex: 1
+              .image
+                flex: 0 0 20%
+                margin: 0 20px 0 0
 
-                img
-                  max-width: 90%
+              .container
+                flex: 0 0 80%
+                column-count: 4
+                column-gap: 20px
 
-                span
-                  margin: 0 0 10px 10px
-                  opacity: 0.5
-                  cursor: default
-                  display: block
-                  font-size: 13px
-                  font-weight: 500
+                .box
+                  margin: 0 0 30px 0
 
-                li
-                  display: block
-                  margin: 0 0 8px 10px
+                  span
+                    margin: 0 0 10px 10px
+                    opacity: 0.5
+                    cursor: default
+                    display: block
+                    font-size: 13px
+                    font-weight: 500
 
-                  a
-                    border: none
-                    padding: 0
+                  li
+                    display: block
+                    margin: 0 0 8px 10px
 
-                  a:hover
-                    color: red
-                    padding-left: 5px
+                    a
+                      border: none
+                      padding: 0
+
+                    a:hover
+                      color: red
+                      padding-left: 5px
 
           li:hover
             ol
@@ -191,7 +197,7 @@ header
       position: relative
       height: 400px
       overflow: hidden
-      margin-right: 4px
+      margin-left: 4px
       width: calc( (100% / 3) * 2)
       display: inline-block
       background-size: cover
@@ -277,11 +283,7 @@ header
       background-size: cover
       flex-shrink: 0
       margin-left: 4px
-      -webkit-transition: all 0.4s ease-out
-      -moz-transition: all 0.4s ease-out
-      -ms-transition: all 0.4s ease-out
-      -o-transition: all 0.4s ease-out
-      transition: all 0.4s ease-out
+      @extend .transition-3ms
 
       .container
         position: absolute
@@ -290,30 +292,22 @@ header
         padding: 40px
         top: 0
         display: flex
-        align-items: flex-end
+        align-items: center
         justify-content: center
+        opacity: 0
+        transform: skewX(-30deg)
+        @extend .transition-3ms
 
         a
-          background: #000
           color: var(--color-two)
           font-weight: 500
-          text-transform: uppercase
-          text-align: center
-          min-width: 200px
-          padding: 14px 20px
-          font-size: 13px
-          display: none
-
-    .slide::nth-child(3n)
-      margin-right: 0px
 
     .slide:hover
       .container
         background: rgba(0, 0, 0, 0.6)
         backdrop-filter: blur(2px)
-
-        a
-          display: block
+        opacity: 1
+        transform: skewX(0deg)
 
     .previous,
     .next
@@ -344,6 +338,7 @@ header
     border-bottom: 2px solid var(--color-one)
     display: flex
     justify-content: space-between
+    align-items: center
 
     .category
       li
@@ -379,8 +374,12 @@ header
           padding: 15px
           display: block
 
-      #columns-count
-        margin-right: 15px
+        #columns-count
+          margin-right: 15px
+
+    .model
+      font-size: 13px
+      font-weight: 500
 
   #products-section
     display: flex
@@ -496,6 +495,75 @@ footer
       padding: 30px
       border-right: 2px solid var(--color-one)
 
+      .top-content
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        .product-info
+          .name,
+          .price,
+          .reviews
+            display: block
+
+          .name
+            font-size: 22px
+
+          .price
+            font-weight: 600
+            font-size: 26px
+            margin: 8px 0 0 0
+
+          .reviews
+            text-decoration: underline
+            color: var(--color-one)
+            opacity: 0.8
+            margin: 5px 0 0 0
+            font-size: 15px
+
+        .favorite-button
+          a
+            color: var(--color-one)
+            font-size: 40px
+
+          a:hover
+            color: red
+
+      .size
+        margin: 30px 0 0 0
+
+        h2
+          font-weight: 500
+          font-size: 18px
+          margin: 0 0 15px 0
+
+        ul
+          li
+            list-style: none
+            display: inline-flex
+            font-weight: 500
+
+            a
+              color: var(--color-one)
+              background: #b4b4b4
+              padding: 10px
+              margin: 0 1px 4px 0
+              min-width: 40px
+              display: inline-block
+              text-align: center
+
+            a:hover,
+            .active
+              background: var(--color-one)
+              color: var(--color-two)
+
     .product-recomendation
       flex: 1 0 20%
-      padding: 30px
+
+      h4
+        padding: 30px 30px 20px 30px
+
+      a
+        max-height: 180px
+        overflow: hidden
+        display: block
