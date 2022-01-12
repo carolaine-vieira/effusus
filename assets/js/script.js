@@ -3,7 +3,7 @@
  * @param  {String} container anchor for the element with .slide-container class.
  * @param  {Integer} slidesCount number of elements per view.
  * @param  {Boolean} specialSize configured custom size following the quantity per view.
- * @return {void} null
+ * @return {void}
  */
 const Swipper = (props) => {
   const container = props.container;
@@ -18,6 +18,7 @@ const Swipper = (props) => {
   const itemSize = 100 / slidesCount;
   const maxMove = slides.length - slidesCount - 3;
   let currentSlide = 0;
+  const eventType = ["touchstart", "click"];
 
   slides.map((slide) => {
     if (
@@ -50,8 +51,13 @@ const Swipper = (props) => {
     slides[currentSlide].classList.add("active");
   };
 
-  previousButton.addEventListener("click", handlePreviousItem);
-  nextButton.addEventListener("click", handleNextItem);
+  eventType.forEach((event) => {
+    previousButton.addEventListener(event, handlePreviousItem);
+  });
+
+  eventType.forEach((event) => {
+    nextButton.addEventListener(event, handleNextItem);
+  });
 
   const grabItens = () => {
     let draggedIndex;
@@ -96,15 +102,50 @@ const s2 = Swipper({
 });
 
 // Dropdown menus
-const dropdownMenus = document.querySelectorAll("[data-dropdown]");
-dropdownMenus.forEach((menu) => {
-  ["touchstart", "click"].forEach((userEvent) => {
-    menu.addEventListener(
-      userEvent,
-      (handleDropdownClick = (e) => {
-        e.preventDefault();
-        e.target.parentNode.classList.toggle("active");
-      })
-    );
+const dropdown = () => {
+  const html = document.documentElement;
+  const dropdownMenus = document.querySelectorAll("[data-dropdown]");
+  let clickedEl;
+  const eventType = ["touchstart", "click"];
+
+  dropdownMenus.forEach((menu) => {
+    eventType.forEach((userEvent) => {
+      menu.addEventListener(
+        userEvent,
+        (handleDropdownClick = (e) => {
+          e.preventDefault();
+          clickedEl = e.target.parentNode;
+          clickedEl.classList.add("active");
+          outsideClick(
+            clickedEl,
+            userEvent,
+            (callback = () => {
+              clickedEl.classList.remove("active");
+            })
+          );
+        })
+      );
+    });
   });
-});
+
+  const outsideClick = (element, callback) => {
+    const handleOutsideClick = (e) => {
+      e.stopImmediatePropagation();
+      if (!element.contains(e.target)) {
+        element.removeAttribute("data-outside");
+        eventType.forEach((event) => {
+          html.removeEventListener(event, handleOutsideClick);
+        });
+        callback();
+      }
+    };
+
+    if (!element.hasAttribute("data-outside")) {
+      eventType.forEach((event) => {
+        html.addEventListener(event, handleOutsideClick);
+      });
+      element.setAttribute("data-outside", "");
+    }
+  };
+};
+dropdown();
