@@ -619,37 +619,68 @@ header #bottom-bar .right-content .header-admin-buttons ul li.user-profile img {
 }
 
 #contact {
-  border-top: 2px solid var(--color-one);
-  padding: 40px var(--global-padding);
-  background: var(--color-two);
-}
-
-#contact h2 {
-  font-size: 18px;
-  margin: 0 0 20px 0;
-}
-
-#contact .container {
+  background: #eee;
+  padding: 40px;
+  border-radius: 10px;
+  margin: 30px var(--global-padding) 0 var(--global-padding);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
-#contact .container input {
+#contact .left-container {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40%;
+          flex: 0 0 40%;
+  padding-right: 40px;
+}
+
+#contact .left-container img {
+  display: block;
+  margin: 0 auto;
+}
+
+#contact .right-container {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60%;
+          flex: 0 0 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#contact .right-container .container {
+  width: 100%;
+}
+
+#contact .right-container .container h2 {
+  font-size: 20px;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+#contact .right-container .container input {
   border: none;
   outline: none;
-  border: 2px solid var(--color-one);
-  padding: 10px;
+  border-radius: 5px;
+  padding: 15px;
   font-family: var(--body-font);
-  width: 49.5%;
+  display: block;
+  width: 100%;
   font-size: 15px;
+  margin: 0 0 10px 0;
 }
 
-#contact .container input:focus {
+#contact .right-container .container input:focus {
   border-color: red;
+}
+
+#contact .right-container .container input[type="submit"] {
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--color-two);
 }
 
 footer {

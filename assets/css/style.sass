@@ -465,29 +465,50 @@ header
     letter-spacing: 5px
 
 #contact
-  border-top: 2px solid var(--color-one)
-  padding: 40px var(--global-padding)
-  background: var(--color-two)
+  background: #eee
+  padding: 40px
+  border-radius: 10px
+  margin: 30px var(--global-padding) 0 var(--global-padding)
+  display: flex
 
-  h2
-    font-size: 18px
-    margin: 0 0 20px 0
+  .left-container
+    flex: 0 0 40%
+    padding-right: 40px
 
-  .container
+    img
+      display: block
+      margin: 0 auto
+
+  .right-container
+    flex: 0 0 60%
     display: flex
-    justify-content: space-between
+    align-items: center
 
-    input
-      border: none
-      outline: none
-      border: 2px solid var(--color-one)
-      padding: 10px
-      font-family: var(--body-font)
-      width: 49.5%
-      font-size: 15px
+    .container
+      width: 100%
 
-    input:focus
-      border-color: red
+      h2
+        font-size: 20px
+        margin: 0 0 20px 0
+        font-weight: 400
+
+      input
+        border: none
+        outline: none
+        border-radius: 5px
+        padding: 15px
+        font-family: var(--body-font)
+        display: block
+        width: 100%
+        font-size: 15px
+        margin: 0 0 10px 0
+
+      input:focus
+        border-color: red
+
+      input[type="submit"]
+        background: rgba(0, 0, 0, 0.5)
+        color: var(--color-two)
 
 footer
   background: var(--color-one)
