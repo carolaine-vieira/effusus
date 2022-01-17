@@ -1,0 +1,76 @@
+.product
+  box-shadow: var(--default-shadow)
+  border-radius: 5px
+  overflow: hidden
+  position: relative
+  height: 105%
+  transform: rotate(3deg)
+  transition: all 0.3s ease-in-out
+
+  a
+    color: var(--color-one)
+
+    .product-info
+      padding: 7%
+
+      span
+        display: block
+
+      .brand
+        font-size: 13px
+        opacity: 0.6
+        font-weight: 600
+        margin-bottom: 8px
+
+      h3
+        font-family: 'Playfair Display', serif
+        font-weight: 500
+        font-size: 22px
+
+      .price
+        font-family: 'Libre Baskerville', serif
+        font-size: 16px
+        margin: 7px 0 0 0
+
+  .buttons
+    position: absolute
+    padding: 30px 20px
+    top: 0
+    right: 0
+
+    ul
+      li
+        list-style: none
+        margin-bottom: 30px
+        text-align: center
+
+        a
+          background: var(--color-two)
+          color: var(--color-one)
+          padding: 10px 10px 8px 10px
+          border-radius: 5px
+          font-size: 25px
+
+      li.add-to-cart
+        a:hover
+          background: var(--color-one)
+          color: var(--color-two)
+
+      li.add-to-favs
+        opacity: 0
+
+        a:hover
+          background: red
+          color: var(--color-two)
+
+.product:first-child
+  top: 50px
+
+.product:hover
+  .buttons
+    ul
+      li.add-to-favs
+        opacity: 1
+
+.product:hover
+  transform: rotate(0deg)

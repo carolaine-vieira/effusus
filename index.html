@@ -28,7 +28,14 @@
         <h1><a href="">Effusus</a></h1>
         <div class="right-content">
           <nav>
-            <ul>
+            <button
+              data-menu="button"
+              aria-expanded="false"
+              aria-controls="menu"
+            >
+              Menu
+            </button>
+            <ul data-menu="list" id="header-menu">
               <li><a href="">Kids</a></li>
               <li><a href="">Man</a></li>
               <li data-dropdown>
@@ -84,12 +91,7 @@
               <li><a href="">Top</a></li>
             </ul>
           </nav>
-          <input
-            type="search"
-            name=""
-            id="search-products"
-            placeholder="Search products..."
-          />
+
           <div class="header-admin-buttons">
             <ul>
               <li class="user-admin-link">
@@ -97,6 +99,13 @@
               </li>
               <li class="cart-link">
                 <a href=""><span class="lnr lnr-cart"></span></a>
+              </li>
+              <li class="user-profile">
+                <a href=""
+                  ><img
+                    src="https://64.media.tumblr.com/84675567022db3104c64ebf19b74b23a/5f6e58167639110c-9f/s400x600/8c4f1a359cc2faebb51b776707be2a6b47f65142.png"
+                    alt=""
+                /></a>
               </li>
             </ul>
           </div>
@@ -347,8 +356,8 @@
         </aside>
 
         <div id="products">
-          <a href="single.html">
-            <div class="product">
+          <div class="product">
+            <a href="single.html">
               <div class="product-image">
                 <img
                   src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
@@ -359,98 +368,16 @@
                 <h3>Product name</h3>
                 <sub>price</sub>
               </div>
+            </a>
+            <div class="buttonssss">
+              <ul>
+                <li>
+                  <a href=""><span class="lnr lnr-cart"></span></a>
+                </li>
+                <li><a href=""></a></li>
+              </ul>
             </div>
-          </a>
-
-          <a href="single.html">
-            <div class="product">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <h3>Product name</h3>
-                <sub>price</sub>
-              </div>
-            </div>
-          </a>
-
-          <a href="single.html">
-            <div class="product">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <h3>Product name</h3>
-                <sub>price</sub>
-              </div>
-            </div>
-          </a>
-
-          <a href="single.html">
-            <div class="product">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <h3>Product name</h3>
-                <sub>price</sub>
-              </div>
-            </div>
-          </a>
-
-          <a href="single.html">
-            <div class="product">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <h3>Product name</h3>
-                <sub>price</sub>
-              </div>
-            </div>
-          </a>
-
-          <a href="single.html">
-            <div class="product">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <h3>Product name</h3>
-                <sub>price</sub>
-              </div>
-            </div>
-          </a>
-
-          <a href="single.html">
-            <div class="product">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <h3>Product name</h3>
-                <sub>price</sub>
-              </div>
-            </div>
-          </a>
+          </div>
         </div>
       </div>
     </section>

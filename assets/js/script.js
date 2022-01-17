@@ -128,7 +128,7 @@ const dropdown = () => {
     });
   });
 
-  const outsideClick = (element, callback) => {
+  const outsideClick = (element, event, callback) => {
     const handleOutsideClick = (e) => {
       e.stopImmediatePropagation();
       if (!element.contains(e.target)) {

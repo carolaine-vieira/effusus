@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/page-home.css" />
     <link
       rel="stylesheet"
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
-    <script src="assets/js/script.js" defer></script>
+    <script src="/assets/js/script.js"></script>
     <title>Document</title>
   </head>
   <body>
-    <header>
+    <header class="home-header">
       <div id="top-bar">
         <div class="ship-to">
           <span class="label">Shipping to:</span>
@@ -113,98 +114,119 @@
       </div>
     </header>
 
-    <div id="effusus-single">
-      <section id="main-section">
-        <div id="content-info">
-          <ul class="category">
-            <li>Woman</li>
-            <li>Top</li>
-            <li>Coat</li>
-          </ul>
-          <span class="model">EFFU89651346</span>
-        </div>
-
-        <div id="products-section">
-          <div id="products">
-            <div class="product">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-                  alt=""
-                />
-              </div>
-            </div>
+    <section id="home-main-section">
+      <div class="left-container">
+        <h1>Et harum quidem rerum facilis est et expedita distinctio</h1>
+        <div class="bottom">
+          <div class="search-box">
+            <input
+              type="search"
+              name="search"
+              id="home-search"
+              placeholder="Search products..."
+            />
+            <label for="search"><span class="lnr lnr-magnifier"></span></label>
           </div>
-
-          <div class="product-buttons">
-            <div class="top-content">
-              <div class="product-info">
-                <span class="name">Jacket</span>
-                <span class="price">$ 29.99</span>
-                <a href="" class="reviews">29 reviews</a>
-              </div>
-
-              <div class="favorite-button">
+          <div class="links">
+            <ul>
+              <li class="log-in"><a href="">Log In</a></li>
+              <li class="best-sellers"><a href="">Best Sellers</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="right-container">
+        <div class="product">
+          <a href="single.html">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
+                alt=""
+              />
+            </div>
+            <div class="product-info">
+              <span class="brand"><i>by</i> Effusus</span>
+              <h3>Product name</h3>
+              <span class="price">$ 129.99</span>
+            </div>
+          </a>
+          <div class="buttons">
+            <ul>
+              <li class="add-to-cart">
+                <a href=""><span class="lnr lnr-cart"></span></a>
+              </li>
+              <li class="add-to-favs">
                 <a href=""><span class="lnr lnr-heart"></span></a>
-              </div>
-            </div>
-
-            <div class="size">
-              <h2>Size</h2>
-              <ul>
-                <li><a href="" class="active">S</a></li>
-                <li><a href="">M</a></li>
-                <li><a href="">X</a></li>
-                <li><a href="">XX</a></li>
-                <li><a href="">XXX</a></li>
-                <li><a href="">XXXX</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="product-recomendation">
-            <h4>Also bought with</h4>
-            <a href=""
-              ><img
-                src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-                alt=""
-            /></a>
-
-            <a href=""
-              ><img
-                src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-                alt=""
-            /></a>
-
-            <a href=""
-              ><img
-                src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-                alt=""
-            /></a>
-
-            <a href=""
-              ><img
-                src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-                alt=""
-            /></a>
+              </li>
+            </ul>
           </div>
         </div>
-      </section>
-    </div>
 
-    <section id="contact">
-      <h2>To receive special offers subscribe into our newslater</h2>
-      <div class="container">
-        <input type="text" placeholder="Name" />
-        <input type="email" name="" id="" placeholder="Email" />
+        <div class="product">
+          <a href="single.html">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
+                alt=""
+              />
+            </div>
+            <div class="product-info">
+              <span class="brand"><i>by</i> Effusus</span>
+              <h3>Product name</h3>
+              <span class="price">$ 129.99</span>
+            </div>
+          </a>
+          <div class="buttons">
+            <ul>
+              <li class="add-to-cart">
+                <a href=""><span class="lnr lnr-cart"></span></a>
+              </li>
+              <li class="add-to-favs">
+                <a href=""><span class="lnr lnr-heart"></span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <footer>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis
-      nesciunt doloribus tenetur accusamus quisquam at nam, ab et excepturi
-      illum beatae, placeat consectetur in inventore error temporibus architecto
-      distinctio vitae?
-    </footer>
+    <section id="slide-one">
+      <div class="content">
+        <div class="slide-wrap">
+          <div
+            class="slide active"
+            style="
+              background-image: url('http://eky.hk/upload/file/jpg61e49c16dfa6e.jpg');
+            "
+          >
+            <div class="container">
+              <a href="">Week Sales</a>
+            </div>
+          </div>
+
+          <div
+            class="slide"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1475180098004-ca77a66827be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80');
+            "
+          >
+            <div class="container">
+              <a href="">Week Sales</a>
+            </div>
+          </div>
+
+          <div
+            class="slide"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1496217590455-aa63a8350eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80');
+            "
+          >
+            <div class="container">
+              <a href="">Week Sales</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap')
 
 \:root
   --body-font: 'Montserrat', sans-serif
@@ -6,6 +6,7 @@
   --global-padding: 5%
   --color-one: #111
   --color-two: #fff
+  --default-shadow: 0 1px 4px 1px #dfdfdf
 
 *
   margin: 0
@@ -66,10 +67,10 @@ header
 
   #bottom-bar
     padding: 0 var(--global-padding)
-    border-bottom: 2px solid var(--color-one)
     display: flex
     align-items: center
     justify-content: space-between
+    box-shadow: var(--default-shadow)
 
     ul
       li
@@ -89,22 +90,34 @@ header
       justify-content: flex-end
 
       nav
-        border-right: 1px solid var(--color-one)
+        margin-right: 8px
+
+        [data-menu="button"]
+          display: none
 
         ul
+
           li
             margin-right: 26px
 
             a
               color: var(--color-one)
               padding: 19px 0
-              border-top: 3px solid transparent
-              border-bottom: 3px solid transparent
+              position: relative
 
-              span
+            a:before
+              content: ""
+              position: absolute
+              width: 5px
+              height: 5px
+              background: var(--color-one)
+              border-radius: 100%
+              left: 50%
+              margin: -10px 0 0 -2px
+              opacity: 0
 
-            a:hover
-              border-bottom-color: var(--color-one)
+            a:hover:before
+              opacity: 1
 
             ol
               position: absolute
@@ -147,6 +160,9 @@ header
                       border: none
                       padding: 0
 
+                    a:before
+                      display: none
+
                     a:hover
                       color: red
                       padding-left: 5px
@@ -158,19 +174,13 @@ header
               opacity: 1
               visibility: visible
 
-      #search-products
-        padding: 22px
-        border: none
-        border-right: 1px solid var(--color-one)
-        outline: none
-        font-family: var(--body-font)
-        font-size: 16px
-        width: 200px
-
       .header-admin-buttons
         ul
+          display: flex
+          align-items: center
+
           li
-            padding: 18px 18px
+            padding: 18px 8px
 
             a
               color: var(--color-one)
@@ -183,10 +193,18 @@ header
               opacity: 0.7
 
           li.cart-link
-            border-right: 1px solid var(--color-one)
-            border-left: 1px solid var(--color-one)
+            margin-left: 2px
 
-#main-slide.slide-container
+          li.user-profile
+            margin-left: 15px
+
+            img
+              width: 30px
+              height: 30px
+              border-radius: 100%
+              object-fit: contain
+
+#main-slide
   .slide-wrap
     display: flex
     overflow-x: hidden
@@ -260,7 +278,7 @@ header
       right: 0px
       justify-content: flex-end
 
-#recommended.slide-container
+#recommended
   padding: 30px 0
 
   h2
@@ -399,12 +417,12 @@ header
       flex-wrap: wrap
 
       a
-        flex-basis: calc( 100% / 3 - 20px )
-        flex-shrink: 0
-        margin: 0 0 20px 20px
         color: var(--color-one)
 
       .product
+        flex-basis: calc( 100% / 3 - 20px )
+        flex-shrink: 0
+        margin: 0 0 20px 20px
         border: 1px solid #eee
         background: var(--color-two)
         border-radius: 2px
@@ -416,6 +434,9 @@ header
 
           h3
             font-size: 16px
+
+        .buttons
+          position: absolute
 
       .product:hover
         box-shadow: 0 2px 3px 0 #eee
@@ -568,3 +589,21 @@ footer
         max-height: 180px
         overflow: hidden
         display: block
+
+@media (max-width: 700px)
+  header
+    #bottom-bar
+      .right-content
+        nav
+          [data-menu="button"]
+            display: block !important
+            background: var(--color-one)
+            color: var(--color-two)
+            border: none
+            padding: 20px
+
+          [data-menu="list"]
+            display: none
+
+        #search-products
+          display: none
