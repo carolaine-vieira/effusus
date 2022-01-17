@@ -31,7 +31,7 @@ body img {
 }
 
 .transition-3ms, body a,
-body a:hover, header #bottom-bar .right-content nav ul li ol, #recommended .slide-wrap .slide, #recommended .slide-wrap .slide .container {
+body a:hover, header #bottom-bar .right-content nav ul li a:before, header #bottom-bar .right-content nav ul li ol, #recommended .slide-wrap .slide, #recommended .slide-wrap .slide .container {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }

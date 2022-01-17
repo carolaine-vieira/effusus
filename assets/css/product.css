@@ -4,11 +4,6 @@
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  height: 105%;
-  -webkit-transform: rotate(3deg);
-          transform: rotate(3deg);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
 }
 
 .product a {
@@ -16,7 +11,7 @@
 }
 
 .product a .product-info {
-  padding: 7%;
+  padding: 25px;
 }
 
 .product a .product-info span {
@@ -34,6 +29,7 @@
   font-family: 'Playfair Display', serif;
   font-weight: 500;
   font-size: 22px;
+  margin: 0;
 }
 
 .product a .product-info .price {
@@ -75,10 +71,6 @@
 .product .buttons ul li.add-to-favs a:hover {
   background: red;
   color: var(--color-two);
-}
-
-.product:first-child {
-  top: 50px;
 }
 
 .product:hover .buttons ul li.add-to-favs {
