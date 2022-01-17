@@ -205,7 +205,7 @@ header.home-header
 
 #best-sellers
   display: flex
-  padding: 50px var(--global-padding) 3% var(--global-padding)
+  padding: 80px var(--global-padding) 3% var(--global-padding)
 
   .left-container
     flex: 0 0 35%
@@ -271,6 +271,8 @@ header.home-header
             padding: 20px
 
         .buttons
+          padding: 25px 15px
+
           ul
             li
               margin-bottom: 20px
@@ -281,3 +283,95 @@ header.home-header
 
               a:hover
                 color: var(--color-two)
+
+#blog
+  padding: 10px var(--global-padding) 50px var(--global-padding)
+
+  h2
+    text-align: center
+    margin: 0 0 10px 0
+    font-size: 36px
+    font-family: 'Playfair Display', serif
+
+  .wrap
+    display: flex
+    overflow-x: hidden
+    position: relative
+    height: 100%
+    flex-wrap: wrap
+    justify-content: flex-end
+
+    .post
+      position: relative
+      height: 40vw
+      overflow: hidden
+      width: calc( 100% / 3 - 20px )
+      display: inline-block
+      background-size: cover
+      flex-shrink: 0
+      margin-left: 30px
+      border-radius: 5px
+      @extend .transition-3ms
+
+      .container
+        position: absolute
+        height: 100%
+        width: 100%
+        padding: 40px
+        top: 0
+        display: flex
+        align-items: flex-end
+        justify-content: flex-start
+        background: -moz-linear-gradient(0deg, rgba(0,0,0,0.9) 7%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%)
+        background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.9) 7%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%)
+        background: linear-gradient(0deg, rgba(0,0,0,0.9) 7%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%)
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1)
+        @extend .transition-3ms
+
+        .info
+          color: var(--color-two)
+
+          h2
+            font-family: var(--default-font)
+            text-align: left
+            font-size: 24px
+            font-weight: 500
+            margin: 0 0 20px 0
+
+          p
+            opacity: 0.7
+            display: block
+            margin: 0 0 30px 0
+            font-size: 15px
+            line-height: 1.3em
+
+          a
+            color: var(--color-two)
+            font-weight: 500
+            display: inline-block
+            font-size: 17px
+
+          a:hover
+            text-decoration: underline
+
+    .post:first-child
+      margin-left: 0
+
+    .post:hover
+      .container
+        backdrop-filter: blur(2px)
+        padding-bottom: 60px
+
+    .read-more
+      width: calc( 100% / 3 - 20px )
+      margin: 30px 0 0 0
+
+      a
+        background: var(--color-one)
+        color: var(--color-two)
+        border-radius: 5px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 18px
+        font-size: 18px
