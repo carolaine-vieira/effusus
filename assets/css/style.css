@@ -825,9 +825,6 @@ footer {
     border: none;
     padding: 20px;
   }
-  header #bottom-bar .right-content nav [data-menu="list"] {
-    display: none;
-  }
   header #bottom-bar .right-content #search-products {
     display: none;
   }

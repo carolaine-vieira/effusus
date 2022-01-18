@@ -1,101 +1,105 @@
 /**
- * Swipper is a function to display a carrousel of divs or anything else.
+ * Slide is a function to display a carrousel of divs or anything else.
  * @param  {String} container anchor for the element with .slide-container class.
  * @param  {Integer} slidesCount number of elements per view.
  * @param  {Boolean} specialSize configured custom size following the quantity per view.
  * @return {void}
  */
-const Swipper = (props) => {
+const Slide = (props) => {
   const container = props.container;
   const slidesCount = props.slidesCount;
   const specialSize = props.specialSize;
 
-  const slides = Array.from(
-    document.querySelector(container).querySelector(".slide-wrap").children
-  );
-  const previousButton = document.querySelector(`${container} .previous a`);
-  const nextButton = document.querySelector(`${container} .next a`);
-  const itemSize = 100 / slidesCount;
-  const maxMove = slides.length - slidesCount - 3;
-  let currentSlide = 0;
-  const eventType = ["touchstart", "click"];
+  let slides = document.querySelector(container);
 
-  slides.map((slide) => {
-    if (
-      !slide.classList.contains("previous") &&
-      !slide.classList.contains("next")
-    ) {
-      specialSize
-        ? (slide.style.width = itemSize * 2 + "%")
-        : (slide.style.width = itemSize + "%");
-    }
-  });
-  slides[0].classList.add("active");
+  if (slides) {
+    slides = Array.from(slides.querySelector(".slide-wrap").children);
+    const previousButton = document.querySelector(`${container} .previous a`);
+    const nextButton = document.querySelector(`${container} .next a`);
+    const itemSize = 100 / slidesCount;
+    const maxMove = slides.length - slidesCount - 3;
+    let currentSlide = 0;
+    const eventType = ["touchstart", "click"];
 
-  const handlePreviousItem = () => {
-    currentSlide > 0 ? (slides[--currentSlide].style.marginLeft = "4px") : null;
-    currentSlideSelector();
-  };
-
-  const handleNextItem = () => {
-    if (currentSlide <= maxMove) {
-      specialSize
-        ? (slides[currentSlide++].style.marginLeft = `-${itemSize * 2}%`)
-        : (slides[currentSlide++].style.marginLeft = `-${itemSize}%`);
-    }
-    currentSlideSelector();
-  };
-
-  const currentSlideSelector = () => {
-    slides.forEach((slide) => slide.classList.remove("active"));
-    slides[currentSlide].classList.add("active");
-  };
-
-  eventType.forEach((event) => {
-    previousButton.addEventListener(event, handlePreviousItem);
-  });
-
-  eventType.forEach((event) => {
-    nextButton.addEventListener(event, handleNextItem);
-  });
-
-  const grabItens = () => {
-    let draggedIndex;
-    let movedFirst = false;
-
-    slides.forEach((slide) => {
-      const moveSwipper = (e) => {
-        slide.style.cursor = "grabbing";
-        console.log(e.offsetX);
-
-        if (e.offsetX > 150) {
-        }
-      };
-
-      const grab = (e) => {
-        console.log(e.offsetX);
-        slide.addEventListener("mousemove", moveSwipper);
-      };
-
-      slide.addEventListener("mousedown", grab);
-
-      window.addEventListener("mouseup", () => {
-        slide.style.cursor = "grab";
-        console.log("mouse up");
-
-        slide.removeEventListener("mousemove", moveSwipper);
-      });
+    slides.map((slide) => {
+      if (
+        !slide.classList.contains("previous") &&
+        !slide.classList.contains("next")
+      ) {
+        specialSize
+          ? (slide.style.width = itemSize * 2 + "%")
+          : (slide.style.width = itemSize + "%");
+      }
     });
-  };
+    slides[0].classList.add("active");
+
+    const handlePreviousItem = () => {
+      currentSlide > 0
+        ? (slides[--currentSlide].style.marginLeft = "4px")
+        : null;
+      currentSlideSelector();
+    };
+
+    const handleNextItem = () => {
+      if (currentSlide <= maxMove) {
+        specialSize
+          ? (slides[currentSlide++].style.marginLeft = `-${itemSize * 2}%`)
+          : (slides[currentSlide++].style.marginLeft = `-${itemSize}%`);
+      }
+      currentSlideSelector();
+    };
+
+    const currentSlideSelector = () => {
+      slides.forEach((slide) => slide.classList.remove("active"));
+      slides[currentSlide].classList.add("active");
+    };
+
+    eventType.forEach((event) => {
+      previousButton.addEventListener(event, handlePreviousItem);
+    });
+
+    eventType.forEach((event) => {
+      nextButton.addEventListener(event, handleNextItem);
+    });
+
+    const grabItens = () => {
+      let draggedIndex;
+      let movedFirst = false;
+
+      slides.forEach((slide) => {
+        const moveSlide = (e) => {
+          slide.style.cursor = "grabbing";
+          console.log(e.offsetX);
+
+          if (e.offsetX > 150) {
+          }
+        };
+
+        const grab = (e) => {
+          console.log(e.offsetX);
+          slide.addEventListener("mousemove", moveSlide);
+        };
+
+        slide.addEventListener("mousedown", grab);
+
+        window.addEventListener("mouseup", () => {
+          slide.style.cursor = "grab";
+          console.log("mouse up");
+
+          slide.removeEventListener("mousemove", moveSlide);
+        });
+      });
+    };
+  }
 };
 
-const s1 = Swipper({
+const s1 = Slide({
   container: "#recommended",
   slidesCount: 6,
   specialSize: false,
 });
 
-const s2 = Swipper({
+const s2 = Slide({
   container: "#main-slide",
   slidesCount: 3,
   specialSize: true,
