@@ -22,31 +22,29 @@
         </div>
       </div>
       <div class="right-container">
-        <div class="product">
-          <a href="single.html">
-            <div class="product-image">
-              <img
-                src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                alt=""
-              />
-            </div>
-            <div class="product-info">
-              <span class="brand"><i>by</i> Effusus</span>
-              <h3>Product name</h3>
-              <span class="price">$ 129.99</span>
-            </div>
-          </a>
-          <div class="buttons">
-            <ul>
-              <li class="add-to-cart">
-                <a href=""><span class="lnr lnr-cart"></span></a>
-              </li>
-              <li class="add-to-favs">
-                <a href=""><span class="lnr lnr-heart"></span></a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <?php 
+          $args = array(
+            'post_type' => 'products',
+            'posts_per_page' => 2,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'slug',
+                    'terms'    => 'effu-s01',
+                ),
+            ),
+          );
+          $query = new WP_Query($args);
+    
+          if( $query -> have_posts() ) :      
+            while ($query -> have_posts()) :
+              $query -> the_post();
+              get_template_part('template-parts/home-two-posts');
+            endwhile;
+          endif;
+
+          wp_reset_postdata();
+        ?>
 
         <div class="product">
           <a href="single.html">
@@ -73,6 +71,7 @@
             </ul>
           </div>
         </div>
+
       </div>
     </section>
 
