@@ -4,6 +4,9 @@
   border-radius: 5px;
   overflow: hidden;
   position: relative;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .product a {
@@ -91,7 +94,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 50px var(--global-padding) 9% var(--global-padding);
+  padding: 50px var(--global-padding) 60px var(--global-padding);
 }
 
 #home-main-section .left-container {
@@ -193,7 +196,7 @@
   -webkit-box-flex: 0;
       -ms-flex: 0 0 calc(50% - 30px);
           flex: 0 0 calc(50% - 30px);
-  height: 105%;
+  padding-bottom: 40px;
   -webkit-transform: rotate(3deg);
           transform: rotate(3deg);
   -webkit-transition: all 0.3s ease-in-out;

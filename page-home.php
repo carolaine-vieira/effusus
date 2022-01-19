@@ -1,4 +1,9 @@
-<?php get_header('home'); ?>
+<?php 
+// Template Name: Home
+
+get_header('home');
+
+?>
 
     <section id="home-main-section">
       <div class="left-container">
@@ -24,7 +29,7 @@
       <div class="right-container">
         <?php 
           $args = array(
-            'post_type' => 'products',
+            'post_type' => 'product',
             'posts_per_page' => 2,
             'tax_query' => array(
                 array(

@@ -32,27 +32,55 @@ if ( !function_exists('effusus_setup') ) {
     // traducao
     $textdomain = 'effusus';
     load_theme_textdomain( $textdomain, get_stylesheet_directory().'/languages/');
-    load_theme_textdomain( $textdomain, get_template_directory().'/languages/');
+    load_theme_textdomain( $textdomain, get_template_directory().'/languages/');    
   }
   add_action( 'after_setup_theme', 'effusus_setup' );
 }
 
-// Testimonial custom post type
-function products_custom_post_type() {
-  register_post_type('products',
+// Woocomerce support
+function effusus_add_woocommerce_support() {
+  add_theme_support('woocomerce');
+}
+add_action( 'after_setup_theme', 'effusus_add_woocommerce_support' );
+
+// Products custom post type
+// function products_custom_post_type() {
+//   register_post_type('product',
+//     array(
+//       'labels' => array(
+//         'name'            => __('Products', 'effusus'),
+//         'singular_name'   => __('Product', 'effusus'),              
+//       ),
+//       'public'            => true,
+//       'has_archive'       => true,
+//       'rewrite'           => array( 'slug' => 'product' ),
+//       'menu_icon'         => 'dashicons-money-alt',
+//       'taxonomies'        => array('category'),
+//       'supports'          => array( 'title', 'thumbnail', 'author'),
+//       'menu_position'     => 4,
+//     )
+//   );
+// }
+// add_action('init', 'products_custom_post_type');
+
+// Slide custom post type
+function slide_custom_post_type() {
+  register_post_type('slide',
     array(
       'labels' => array(
-        'name'          => __('Products', 'effusus'),
-        'singular_name' => __('Product', 'effusus'),              
+        'name'            => __('Slides', 'effusus'),
+        'singular_name'   => __('Slide', 'effusus'),              
       ),
-      'public'      => true,
-      'has_archive' => true,
-      'rewrite'     => array( 'slug' => 'product' ),
-      'menu_icon'   => 'dashicons-money-alt',
+      'public'            => true,
+      'has_archive'       => true,
+      'rewrite'           => array( 'slug' => 'slide' ),
+      'menu_icon'         => 'dashicons-slides',
+      'supports'          => array( 'title', 'thumbnail', 'author'),
+      'menu_position'     => 5,
     )
   );
 }
-add_action('init', 'products_custom_post_type');
+add_action('init', 'slide_custom_post_type');
 
 // // TGM Plugin Activation Class
 // require_once locate_template('/lib/TGM-Plugin-Activation-2.6.1/class-tgm-plugin-activation.php');

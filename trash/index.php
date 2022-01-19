@@ -241,27 +241,30 @@
           porro.
         </aside>
 
-        
-        <?php 
-          if ( have_posts() ) {
-            while ( have_posts() ) {
-              the_post();          
-              get_template_part( 'template-parts/content/content');
-            }
-          
-            $args = array(
-              'mid_size'           => 2,
-              'prev_next'          => true,
-              'prev_text'          => __('« Previous'),
-              'next_text'          => __('Next »'),
-            );
-            the_posts_pagination($args); 
-
-          } else {
-            get_template_part( 'template-parts/content/content-none' );          
-          }
-        ?>
-        
+        <div id="products">
+          <div class="product">
+            <a href="single.html">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
+                  alt=""
+                />
+              </div>
+              <div class="product-info">
+                <h3>Product name</h3>
+                <sub>price</sub>
+              </div>
+            </a>
+            <div class="buttonssss">
+              <ul>
+                <li>
+                  <a href=""><span class="lnr lnr-cart"></span></a>
+                </li>
+                <li><a href=""></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

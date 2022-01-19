@@ -9,6 +9,8 @@
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
     <script src="<?php echo get_stylesheet_directory_uri() ?>/assets/js/script.js" defer></script>
+    <!-- WooCommerce Version -->
+    <meta name="generator" content="WooCommerce 6.1.0" />
     <?php wp_head(); ?>
   </head>
   <body>

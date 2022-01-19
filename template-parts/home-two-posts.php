@@ -1,20 +1,25 @@
         <div class="product">
           <a href="single.html">
             <div class="product-image">              
-              <img
-                <?php
-                  if( get_field('product_image') ) :
-                    the_field('product_image');
-                ?>
-                src="<?php echo the_field("product_image"); ?>"
-                <?php endif; ?>
-                alt=""
-              />
+            <?php the_post_thumbnail( 'full' ); ?>
             </div>
             <div class="product-info">
               <span class="brand"><i>by</i> Effusus</span>
-              <h3>Product name</h3>
-              <span class="price">$ 129.99</span>
+              <h3><?php the_title(); ?></h3>
+              <span class="price">
+                <?php 
+                  $lang = get_locale();
+
+                  if ( $lang == 'en' ) {
+                    printf("$");
+                  } else if ( $lang == 'pt' ) {
+                    printf("R$");
+                  } else {
+                    printf("$");
+                  }
+                ?>
+                <?php the_field("product_price"); ?>
+              </span>
             </div>
           </a>
           <div class="buttons">

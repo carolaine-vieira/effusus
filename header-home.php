@@ -10,9 +10,11 @@
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
     <script src="assets/js/script.js" defer></script>
+    <!-- WooCommerce Version -->
+    <meta name="generator" content="WooCommerce 6.1.0" />
     <?php wp_head(); ?>
   </head>
-  <body>
+  <body <?php body_class(); ?>>
     <header class="home-header">
       <div id="top-bar">
         <div class="ship-to">
