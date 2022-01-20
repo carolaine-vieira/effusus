@@ -235,12 +235,17 @@
 
       <div id="products-section">
         <aside>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex impedit
-          eveniet nulla harum delectus, perspiciatis quis rerum ducimus vero
-          officia quam. Voluptatum et quas rerum, tempora facere magni velit
-          porro.
+          <div class="box">
+            <?php 
+              wp_nav_menu(
+                array( 
+                  'theme_location' => 'woo-store-categories',
+                  'menu_class'     => 'categories',
+                )
+              ); 
+            ?>   
+          </div>
         </aside>
-
         
         <?php 
           if ( have_posts() ) {

@@ -23,7 +23,8 @@ if ( !function_exists('effusus_setup') ) {
       register_nav_menus(
         array(
           'header-menu' => __('Header Menu'),
-          'footer-menu' => __('Footer Menu')
+          'footer-menu' => __('Footer Menu'),
+          'woo-store-categories' => __('Store Categories')
         )
       );
     }
@@ -81,6 +82,18 @@ function slide_custom_post_type() {
   );
 }
 add_action('init', 'slide_custom_post_type');
+
+/**
+ * Change number of products that are displayed per page (shop page)
+ */
+add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
+
+function new_loop_shop_per_page( $cols ) {
+  // $cols contains the current number of products per page based on the value stored on Options –> Reading
+  // Return the number of products you wanna show per page.
+  $cols = 1;
+  return $cols;
+}
 
 // // TGM Plugin Activation Class
 // require_once locate_template('/lib/TGM-Plugin-Activation-2.6.1/class-tgm-plugin-activation.php');
@@ -175,3 +188,5 @@ add_action('init', 'slide_custom_post_type');
 
 //   return $effususConfigID;
 // }
+
+?>

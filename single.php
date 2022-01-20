@@ -12,6 +12,27 @@
         </div>
 
         <div id="products-section">
+          <?php 
+            if ( have_posts() ) {
+              while ( have_posts() ) {
+                the_post();          
+                get_template_part( 'template-parts/content/single');
+              }
+            
+              $args = array(
+                'mid_size'           => 2,
+                'prev_next'          => true,
+                'prev_text'          => __('« Previous'),
+                'next_text'          => __('Next »'),
+              );
+              the_posts_pagination($args); 
+
+            } else {
+              get_template_part( 'template-parts/content/content-none' );          
+            }
+          ?>
+
+
           <div id="products">
             <div class="product">
               <div class="product-image">

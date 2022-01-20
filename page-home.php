@@ -10,17 +10,15 @@ get_header('home');
         <h1>Et harum quidem rerum facilis est et expedita distinctio</h1>
         <div class="bottom">
           <div class="search-box">
-            <input
-              type="search"
-              name="search"
-              id="home-search"
-              placeholder="Search products..."
-            />
-            <label for="search"><span class="lnr lnr-magnifier"></span></label>
+            <form action="<?php bloginfo('url'); ?>/loja/" method="get">
+              <input type="text" name="s" id="s" placeholder="Buscar" value="<?php the_search_query(); ?>">
+              <input type="text" name="post_type" value="product" class="hidden" style="display: none;">
+              <input type="submit" id="searchbutton" value="Buscar">
+            </form>
           </div>
           <div class="links">
             <ul>
-              <li class="log-in"><a href="">Log In</a></li>
+              <li class="log-in"><a href="/minha-conta/">Log In</a></li>
               <li class="best-sellers"><a href="">Best Sellers</a></li>
             </ul>
           </div>
@@ -115,18 +113,43 @@ get_header('home');
       </div>
       <div class="right-container">
         <div class="block-left">
+          <?php 
+            $left_products = wc_get_products([
+              'limit' => 1,
+              'tag' => ['effu-s02'],
+              'order' => 'ASC',
+            ]);
+
+            function format_products($products) {
+              $products_final = [];
+              foreach($products as $product){
+                $products_final[] = [
+                  'name' => $product -> get_name(),
+                  'preco' => $product -> get_price_html(),
+                  'link' => $product -> get_permalink(),
+                  'img' => wp_get_attachment_image_src($product -> get_image_id(), 'full')[0],
+                ];
+              }
+              return $products_final;
+            }
+
+            $best_sellers_left = format_products($left_products);
+          ?>
+
+          <?php foreach ($best_sellers_left as $product) { ?>
+
           <div class="product">
             <a href="single.html">
               <div class="product-image">
                 <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
+                  src="<?php echo $product['img']; ?>"
+                  alt="<?php echo $product['name']; ?>"
                 />
               </div>
               <div class="product-info">
                 <span class="brand"><i>by</i> Effusus</span>
-                <h3>Product name</h3>
-                <span class="price">$ 129.99</span>
+                <h3><?php echo $product['name']; ?></h3>
+                <span class="price"><?php echo $product['preco']; ?></span>
               </div>
             </a>
             <div class="buttons">
@@ -140,6 +163,9 @@ get_header('home');
               </ul>
             </div>
           </div>
+
+          <?php } ?>
+
         </div>
 
         <div class="block-right">
