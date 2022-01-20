@@ -75,7 +75,7 @@ function slide_custom_post_type() {
       'has_archive'       => true,
       'rewrite'           => array( 'slug' => 'slide' ),
       'menu_icon'         => 'dashicons-slides',
-      'supports'          => array( 'title', 'thumbnail', 'author'),
+      'supports'          => array( 'title', 'thumbnail'),
       'menu_position'     => 5,
     )
   );

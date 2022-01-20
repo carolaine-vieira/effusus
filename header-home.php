@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
-    <script src="assets/js/script.js" defer></script>
+    <script src="<?php echo get_stylesheet_directory_uri() ?>/assets/js/script.js" defer></script>
     <!-- WooCommerce Version -->
     <meta name="generator" content="WooCommerce 6.1.0" />
     <?php wp_head(); ?>
@@ -35,7 +35,7 @@
               aria-expanded="false"
               aria-controls="menu"
             >
-              Menu
+              <span class="lnr lnr-menu"></span>
             </button>
             <ul data-menu="list" id="header-menu">
               <li><a href="">Kids</a></li>

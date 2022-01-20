@@ -76,7 +76,7 @@ header
     ul
       li
         list-style: none
-        display: inline-flex
+        display: inline-block
 
     h1
       font-size: 22px
@@ -617,16 +617,56 @@ footer
   header
     #bottom-bar
       .right-content
+        justify-content: flex-start
+
         nav
+          width: 100%
+
           [data-menu="button"]
+            background: transparent
             display: block !important
-            background: var(--color-one)
-            color: var(--color-two)
+            color: var(--color-one)
             border: none
-            padding: 20px
+            padding: 5px 10px
+            font-size: 25px
 
           [data-menu="list"]
-            // display: none
+            display: none
+
+          [data-menu="list"].active
+            display: block
+            width: 100%
+            padding: 10px 0 0 0
+
+            li
+              display: block
+              margin: 0 0 10px 0
+
+            [data-dropdown]
+              ol
+                position: relative
+                margin: 0
+                top: 0
+                padding: 0
+                visibility: visible
+                opacity: 1
+
+                .image
+                  display: none
+
+                .container
+                  column-count: 1
+                  column-gap: 0
+
+                  .box
+                    .label
+                      margin: 10px 0 5px 0
+
+                    li
+                      margin: 0 0 10px 0
+
+        .header-admin-buttons
+          display: none
 
         #search-products
           display: none

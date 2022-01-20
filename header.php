@@ -34,7 +34,7 @@
               aria-expanded="false"
               aria-controls="menu"
             >
-              Menu
+              <span class="lnr lnr-menu"></span>
             </button>
             <ul data-menu="list" id="header-menu">
               <li><a href="">Kids</a></li>

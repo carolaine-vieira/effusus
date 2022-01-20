@@ -44,7 +44,7 @@ get_header('home');
           if( $query -> have_posts() ) :      
             while ($query -> have_posts()) :
               $query -> the_post();
-              get_template_part('template-parts/home-two-posts');
+              get_template_part('template-parts/other/home-two-posts');
             endwhile;
           endif;
 
@@ -83,43 +83,21 @@ get_header('home');
     <section id="slide-one">
       <div class="content">
         <div class="slide-wrap">
-          <div
-            class="slide active"
-            style="
-              background-image: url('http://eky.hk/upload/file/png61e4c08f96a83.png');
-            "
-          >
-            <div class="container">
-              <div class="info">
-                <h2>
-                  Et harum quidem rerum facilis est et expedita distinctio
-                </h2>
-                <a href="">View</a>
-              </div>
-            </div>
-          </div>
+          <?php 
+            $args = array(
+              'post_type' => 'slide',
+            );
+            $query = new WP_Query($args);
+      
+            if( $query -> have_posts() ) :      
+              while ($query -> have_posts()) :
+                $query -> the_post();
+                get_template_part('template-parts/other/slide-one');
+              endwhile;
+            endif;
 
-          <div
-            class="slide"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1475180098004-ca77a66827be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80');
-            "
-          >
-            <div class="container">
-              <a href="">Week Sales</a>
-            </div>
-          </div>
-
-          <div
-            class="slide"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1496217590455-aa63a8350eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80');
-            "
-          >
-            <div class="container">
-              <a href="">Week Sales</a>
-            </div>
-          </div>
+            wp_reset_postdata();
+          ?>          
         </div>
       </div>
     </section>

@@ -153,3 +153,19 @@ const dropdown = () => {
   };
 };
 dropdown();
+
+const menuButton = document.querySelector('[data-menu="button"]');
+const menuList = document.querySelector('[data-menu="list"');
+const bottomBar = document.querySelector("#bottom-bar");
+console.log(menuList);
+
+const openMobileMenu = (event) => {
+  const eventType = ["touchstart", "click"];
+  eventType.forEach((event) => {
+    menuButton.addEventListener(event, () => {
+      menuList.classList.toggle("active");
+      bottomBar.style.display = "block";
+    });
+  });
+};
+openMobileMenu();

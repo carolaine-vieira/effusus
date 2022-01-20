@@ -96,9 +96,7 @@ header #bottom-bar {
 
 header #bottom-bar ul li {
   list-style: none;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: inline-block;
 }
 
 header #bottom-bar h1 {
@@ -819,12 +817,59 @@ footer {
 }
 
 @media (max-width: 700px) {
+  header #bottom-bar .right-content {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  header #bottom-bar .right-content nav {
+    width: 100%;
+  }
   header #bottom-bar .right-content nav [data-menu="button"] {
+    background: transparent;
     display: block !important;
-    background: var(--color-one);
-    color: var(--color-two);
+    color: var(--color-one);
     border: none;
-    padding: 20px;
+    padding: 5px 10px;
+    font-size: 25px;
+  }
+  header #bottom-bar .right-content nav [data-menu="list"] {
+    display: none;
+  }
+  header #bottom-bar .right-content nav [data-menu="list"].active {
+    display: block;
+    width: 100%;
+    padding: 10px 0 0 0;
+  }
+  header #bottom-bar .right-content nav [data-menu="list"].active li {
+    display: block;
+    margin: 0 0 10px 0;
+  }
+  header #bottom-bar .right-content nav [data-menu="list"].active [data-dropdown] ol {
+    position: relative;
+    margin: 0;
+    top: 0;
+    padding: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+  header #bottom-bar .right-content nav [data-menu="list"].active [data-dropdown] ol .image {
+    display: none;
+  }
+  header #bottom-bar .right-content nav [data-menu="list"].active [data-dropdown] ol .container {
+    -webkit-column-count: 1;
+            column-count: 1;
+    -webkit-column-gap: 0;
+            column-gap: 0;
+  }
+  header #bottom-bar .right-content nav [data-menu="list"].active [data-dropdown] ol .container .box .label {
+    margin: 10px 0 5px 0;
+  }
+  header #bottom-bar .right-content nav [data-menu="list"].active [data-dropdown] ol .container .box li {
+    margin: 0 0 10px 0;
+  }
+  header #bottom-bar .right-content .header-admin-buttons {
+    display: none;
   }
   header #bottom-bar .right-content #search-products {
     display: none;
