@@ -50,9 +50,17 @@
     </section>
 
     <div id="navigation">
-      <a href="" class="previous">Previous</a>
-      <div class="count">1 2 3 4 5 6 7 8 9 10 5369...</div>
-      <a href="" class="next">Next</a>
+      <?php 
+        $args = array(
+          'mid_size'           => 2,
+          'prev_next'          => true,
+          'prev_text'          => __('Previous'),
+          'next_text'          => __('Next'),
+        );
+
+        the_posts_pagination( array($args)
+        ); 
+      ?>
     </div>
 
 <?php get_footer(); ?>
