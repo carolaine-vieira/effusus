@@ -48,6 +48,20 @@
               }
             ?>
           </div>
+          
+          <!-- <div class="box">
+            <form class="filtro-preco">
+              <div>
+                <label for="min_price">De R$</label>
+                <input type="text" name="min_price" id="min_price" value="<?= $_GET['min_price'] ?>" min="0">
+              </div>
+              <div>
+                <label for="max_price">Até R$</label>
+                <input type="text" name="max_price" id="max_price" value="<?= $_GET['max_price'] ?>" min="1000">
+              </div>
+              <button type="submit">Filtrar</button>
+            </form>
+          </div> -->
         </aside>
         
         <?php 

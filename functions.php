@@ -105,24 +105,24 @@ function effusus_new_loop_shop_per_page( $cols ) {
 /**
  * Create a basic form of Effusus Theme products
  */
-function effusus_common_product($products) {
-  function format_products($products) {
-    $products_final = [];
-    foreach($products as $product){
-      $products_final[] = [
-        'name' => $product -> get_name(),
-        'preco' => $product -> get_price_html(),
-        'link' => $product -> get_permalink(),
-        'img' => wp_get_attachment_image_src($product -> get_image_id(), 'full')[0],
-        'id' => $product -> get_id(),
-        'cart_link' => $product -> add_to_cart_url(),
-        'is_variable' => $product -> is_type('variable'),
-      ];
-    }
-    return $products_final;
+function effusus_format_commmon_products($products) {
+  $products_final = [];
+  foreach($products as $product){
+    $products_final[] = [
+      'name' => $product -> get_name(),
+      'preco' => $product -> get_price_html(),
+      'link' => $product -> get_permalink(),
+      'img' => wp_get_attachment_image_src($product -> get_image_id(), 'full')[0],
+      'id' => $product -> get_id(),
+      'cart_link' => $product -> add_to_cart_url(),
+      'is_variable' => $product -> is_type('variable'),
+    ];
   }
+  return $products_final;
+}
 
-  $products_final_version = format_products($products);
+function effusus_common_product($products) {
+  $products_final_version = effusus_format_commmon_products($products);
 
   foreach ($products_final_version as $product) { ?>
 

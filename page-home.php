@@ -26,55 +26,15 @@ get_header('home');
       </div>
       <div class="right-container">
         <?php 
-          $args = array(
-            'post_type' => 'product',
-            'posts_per_page' => 2,
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'category',
-                    'field'    => 'slug',
-                    'terms'    => 'effu-s01',
-                ),
-            ),
-          );
-          $query = new WP_Query($args);
-    
-          if( $query -> have_posts() ) :      
-            while ($query -> have_posts()) :
-              $query -> the_post();
-              get_template_part('template-parts/other/home-two-posts');
-            endwhile;
-          endif;
+          $two_products = wc_get_products([
+            'limit' => 2,
+            // 'meta_key' => 'total_sales',
+            // 'orderby' => 'meta_value_num',
+            'order' => 'DESC',
+          ]);
 
-          wp_reset_postdata();
+          effusus_common_product($two_products);
         ?>
-
-        <div class="product">
-          <a href="single.html">
-            <div class="product-image">
-              <img
-                src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                alt=""
-              />
-            </div>
-            <div class="product-info">
-              <span class="brand"><i>by</i> Effusus</span>
-              <h3>Product name</h3>
-              <span class="price">$ 129.99</span>
-            </div>
-          </a>
-          <div class="buttons">
-            <ul>
-              <li class="add-to-cart">
-                <a href=""><span class="lnr lnr-cart"></span></a>
-              </li>
-              <li class="add-to-favs">
-                <a href=""><span class="lnr lnr-heart"></span></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -112,124 +72,16 @@ get_header('home');
         </div>
       </div>
       <div class="right-container">
-        <div class="block-left">
-          <?php 
-            $left_products = wc_get_products([
-              'limit' => 1,
-              'tag' => ['effu-s02'],
-              'order' => 'ASC',
-            ]);
+        <?php
+          $products_sales = wc_get_products([
+            'limit' => 5,
+            'meta_key' => 'total_sales',
+            'orderby' => 'meta_value_num',
+            'order' => 'DESC'
+          ]);
 
-            effusus_common_product($left_products);
-          ?>
-
-        </div>
-
-        <div class="block-right">
-          <div class="product">
-            <a href="single.html">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <span class="brand"><i>by</i> Effusus</span>
-                <h3>Product name</h3>
-                <span class="price">$ 129.99</span>
-              </div>
-            </a>
-            <div class="buttons">
-              <ul>
-                <li class="add-to-cart">
-                  <a href=""><span class="lnr lnr-cart"></span></a>
-                </li>
-                <li class="add-to-favs">
-                  <a href=""><span class="lnr lnr-heart"></span></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="product">
-            <a href="single.html">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <span class="brand"><i>by</i> Effusus</span>
-                <h3>Product name</h3>
-                <span class="price">$ 129.99</span>
-              </div>
-            </a>
-            <div class="buttons">
-              <ul>
-                <li class="add-to-cart">
-                  <a href=""><span class="lnr lnr-cart"></span></a>
-                </li>
-                <li class="add-to-favs">
-                  <a href=""><span class="lnr lnr-heart"></span></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="product">
-            <a href="single.html">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <span class="brand"><i>by</i> Effusus</span>
-                <h3>Product name</h3>
-                <span class="price">$ 129.99</span>
-              </div>
-            </a>
-            <div class="buttons">
-              <ul>
-                <li class="add-to-cart">
-                  <a href=""><span class="lnr lnr-cart"></span></a>
-                </li>
-                <li class="add-to-favs">
-                  <a href=""><span class="lnr lnr-heart"></span></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="product">
-            <a href="single.html">
-              <div class="product-image">
-                <img
-                  src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="product-info">
-                <span class="brand"><i>by</i> Effusus</span>
-                <h3>Product name</h3>
-                <span class="price">$ 129.99</span>
-              </div>
-            </a>
-            <div class="buttons">
-              <ul>
-                <li class="add-to-cart">
-                  <a href=""><span class="lnr lnr-cart"></span></a>
-                </li>
-                <li class="add-to-favs">
-                  <a href=""><span class="lnr lnr-heart"></span></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          effusus_common_product($products_sales);
+        ?>
       </div>
     </section>
 

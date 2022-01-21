@@ -100,7 +100,7 @@
                 <a href="/minha-conta/"><span class="lnr lnr-heart"></span></a>
               </li>
               <li class="cart-link">
-                <a href=""><span class="lnr lnr-cart"></span></a>
+                <a href="<?php echo wc_get_cart_url(); ?>"><span class="lnr lnr-cart"></span></a>
                 <?php 
                   $cart_count = WC() -> cart -> get_cart_contents_count();
                   if( $cart_count ) :
@@ -109,7 +109,7 @@
                 <?php endif; ?>
               </li>
               <li class="user-profile">
-                <a href="/minha-conta/"
+                <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
                   ><img
                     src="https://64.media.tumblr.com/84675567022db3104c64ebf19b74b23a/5f6e58167639110c-9f/s400x600/8c4f1a359cc2faebb51b776707be2a6b47f65142.png"
                     alt=""
