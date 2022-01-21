@@ -27,7 +27,26 @@
         <aside>
           <h2>Filtros</h2>
           <div class="box">
+            <?php 
+              wp_nav_menu(
+                array( 
+                  'theme_location' => 'woo-store-categories',
+                  'menu_class'     => 'categories',
+                )
+              ); 
+            ?>
+          </div>
+          <div class="box">
+            <?php 
+              $attribute_taxonomies = wc_get_attribute_taxonomies();
 
+              foreach($attribute_taxonomies as $attribute) {
+                the_widget('WC_Widget_Layered_Nav', [
+                  'title' => $attribute -> attribute_label,
+                  'attribute' => $attribute -> attribute_name,
+                ]);
+              }
+            ?>
           </div>
         </aside>
         
