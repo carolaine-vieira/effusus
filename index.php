@@ -1,4 +1,4 @@
-<?php get_header( ); ?>
+<?php get_header(); ?>
     <section id="main-slide" class="slide-container">
       <div class="slide-wrap">
         <div

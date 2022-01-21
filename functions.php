@@ -30,6 +30,8 @@ if ( !function_exists('effusus_setup') ) {
     }
     add_action('init', 'register_my_menus');
 
+    
+
     // traducao
     $textdomain = 'effusus';
     load_theme_textdomain( $textdomain, get_stylesheet_directory().'/languages/');
@@ -39,10 +41,19 @@ if ( !function_exists('effusus_setup') ) {
 }
 
 // Woocomerce support
-function effusus_add_woocommerce_support() {
-  add_theme_support('woocomerce');
+add_action( 'after_setup_theme', 'effusus_setup_woocommerce_support' );
+
+ function effusus_setup_woocommerce_support()
+{
+  add_theme_support('woocommerce');
 }
-add_action( 'after_setup_theme', 'effusus_add_woocommerce_support' );
+
+// Another woocomerce add to cart button
+// function custom_button_after_product_summary($product) {
+//   global $product;
+//   return $product->add_to_cart_url();
+// }
+// add_action( 'woocommerce_single_product_summary', 'custom_button_after_product_summary', 30 );
 
 // Products custom post type
 // function products_custom_post_type() {
@@ -91,8 +102,66 @@ add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
 function new_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options –> Reading
   // Return the number of products you wanna show per page.
-  $cols = 1;
+  $cols = 15;
   return $cols;
+}
+
+/**
+ * Create a basic form of Effusus Theme products
+ */
+function effusus_common_product($products) {
+  function format_products($products) {
+    $products_final = [];
+    foreach($products as $product){
+      $products_final[] = [
+        'name' => $product -> get_name(),
+        'preco' => $product -> get_price_html(),
+        'link' => $product -> get_permalink(),
+        'img' => wp_get_attachment_image_src($product -> get_image_id(), 'full')[0],
+        'id' => $product -> get_id(),
+        'cart_link' => $product -> add_to_cart_url(),
+        'is_variable' => $product -> is_type('variable'),
+      ];
+    }
+    return $products_final;
+  }
+
+  $products_final_version = format_products($products);
+
+  foreach ($products_final_version as $product) { ?>
+
+    <div class="product">
+      <a href="<?php echo $product['link']; ?>">
+        <div class="product-image">
+          <img
+            src="<?php echo $product['img']; ?>"
+            alt="<?php echo $product['name']; ?>"
+          />
+        </div>
+        <div class="product-info">
+          <span class="brand"><i>by</i> Effusus</span>
+          <h3><?php echo $product['name']; ?></h3>
+          <span class="price"><?php echo $product['preco']; ?></span>
+        </div>
+      </a>
+      <div class="buttons">
+        <ul>
+          <li class="add-to-cart">               
+            <a 
+            href="<?php echo $product['cart_link']; ?>"
+            >
+              <span class="lnr lnr-cart"></span>
+            </a>
+          </li>
+          <li class="add-to-favs">
+            <a href=""><span class="lnr lnr-heart"></span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <?php 
+  } 
 }
 
 // // TGM Plugin Activation Class

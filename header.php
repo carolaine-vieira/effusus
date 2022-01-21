@@ -13,7 +13,7 @@
     <meta name="generator" content="WooCommerce 6.1.0" />
     <?php wp_head(); ?>
   </head>
-  <body>
+  <body <?php body_class(); ?>>
     <header>
       <div id="top-bar">
         <div class="ship-to">

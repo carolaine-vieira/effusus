@@ -103,7 +103,7 @@ get_header('home');
     <section id="best-sellers">
       <div class="left-container">
         <div class="container">
-          <h2><span>Best Sellers</span></h2>
+          <h2><span>Best Sellers</span></h2>          
           <p>
             Temporibus autem quibusdam et aut officiis debitis aut rerum
             necessitatibus saepe eveniet ut et voluptatesrepellat.
@@ -120,51 +120,8 @@ get_header('home');
               'order' => 'ASC',
             ]);
 
-            function format_products($products) {
-              $products_final = [];
-              foreach($products as $product){
-                $products_final[] = [
-                  'name' => $product -> get_name(),
-                  'preco' => $product -> get_price_html(),
-                  'link' => $product -> get_permalink(),
-                  'img' => wp_get_attachment_image_src($product -> get_image_id(), 'full')[0],
-                ];
-              }
-              return $products_final;
-            }
-
-            $best_sellers_left = format_products($left_products);
+            effusus_common_product($left_products);
           ?>
-
-          <?php foreach ($best_sellers_left as $product) { ?>
-
-          <div class="product">
-            <a href="single.html">
-              <div class="product-image">
-                <img
-                  src="<?php echo $product['img']; ?>"
-                  alt="<?php echo $product['name']; ?>"
-                />
-              </div>
-              <div class="product-info">
-                <span class="brand"><i>by</i> Effusus</span>
-                <h3><?php echo $product['name']; ?></h3>
-                <span class="price"><?php echo $product['preco']; ?></span>
-              </div>
-            </a>
-            <div class="buttons">
-              <ul>
-                <li class="add-to-cart">
-                  <a href=""><span class="lnr lnr-cart"></span></a>
-                </li>
-                <li class="add-to-favs">
-                  <a href=""><span class="lnr lnr-heart"></span></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <?php } ?>
 
         </div>
 
