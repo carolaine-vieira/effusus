@@ -25,15 +25,13 @@ get_header('home');
         </div>
       </div>
       <div class="right-container">
-        <?php 
-          $two_products = wc_get_products([
+       <?php
+          $last_products = wc_get_products([
             'limit' => 2,
-            // 'meta_key' => 'total_sales',
-            // 'orderby' => 'meta_value_num',
-            'order' => 'DESC',
+            'order' => 'DESC'
           ]);
 
-          effusus_common_product($two_products);
+          effusus_common_product($last_products);
         ?>
       </div>
     </section>
@@ -72,9 +70,10 @@ get_header('home');
         </div>
       </div>
       <div class="right-container">
+        <div class="block-left">
         <?php
           $products_sales = wc_get_products([
-            'limit' => 5,
+            'limit' => 1,
             'meta_key' => 'total_sales',
             'orderby' => 'meta_value_num',
             'order' => 'DESC'
@@ -82,74 +81,49 @@ get_header('home');
 
           effusus_common_product($products_sales);
         ?>
+
+        </div>
+
+        <div class="block-right">
+          <?php
+            $products_sales = wc_get_products([
+              'limit' => 5,
+              'meta_key' => 'total_sales',
+              'orderby' => 'meta_value_num',
+              'order' => 'DESC'
+            ]);
+
+            effusus_common_product($products_sales);
+          ?>
+        </div>
       </div>
     </section>
 
     <section id="blog">
       <div class="wrap">
-        <div
-          class="post active"
-          style="
-            background-image: url('http://eky.hk/upload/file/png61e4c08f96a83.png');
-          "
-        >
-          <div class="container">
-            <div class="info">
-              <h2>Et harum quidem rerum facilis est et expedita distinctio</h2>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-                pariatur dolore ad quos aperiam tenetur nihil rem adipisci sint,
-                quae aut fuga, quisquam earum. At, voluptatum. Dicta nisi nulla
-                dolore?
-              </p>
-              <a href="">View</a>
-            </div>
-          </div>
-        </div>
+        <?php
+          $args = array(
+            'post_type' => 'post',
+            'order' => 'DESC',
+            'posts_per_page' => 3,
+          );
+          $query = new WP_Query($args);
 
-        <div
-          class="post"
-          style="
-            background-image: url('https://images.unsplash.com/photo-1475180098004-ca77a66827be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80');
-          "
-        >
-          <div class="container">
-            <div class="info">
-              <h2>Et harum quidem rerum facilis est et expedita distinctio</h2>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-                pariatur dolore ad quos aperiam tenetur nihil rem adipisci sint,
-                quae aut fuga, quisquam earum. At, voluptatum. Dicta nisi nulla
-                dolore?
-              </p>
-              <a href="">View</a>
-            </div>
-          </div>
-        </div>
+          if( $query -> have_posts() ) :      
+            while ( $query -> have_posts() ) :
+              $query -> the_post();
+              get_template_part('template-parts/other/page-home-blog');
+            endwhile;
+          else:
+            printf("No posts reached");
+          endif;
 
-        <div
-          class="post"
-          style="
-            background-image: url('https://images.unsplash.com/photo-1475180098004-ca77a66827be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80');
-          "
-        >
-          <div class="container">
-            <div class="info">
-              <h2>Et harum quidem rerum facilis est et expedita distinctio</h2>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-                pariatur dolore ad quos aperiam tenetur nihil rem adipisci sint,
-                quae aut fuga, quisquam earum. At, voluptatum. Dicta nisi nulla
-                dolore?
-              </p>
-              <a href="">View</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="read-more">
-          <a href="">Read More<span class="lnr lnr-arrow-right"></span></a>
-        </div>
+          wp_reset_postdata();
+        ?>        
+      </div>
+      
+      <div class="read-more">
+        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">Read More<span class="lnr lnr-arrow-right"></span></a>
       </div>
     </section>
 

@@ -160,6 +160,12 @@ function effusus_common_product($products) {
   } 
 }
 
+// Filter except length to 20 words
+function effusus_custom_excerpt_length( $length ) {
+  return 20;
+}
+add_filter( 'excerpt_length', 'effusus_custom_excerpt_length', 999 );
+
 // // TGM Plugin Activation Class
 // require_once locate_template('/lib/TGM-Plugin-Activation-2.6.1/class-tgm-plugin-activation.php');
 
