@@ -52,17 +52,8 @@
           <div class="box">
             <form class="filtro-preco">
               <?php 
-                if ( isset($_GET['min_price']) ) :
-                  $min = $_GET['min_price'];
-                else:
-                  $min = "";
-                endif;
-
-                if ( isset($_GET['max_price']) ) :
-                  $max = $_GET['max_price'];
-                else:
-                  $max = "";
-                endif;
+                isset($_GET['min_price']) ? $min = $_GET['min_price'] : $min = "";                
+                isset($_GET['max_price']) ? $max = $_GET['max_price'] : $max = "";                
               ?>
               <div>
                 <label for="min_price">De R$</label>
