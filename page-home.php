@@ -10,11 +10,7 @@ get_header('home');
         <h1>Et harum quidem rerum facilis est et expedita distinctio</h1>
         <div class="bottom">
           <div class="search-box">
-            <form action="<?php bloginfo('url'); ?>/loja/" method="get">
-              <input type="text" name="s" id="s" placeholder="Buscar" value="<?php the_search_query(); ?>">
-              <input type="text" name="post_type" value="product" class="hidden" style="display: none;">
-              <input type="submit" id="searchbutton" value="Buscar">
-            </form>
+            <?php effusus_products_search_box(); ?>
           </div>
           <div class="links">
             <ul>
@@ -123,7 +119,7 @@ get_header('home');
       </div>
       
       <div class="read-more">
-        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">Read More<span class="lnr lnr-arrow-right"></span></a>
+        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>"><?php _e('Read More'); ?><span class="lnr lnr-arrow-right"></span></a>
       </div>
     </section>
 

@@ -49,7 +49,7 @@
             ?>
           </div>
           
-          <!-- <div class="box">
+          <div class="box">
             <form class="filtro-preco">
               <div>
                 <label for="min_price">De R$</label>
@@ -61,8 +61,12 @@
               </div>
               <button type="submit">Filtrar</button>
             </form>
-          </div> -->
+          </div>
         </aside>
+
+        <div class="search-box">
+        <?php effusus_products_search_box(); ?>
+        </div>
         
         <?php 
           $products = [];
