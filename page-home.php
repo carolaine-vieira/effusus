@@ -15,7 +15,7 @@ get_header('home');
           <div class="links">
             <ul>
               <li class="log-in"><a href="/minha-conta/">Log In</a></li>
-              <li class="best-sellers"><a href="">Best Sellers</a></li>
+              <li class="best-sellers"><a href="#best-sellers">Best Sellers</a></li>
             </ul>
           </div>
         </div>

@@ -2,24 +2,11 @@
 
     <section id="main-section">
       <div id="content-info">
-        <ul class="category">
-          <li><?php woocommerce_breadcrumb(['delimiter' => ' > ']); ?></li>
-        </ul>
+        <div class="category">
+          <?php woocommerce_breadcrumb(['delimiter' => ' > ']); ?>
+        </div>
         <div class="filters">
-          <label for="columns">View:</label>
-          <select name="columns" id="columns-count">
-            <option value="3">3 column</option>
-            <option value="4">4 column</option>
-            <option value="5">5 column</option>
-          </select>
-
-          <label for="order">Order by:</label>
-          <select name="order" id="order">
-            <option value="p-l-h">Price Low to High</option>
-            <option value="p-h-l">Price High to Low</option>
-            <option value="relevance">Relevance</option>
-            <option value="date">Date</option>
-          </select>
+          <?php woocommerce_catalog_ordering(); ?>
         </div>
       </div>
 
@@ -57,11 +44,11 @@
               ?>
               <div>
                 <label for="min_price">De R$</label>
-                <input type="text" name="min_price" id="min_price" value="<?php echo $min ?>" required>
+                <input type="number" name="min_price" id="min_price" value="<?php echo $min ?>" required>
               </div>
               <div>
                 <label for="max_price">Até R$</label>
-                <input type="text" name="max_price" id="max_price" value="<?php echo $max ?>" required>
+                <input type="number" name="max_price" id="max_price" value="<?php echo $max ?>" required>
               </div>
               <button type="submit">Filtrar</button>
             </form>

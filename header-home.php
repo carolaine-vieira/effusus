@@ -100,13 +100,16 @@
                 <a href="/minha-conta/"><span class="lnr lnr-heart"></span></a>
               </li>
               <li class="cart-link">
-                <a href="<?php echo wc_get_cart_url(); ?>"><span class="lnr lnr-cart"></span></a>
+                <a href="<?php echo wc_get_cart_url(); ?>">
+                <span class="lnr lnr-cart"></span>
                 <?php 
                   $cart_count = WC() -> cart -> get_cart_contents_count();
                   if( $cart_count ) :
                 ?>
-                  <span class="count"><?php echo $cart_count ?></span>
+                  <span class="count"></span>
                 <?php endif; ?>
+                </a>                
+                <!-- <span class="count"><?php echo $cart_count ?></span> -->
               </li>
               <li class="user-profile">
                 <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
