@@ -93,17 +93,17 @@ const Slide = (props) => {
   }
 };
 
-const s1 = Slide({
-  container: "#recommended",
-  slidesCount: 6,
-  specialSize: false,
-});
+// const s1 = Slide({
+//   container: "#recommended",
+//   slidesCount: 6,
+//   specialSize: false,
+// });
 
-const s2 = Slide({
-  container: "#main-slide",
-  slidesCount: 3,
-  specialSize: true,
-});
+// const s2 = Slide({
+//   container: "#main-slide",
+//   slidesCount: 3,
+//   specialSize: true,
+// });
 
 // Dropdown menus
 const dropdown = () => {

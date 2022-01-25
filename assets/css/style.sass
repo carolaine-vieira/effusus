@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap')
 @import 'product.sass'
+@import 'blog-post.sass'
 
 \:root
   --body-font: 'Montserrat', sans-serif
@@ -27,6 +28,9 @@ body
     max-width: 100%
     height: auto !important
     margin: 0 0 -4px 0
+
+  h1, h2, h3, h4, h5
+    margin: 0
 
 .transition-3ms
   -webkit-transition: all 0.3s ease-in-out
@@ -124,14 +128,14 @@ header
 
             ol
               position: absolute
-              margin: 65px 0 0 -20px
+              margin: 25px 0 0 -20px
               opacity: 0
               background: var(--color-two)
               width: 100%
               left: 0
-              padding: 20px var(--global-padding)
+              padding: 30px var(--global-padding)
               visibility: hidden
-              border-bottom: 2px solid var(--color-one)
+              border-bottom: 1px solid #eee
               display: flex
               @extend .transition-3ms
 
@@ -174,7 +178,7 @@ header
           li:hover,
           li.active
             ol
-              margin: 65px 0 0 0
+              margin: 25px 0 0 0
               opacity: 1
               visibility: visible
 
@@ -369,7 +373,7 @@ header
       justify-content: flex-end
 
 #main-section
-  padding: 30px var(--global-padding) 0 var(--global-padding)
+  padding: 60px var(--global-padding) 10px var(--global-padding)
 
   #content-info
     padding: 0 0 15px 0
@@ -418,6 +422,36 @@ header
     .model
       font-size: 13px
       font-weight: 500
+
+  h2
+    font-family: "Playfair Display"
+    font-weight: 500
+    font-size: 36px
+    text-align: center
+    margin: -20px 0 40px 0
+
+    span
+      display: inline-block
+      position: relative
+
+    span::before
+      content: ""
+      position: absolute
+      height: 3px
+      width: 40%
+      background: var(--color-one)
+      left: 32%
+      bottom: -15px
+
+  .wrap
+    display: flex
+    overflow-x: hidden
+    position: relative
+    height: 100%
+    justify-content: flex-start
+
+    .blog-post
+      width: calc( 100% / 3 - 40px)
 
   #products-section
     display: flex
@@ -531,7 +565,35 @@ header
 footer
   background: var(--color-one)
   color: var(--color-two)
-  padding: 30px var(--global-padding)
+  margin: 60px 0 0 0
+
+  .container
+    padding: 50px var(--global-padding)
+    display: flex
+    justify-content: space-between
+
+    .site-info
+      flex: 0 0 25%
+
+      h2
+        font-family: "Playfair Display"
+        font-weight: 500
+        font-size: 35px
+
+    .links
+      flex: 0 0 50%
+      display: flex
+      justify-content: space-between
+      padding: 0 10%
+
+    .payment-methods
+      flex: 0 0 25%
+
+  .bottom-bar
+    padding: 18px var(--global-padding)
+    background: #181818
+    display: flex
+    justify-content: space-between
 
 #effusus-single
   #products-section

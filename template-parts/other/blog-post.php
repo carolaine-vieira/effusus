@@ -1,5 +1,5 @@
         <div
-          class="post"
+          class="blog-post"
           style="background-image: url('<?php echo the_post_thumbnail_url('full'); ?>');"
         >
           <div class="container">
@@ -12,3 +12,4 @@
             </div>
           </div>
         </div>
+       

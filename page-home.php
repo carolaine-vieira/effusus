@@ -14,8 +14,8 @@ get_header('home');
           </div>
           <div class="links">
             <ul>
-              <li class="log-in"><a href="/minha-conta/">Log In</a></li>
-              <li class="best-sellers"><a href="#best-sellers">Best Sellers</a></li>
+              <li class="best-sellers"><a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">Shop Now</a></li>
+              <li class="log-in"><a href="/minha-conta/">Log In</a></li>              
             </ul>
           </div>
         </div>
@@ -108,7 +108,7 @@ get_header('home');
           if( $query -> have_posts() ) :      
             while ( $query -> have_posts() ) :
               $query -> the_post();
-              get_template_part('template-parts/other/page-home-blog');
+              get_template_part('template-parts/other/blog-post');
             endwhile;
           else:
             printf("No posts reached");

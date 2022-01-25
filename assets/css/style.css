@@ -86,6 +86,86 @@
           transform: rotate(0deg);
 }
 
+.transition-3ms, .blog-post, .blog-post .container, body a,
+body a:hover, header #bottom-bar .right-content nav ul li a:before, header #bottom-bar .right-content nav ul li ol, #recommended .slide-wrap .slide, #recommended .slide-wrap .slide .container {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.blog-post {
+  position: relative;
+  height: 40vw;
+  overflow: hidden;
+  width: calc( 100% / 3 - 20px);
+  display: inline-block;
+  background-size: cover;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin: 0 30px 30px 0;
+  border-radius: 5px;
+}
+
+.blog-post .container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(7%, rgba(0, 0, 0, 0.9)), color-stop(40%, rgba(0, 0, 0, 0.7)), color-stop(80%, rgba(0, 0, 0, 0)));
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 7%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0) 80%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
+
+.blog-post .container .info {
+  color: var(--color-two);
+}
+
+.blog-post .container .info h2 {
+  font-family: var(--default-font) !important;
+  text-align: left !important;
+  font-size: 24px !important;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+
+.blog-post .container .info p {
+  opacity: 0.7;
+  display: block;
+  margin: 0 0 30px 0;
+  font-size: 15px;
+  line-height: 1.3em;
+}
+
+.blog-post .container .info a {
+  color: var(--color-two);
+  font-weight: 500;
+  display: inline-block;
+  font-size: 17px;
+}
+
+.blog-post .container .info a:hover {
+  text-decoration: underline;
+}
+
+.blog-post:last-child {
+  margin-right: 0 !important;
+}
+
+.blog-post:hover .container {
+  -webkit-backdrop-filter: blur(2px) grayscale(1);
+          backdrop-filter: blur(2px) grayscale(1);
+  padding-bottom: 60px;
+}
+
 :root {
   --body-font: 'Montserrat', sans-serif;
   --alt-font: 'Open Sans', sans-serif;
@@ -118,7 +198,11 @@ body img {
   margin: 0 0 -4px 0;
 }
 
-.transition-3ms, body a,
+body h1, body h2, body h3, body h4, body h5 {
+  margin: 0;
+}
+
+.transition-3ms, .blog-post, .blog-post .container, body a,
 body a:hover, header #bottom-bar .right-content nav ul li a:before, header #bottom-bar .right-content nav ul li ol, #recommended .slide-wrap .slide, #recommended .slide-wrap .slide .container {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -243,14 +327,14 @@ header #bottom-bar .right-content nav ul li a:hover:before {
 
 header #bottom-bar .right-content nav ul li ol {
   position: absolute;
-  margin: 65px 0 0 -20px;
+  margin: 25px 0 0 -20px;
   opacity: 0;
   background: var(--color-two);
   width: 100%;
   left: 0;
-  padding: 20px var(--global-padding);
+  padding: 30px var(--global-padding);
   visibility: hidden;
-  border-bottom: 2px solid var(--color-one);
+  border-bottom: 1px solid #eee;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -308,7 +392,7 @@ header #bottom-bar .right-content nav ul li ol .container .box li a:hover {
 
 header #bottom-bar .right-content nav ul li:hover ol,
 header #bottom-bar .right-content nav ul li.active ol {
-  margin: 65px 0 0 0;
+  margin: 25px 0 0 0;
   opacity: 1;
   visibility: visible;
 }
@@ -566,7 +650,7 @@ header #bottom-bar .right-content .header-admin-buttons ul li.user-profile img {
 }
 
 #main-section {
-  padding: 30px var(--global-padding) 0 var(--global-padding);
+  padding: 60px var(--global-padding) 10px var(--global-padding);
 }
 
 #main-section #content-info {
@@ -627,6 +711,45 @@ header #bottom-bar .right-content .header-admin-buttons ul li.user-profile img {
 #main-section #content-info .model {
   font-size: 13px;
   font-weight: 500;
+}
+
+#main-section h2 {
+  font-family: "Playfair Display";
+  font-weight: 500;
+  font-size: 36px;
+  text-align: center;
+  margin: -20px 0 40px 0;
+}
+
+#main-section h2 span {
+  display: inline-block;
+  position: relative;
+}
+
+#main-section h2 span::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 40%;
+  background: var(--color-one);
+  left: 32%;
+  bottom: -15px;
+}
+
+#main-section .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: hidden;
+  position: relative;
+  height: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+#main-section .wrap .blog-post {
+  width: calc( 100% / 3 - 40px);
 }
 
 #main-section #products-section {
@@ -790,7 +913,59 @@ header #bottom-bar .right-content .header-admin-buttons ul li.user-profile img {
 footer {
   background: var(--color-one);
   color: var(--color-two);
-  padding: 30px var(--global-padding);
+  margin: 60px 0 0 0;
+}
+
+footer .container {
+  padding: 50px var(--global-padding);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+footer .container .site-info {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
+}
+
+footer .container .site-info h2 {
+  font-family: "Playfair Display";
+  font-weight: 500;
+  font-size: 35px;
+}
+
+footer .container .links {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 10%;
+}
+
+footer .container .payment-methods {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
+}
+
+footer .bottom-bar {
+  padding: 18px var(--global-padding);
+  background: #181818;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #effusus-single #products-section {

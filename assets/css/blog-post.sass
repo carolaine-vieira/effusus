@@ -1,0 +1,67 @@
+.transition-3ms
+  -webkit-transition: all 0.3s ease-in-out
+  -moz-transition: all 0.3s ease-in-out
+  -ms-transition: all 0.3s ease-in-out
+  -o-transition: all 0.3s ease-in-out
+  transition: all 0.3s ease-in-out
+
+.blog-post
+  position: relative
+  height: 40vw
+  overflow: hidden
+  width: calc( 100% / 3 - 20px)
+  display: inline-block
+  background-size: cover
+  flex-shrink: 0
+  margin: 0 30px 30px 0
+  border-radius: 5px
+  @extend .transition-3ms
+
+  .container
+    position: absolute
+    height: 100%
+    width: 100%
+    padding: 40px
+    top: 0
+    display: flex
+    align-items: flex-end
+    justify-content: flex-start
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.9) 7%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%)
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.9) 7%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%)
+    background: linear-gradient(0deg, rgba(0,0,0,0.9) 7%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1)
+    @extend .transition-3ms
+
+    .info
+      color: var(--color-two)
+
+      h2
+        font-family: var(--default-font) !important
+        text-align: left !important
+        font-size: 24px !important
+        font-weight: 500
+        margin: 0 0 20px 0
+
+      p
+        opacity: 0.7
+        display: block
+        margin: 0 0 30px 0
+        font-size: 15px
+        line-height: 1.3em
+
+      a
+        color: var(--color-two)
+        font-weight: 500
+        display: inline-block
+        font-size: 17px
+
+      a:hover
+        text-decoration: underline
+
+.blog-post:last-child
+  margin-right: 0 !important
+
+.blog-post:hover
+  .container
+    backdrop-filter: blur(2px) grayscale(1)
+    padding-bottom: 60px
