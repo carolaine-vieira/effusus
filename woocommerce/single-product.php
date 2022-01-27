@@ -1,8 +1,9 @@
 <?php get_header(); ?>
-
+  <!-- <pre> -->
     <?php 
       function format_single_product($id) {
         $product = wc_get_product($id);
+        // print_r($product);
 
         $gallery_ids = $product -> get_gallery_image_ids();
         $gallery = [];
@@ -58,11 +59,11 @@
               </div>
               <?php 
                 if($product_obj['gallery']) : 
-                  echo "<div class='wrap'>";
+                  echo "<div class='wrap' data-gallery='gallery'>";
                   foreach($product_obj['gallery'] as $img) {
               ?>                    
                     <div class="gallery-item">
-                      <img src="<?php echo $img ?>" alt="">
+                      <img src="<?php echo $img ?>" alt="<?php echo $product_obj['name']; ?>" data-gallery="list">
                     </div>                 
               <?php                                      
                   }
@@ -79,9 +80,9 @@
                 <a href="" class="reviews">29 reviews</a>
               </div>
 
-              <div class="favorite-button">
+              <!-- <div class="favorite-button">
                 <a href=""><span class="lnr lnr-heart"></span></a>
-              </div>
+              </div> -->
             </div>
 
             <div class="size">
@@ -95,33 +96,47 @@
                 <li><a href="">XXXX</a></li>
               </ul>
             </div>
+
+            <div class="">
+              <?php woocommerce_template_single_add_to_cart(); ?>
+            </div>
           </div>          
 
           <div class="product-recomendation">
-            <h4>Also bought with</h4>
-            <a href=""
-              ><img
-                src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-                alt=""
-            /></a>
+            <h4>Related products</h4>
+            <div class="list">
+              <?php 
+                $related_p = wc_get_related_products($product_obj['id'], 3); 
 
-            <a href=""
-              ><img
-                src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-                alt=""
-            /></a>
+                function format_related_product($ids) {
+                  $treated_product = [];                                        
 
-            <a href=""
-              ><img
-                src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-                alt=""
-            /></a>
+                  foreach($ids as $id) {
+                    $related = wc_get_product($id);                    
+                    $treated_product[] = [
+                      'img' => wp_get_attachment_image_src($related -> get_image_id(), 'full')[0],
+                      'name' => $related -> get_name(),
+                      'link' => $related -> get_permalink(),
+                    ];                  
+                  }                                    
 
-            <a href=""
-              ><img
-                src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
-                alt=""
-            /></a>
+                  return $treated_product;
+                }
+
+                if($related_p) :
+                  $related_products_list = format_related_product($related_p);
+                  foreach($related_products_list as $related) :
+              ?>
+                    <div class="related-product">
+                      <a href="<?php echo $related['link']; ?>" target="_blank">
+                        <img src="<?php echo $related['img']; ?>" alt="<?php echo $related['name']; ?>">
+                      </a>
+                    </div>
+              <?php
+                  endforeach;
+                endif;
+              ?>                    
+            </div>
           </div>
         </div>
       </section>
