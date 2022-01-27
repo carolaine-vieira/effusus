@@ -102,6 +102,15 @@ function effusus_new_loop_shop_per_page( $cols ) {
   return $cols;
 }
 
+/* filter added to prevent automatic regeneration of thumbnail images and causing server hikes  */
+add_filter( 'woocommerce_background_image_regeneration', '__return_false' );
+
+function handel_custom_images() {
+  // add_image_size('slide', 1000, 800, ['center', 'top']);
+  update_option('medium_crop', 1);
+}
+add_action('after_setup_theme', 'handel_custom_images');
+
 /**
  * Create a basic form of Effusus Theme products
  */
@@ -110,7 +119,7 @@ function effusus_format_commmon_products($products) {
   foreach($products as $product){
     $products_final[] = [
       'name' => $product -> get_name(),
-      'preco' => $product -> get_price_html(),
+      'price' => $product -> get_price_html(),
       'link' => $product -> get_permalink(),
       'img' => wp_get_attachment_image_src($product -> get_image_id(), 'full')[0],
       'id' => $product -> get_id(),
@@ -137,7 +146,7 @@ function effusus_common_product($products) {
         <div class="product-info">
           <span class="brand"><i>by</i> Effusus</span>
           <h3><?php echo $product['name']; ?></h3>
-          <span class="price"><?php echo $product['preco']; ?></span>
+          <span class="price"><?php echo $product['price']; ?></span>
         </div>
       </a>
       <div class="buttons">

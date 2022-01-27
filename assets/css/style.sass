@@ -32,6 +32,9 @@ body
   h1, h2, h3, h4, h5
     margin: 0
 
+  .woocommerce-breadcrumb
+    margin: 0 !important
+
 .transition-3ms
   -webkit-transition: all 0.3s ease-in-out
   -moz-transition: all 0.3s ease-in-out
@@ -373,31 +376,15 @@ header
       justify-content: flex-end
 
 #main-section
-  padding: 60px var(--global-padding) 10px var(--global-padding)
+  padding: 40px var(--global-padding) 10px var(--global-padding)
 
   #content-info
-    padding: 0 0 15px 0
-    border-bottom: 2px solid var(--color-one)
+    padding: 0 0 20px 0
     display: flex
     justify-content: space-between
     align-items: center
 
     .category
-      li
-        list-style: none
-        display: inline-block
-        position:
-
-      li:after
-        content: ">"
-        display: inline-block
-        margin: 0 5px 0 7px
-
-      li:last-child
-        font-weight: 600
-
-      li:last-child:after
-        display: none
 
     .filters
       select
@@ -452,47 +439,6 @@ header
 
     .blog-post
       width: calc( 100% / 3 - 40px)
-
-  #products-section
-    display: flex
-    padding: 25px 0
-
-    aside
-      flex: 0 0 22%
-      margin-right: 5px
-      background: #eee
-      padding: 20px
-
-    #products
-      text-align: right
-      margin: 0 0 -20px 0
-      display: flex
-      flex-wrap: wrap
-
-      a
-        color: var(--color-one)
-
-      .product
-        flex-basis: calc( 100% / 3 - 20px )
-        flex-shrink: 0
-        margin: 0 0 20px 20px
-        border: 1px solid #eee
-        background: var(--color-two)
-        border-radius: 2px
-        overflow: hidden
-
-        .product-info
-          text-align: left
-          padding: 15px
-
-          h3
-            font-size: 16px
-
-        .buttons
-          position: absolute
-
-      .product:hover
-        box-shadow: 0 2px 3px 0 #eee
 
 #navigation
   display: flex
@@ -596,28 +542,46 @@ footer
     justify-content: space-between
 
 #effusus-single
+  background: #eee
+
   #products-section
-    border-bottom: 2px solid var(--color-one)
-    padding: 0
+    display: flex
+    box-shadow: var(--default-shadow)
+    background: #fff
+    border-radius: 10px
+    overflow: hidden
     margin: 0 0 40px 0
 
     #products
+      text-align: right
       flex: 1 0 50%
       margin: 0
+      display: flex
+      flex-wrap: wrap
 
-      .product
+      a
+        color: var(--color-one)
+
+      .product-single
         width: 100%
         margin: 0
         border: none
         border-radius: none
 
-      .product:hover
-        box-shadow: none
+        .product-info
+          text-align: left
+          padding: 15px
+
+          h3
+            font-size: 16px
+
+        .buttons
+          position: absolute
 
     .product-buttons
       flex: 1 0 30%
       padding: 30px
-      border-right: 2px solid var(--color-one)
+      border-right: 1px solid #dfdfdf
 
       .top-content
         display: flex
@@ -691,6 +655,9 @@ footer
         max-height: 180px
         overflow: hidden
         display: block
+
+  #contact
+    background: #dfdfdf
 
 @media (max-width: 700px)
   header
