@@ -86,16 +86,22 @@
       </div>
     </section>
 
-    <div id="navigation">
     <?php
-      $args = array(
-        'mid_size'           => 2,
-        'prev_next'          => true,
-        'prev_text'          => __('Previous'),
-        'next_text'          => __('Next'),
-      );
-      the_posts_pagination($args); 
+      if (in_array('blog', get_body_class())) :
     ?>
-    </div>
+      <div id="navigation">
+        <?php
+          $args = array(
+            'mid_size'           => 2,
+            'prev_next'          => true,
+            'prev_text'          => __('Previous'),
+            'next_text'          => __('Next'),
+          );
+          the_posts_pagination($args);       
+        ?>
+      </div>
+    <?php
+        endif;
+    ?>
 
 <?php get_footer(); ?>
