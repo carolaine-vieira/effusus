@@ -32,7 +32,8 @@ body
   h1, h2, h3, h4, h5
     margin: 0
 
-  .woocommerce-breadcrumb
+  .woocommerce-breadcrumb,
+  .woocommerce-ordering
     margin: 0 !important
 
 .transition-3ms
@@ -389,32 +390,40 @@ header
   max-width: 1500px
 
   #content-info
-    padding: 0 0 20px 0
+    padding: 0 0 30px 0
     display: flex
     justify-content: space-between
     align-items: center
+    opacity: .7
 
     .category
+      color: var(--color-one)
+      font-size: 16px
+
+      a
+        color: var(--color-one)
 
     .filters
-      select
-        border: none
-        outline: none
-        font-family: var(--body-font)
-        font-size: 16px
-        font-weight: 600
-
-        option
+      form
+        select
           border: none
           outline: none
           font-family: var(--body-font)
-          font-size: 16px
-          font-weight: 600
-          padding: 15px
-          display: block
+          font-size: 15px
+          font-weight: 500
+          background: transparent
 
-        #columns-count
-          margin-right: 15px
+          option
+            border: none
+            outline: none
+            font-family: var(--body-font)
+            font-size: 16px
+            font-weight: 600
+            padding: 15px
+            display: block
+
+      #columns-count
+        margin-right: 15px
 
     .model
       font-size: 13px
@@ -718,7 +727,7 @@ body.single-product
       padding: 20px
 
       h2
-        font-size: 17px
+        font-size: 16px
         font-weight: 500
 
       .content,
@@ -737,6 +746,12 @@ body.single-product
 
         .product
           // flex: 0 0 calc(100% / 4 - 30px)
+
+body.single-product
+  #products-section
+    box-shadow: var(--default-shadow)
+    background: #fff
+    border-radius: 10px
 
 @media (max-width: 700px)
   header

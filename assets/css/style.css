@@ -201,7 +201,8 @@ body h1, body h2, body h3, body h4, body h5 {
   margin: 0;
 }
 
-body .woocommerce-breadcrumb {
+body .woocommerce-breadcrumb,
+body .woocommerce-ordering {
   margin: 0 !important;
 }
 
@@ -671,7 +672,7 @@ header #bottom-bar .right-content .header-admin-buttons ul li.user-profile img {
 }
 
 #main-section #content-info {
-  padding: 0 0 20px 0;
+  padding: 0 0 30px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -681,17 +682,28 @@ header #bottom-bar .right-content .header-admin-buttons ul li.user-profile img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  opacity: .7;
 }
 
-#main-section #content-info .filters select {
+#main-section #content-info .category {
+  color: var(--color-one);
+  font-size: 16px;
+}
+
+#main-section #content-info .category a {
+  color: var(--color-one);
+}
+
+#main-section #content-info .filters form select {
   border: none;
   outline: none;
   font-family: var(--body-font);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
+  background: transparent;
 }
 
-#main-section #content-info .filters select option {
+#main-section #content-info .filters form select option {
   border: none;
   outline: none;
   font-family: var(--body-font);
@@ -701,7 +713,7 @@ header #bottom-bar .right-content .header-admin-buttons ul li.user-profile img {
   display: block;
 }
 
-#main-section #content-info .filters select #columns-count {
+#main-section #content-info .filters #columns-count {
   margin-right: 15px;
 }
 
@@ -1123,7 +1135,7 @@ body.single-product {
 }
 
 #archive-product #main-section .box h2 {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -1144,6 +1156,13 @@ body.single-product {
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
+}
+
+body.single-product #products-section {
+  -webkit-box-shadow: var(--default-shadow);
+          box-shadow: var(--default-shadow);
+  background: #fff;
+  border-radius: 10px;
 }
 
 @media (max-width: 700px) {
