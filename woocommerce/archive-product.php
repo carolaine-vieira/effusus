@@ -89,23 +89,23 @@
             }
           ?>
           </div>
+
+          <div id="navigation">
+            <?php 
+              $args = array(
+                'mid_size'           => 2,
+                'prev_next'          => true,
+                'prev_text'          => __('Previous'),
+                'next_text'          => __('Next'),
+              );
+
+              the_posts_pagination( array($args) ); 
+            ?>
+          </div>
         </div>
 
       </div>
-    </section>
+    </section>    
 
-    <div id="navigation">
-      <?php 
-        $args = array(
-          'mid_size'           => 2,
-          'prev_next'          => true,
-          'prev_text'          => __('Previous'),
-          'next_text'          => __('Next'),
-        );
-
-        the_posts_pagination( array($args) ); 
-      ?>
-    </div>
+    <?php get_footer(); ?>
   </div>
-
-<?php get_footer(); ?>
