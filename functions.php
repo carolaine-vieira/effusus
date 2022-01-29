@@ -98,18 +98,12 @@ add_filter( 'loop_shop_per_page', 'effusus_new_loop_shop_per_page', 20 );
 function effusus_new_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options –> Reading
   // Return the number of products you wanna show per page.
-  $cols = 15;
+  $cols = 20;
   return $cols;
 }
 
 /* filter added to prevent automatic regeneration of thumbnail images and causing server hikes  */
 add_filter( 'woocommerce_background_image_regeneration', '__return_false' );
-
-function handel_custom_images() {
-  // add_image_size('slide', 1000, 800, ['center', 'top']);
-  update_option('medium_crop', 1);
-}
-add_action('after_setup_theme', 'handel_custom_images');
 
 /**
  * Create a basic form of Effusus Theme products

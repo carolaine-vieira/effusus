@@ -19,9 +19,7 @@
       </div>
     </section>
 
-    <?php
-      if (in_array('blog', get_body_class())) :
-    ?>
+    <?php if(get_the_posts_pagination()) : ?>
       <div id="navigation">
         <?php
           $args = array(
@@ -33,8 +31,6 @@
           the_posts_pagination($args);       
         ?>
       </div>
-    <?php
-        endif;
-    ?>
+    <?php endif; ?>
 
 <?php get_footer(); ?>

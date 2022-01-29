@@ -27,24 +27,22 @@
             </div>
           </div>
 
-          
-            <?php 
-              $attribute_taxonomies = wc_get_attribute_taxonomies();
+          <?php 
+            $attribute_taxonomies = wc_get_attribute_taxonomies();
 
-              foreach($attribute_taxonomies as $attribute) :
-            ?>
-                <div class="box">
-            <?php
-                  the_widget('WC_Widget_Layered_Nav', [
-                    'title' => $attribute -> attribute_label,
-                    'attribute' => '<div class="t">' . $attribute -> attribute_name . '</div>',
-                  ]);
-            ?>
-                </div>
-            <?php
-              endforeach;
-            ?>   
-          
+            foreach($attribute_taxonomies as $attribute) :
+          ?>
+              <div class="box">
+          <?php
+                the_widget('WC_Widget_Layered_Nav', [
+                  'title' => $attribute -> attribute_label,
+                  'attribute' => '<div class="t">' . $attribute -> attribute_name . '</div>',
+                ]);
+          ?>
+              </div>
+          <?php
+            endforeach;
+          ?>             
           
           <div class="box">
             <h2>Preço</h2>
@@ -90,18 +88,20 @@
           ?>
           </div>
 
-          <div id="navigation">
-            <?php 
-              $args = array(
-                'mid_size'           => 2,
-                'prev_next'          => true,
-                'prev_text'          => __('Previous'),
-                'next_text'          => __('Next'),
-              );
+          <?php if(get_the_posts_pagination()) : ?>
+            <div id="navigation">
+              <?php 
+                $args = array(
+                  'mid_size'           => 2,
+                  'prev_next'          => true,
+                  'prev_text'          => __('Previous'),
+                  'next_text'          => __('Next'),
+                );
 
-              the_posts_pagination( array($args) ); 
-            ?>
-          </div>
+                the_posts_pagination( array($args) ); 
+              ?> 
+            </div>
+          <?php endif; ?>
         </div>
 
       </div>

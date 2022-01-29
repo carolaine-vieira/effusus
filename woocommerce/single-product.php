@@ -41,7 +41,7 @@
         <div class="category">
         <?php woocommerce_breadcrumb(['delimiter' => ' > ']); ?>
         </div>
-        <span class="model"><?php echo $product_obj['sku']; ?></span>
+        <span class="model">SKU: <?php echo $product_obj['sku']; ?></span>
       </div>
 
       <div id="products-section">
