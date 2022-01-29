@@ -42,6 +42,14 @@ body
   -o-transition: all 0.3s ease-in-out
   transition: all 0.3s ease-in-out
 
+body.blog
+  #main-section
+    padding: 50px var(--global-padding) 0 var(--global-padding)
+
+    .wrap
+      display: flex
+      flex-wrap: wrap
+
 header
   z-index: 5
   position: relative
@@ -377,6 +385,8 @@ header
 
 #main-section
   padding: 40px var(--global-padding) 10px var(--global-padding)
+  margin: 0 auto
+  max-width: 1500px
 
   #content-info
     padding: 0 0 20px 0
@@ -410,12 +420,15 @@ header
       font-size: 13px
       font-weight: 500
 
-  h2
+  h2.alt-font-style
     font-family: "Playfair Display"
     font-weight: 500
     font-size: 36px
     text-align: center
-    margin: -20px 0 40px 0
+    margin: 0 0 70px 0
+
+    a
+      color: var(--color-one)
 
     span
       display: inline-block
@@ -428,22 +441,12 @@ header
       width: 40%
       background: var(--color-one)
       left: 32%
-      bottom: -15px
-
-  .wrap
-    display: flex
-    overflow-x: hidden
-    position: relative
-    height: 100%
-    justify-content: flex-start
-
-    .blog-post
-      width: calc( 100% / 3 - 40px)
+      bottom: -40px
 
 #navigation
   display: flex
   padding: 30px
-  margin: 0 var(--global-padding)
+  margin: 0 var(--global-padding) 60px var(--global-padding)
   background: var(--color-one)
   color: var(--color-two)
   justify-content: center
@@ -541,123 +544,160 @@ footer
     display: flex
     justify-content: space-between
 
-#effusus-single
-  background: #eee
+#products-section
+  display: flex
+  box-shadow: var(--default-shadow)
+  background: #fff
+  border-radius: 10px
+  overflow: hidden
+  margin: 0 0 40px 0
 
-  #products-section
+  #products
+    text-align: right
+    flex: 1 0 50%
+    margin: 0
     display: flex
-    box-shadow: var(--default-shadow)
-    background: #fff
-    border-radius: 10px
-    overflow: hidden
-    margin: 0 0 40px 0
+    flex-wrap: wrap
 
-    #products
-      text-align: right
-      flex: 1 0 50%
+    a
+      color: var(--color-one)
+
+    .product-single
+      width: 100%
       margin: 0
+      border: none
+      border-radius: none
+
+      .product-info
+        text-align: left
+        padding: 15px
+
+        h3
+          font-size: 16px
+
+      .buttons
+        position: absolute
+
+  .product-buttons
+    flex: 1 0 30%
+    padding: 30px
+    border-right: 1px solid #dfdfdf
+
+    .top-content
       display: flex
-      flex-wrap: wrap
+      justify-content: space-between
+      align-items: center
 
-      a
-        color: var(--color-one)
+      .product-info
+        .name,
+        .price,
+        .reviews
+          display: block
 
-      .product-single
-        width: 100%
-        margin: 0
-        border: none
-        border-radius: none
+        .name
+          font-size: 22px
 
-        .product-info
-          text-align: left
-          padding: 15px
+        .price
+          font-weight: 600
+          font-size: 26px
+          margin: 8px 0 0 0
 
-          h3
-            font-size: 16px
+        .reviews
+          text-decoration: underline
+          color: var(--color-one)
+          opacity: 0.8
+          margin: 5px 0 0 0
+          font-size: 15px
 
-        .buttons
-          position: absolute
+      .favorite-button
+        a
+          color: var(--color-one)
+          font-size: 40px
 
-    .product-buttons
-      flex: 1 0 30%
-      padding: 30px
-      border-right: 1px solid #dfdfdf
+        a:hover
+          color: red
 
-      .top-content
-        display: flex
-        justify-content: space-between
-        align-items: center
+    .size
+      margin: 30px 0 0 0
 
-        .product-info
-          .name,
-          .price,
-          .reviews
-            display: block
+      h2
+        font-weight: 500
+        font-size: 18px
+        margin: 0 0 15px 0
 
-          .name
-            font-size: 22px
+      ul
+        li
+          list-style: none
+          display: inline-flex
+          font-weight: 500
 
-          .price
-            font-weight: 600
-            font-size: 26px
-            margin: 8px 0 0 0
-
-          .reviews
-            text-decoration: underline
-            color: var(--color-one)
-            opacity: 0.8
-            margin: 5px 0 0 0
-            font-size: 15px
-
-        .favorite-button
           a
             color: var(--color-one)
-            font-size: 40px
+            background: #b4b4b4
+            padding: 10px
+            margin: 0 1px 4px 0
+            min-width: 40px
+            display: inline-block
+            text-align: center
 
-          a:hover
-            color: red
+          a:hover,
+          .active
+            background: var(--color-one)
+            color: var(--color-two)
 
-      .size
-        margin: 30px 0 0 0
+  .product-recomendation
+    flex: 1 0 20%
+    padding: 30px
 
-        h2
-          font-weight: 500
-          font-size: 18px
-          margin: 0 0 15px 0
+    h4
+      margin-bottom: 20px
 
-        ul
-          li
-            list-style: none
-            display: inline-flex
-            font-weight: 500
+    a
+      display: block
+      margin-bottom: 20px
 
-            a
-              color: var(--color-one)
-              background: #b4b4b4
-              padding: 10px
-              margin: 0 1px 4px 0
-              min-width: 40px
-              display: inline-block
-              text-align: center
+      img
+        border-radius: 5px
 
-            a:hover,
-            .active
-              background: var(--color-one)
-              color: var(--color-two)
+#contact
+  background: #dfdfdf
 
-    .product-recomendation
-      flex: 1 0 20%
+body.single-post
+  background: #eee
 
-      h4
-        padding: 30px 30px 20px 30px
+  #main-section
+    padding: 50px var(--global-padding) 60px var(--global-padding)
 
-      a
-        max-height: 180px
-        overflow: hidden
-        display: block
+    #single-post
+      background: #fff
+      border-shadow: var(--default-shadow)
+      border-radius: 10px
+      overflow: hidden
 
-  #contact
-    background: #dfdfdf
+      .post-description
+        padding: calc(var(--global-padding) * 2 - 20px) 5% calc(var(--global-padding) * 2 - 40px) 5%
+        max-width: 1100px
+        margin: 0 auto
+        text-align: justify
+        line-height: 1.6em
+
+        p
+          display: block
+          margin-bottom: 15px
+
+      .permalink-navigation
+        border-top: 1px solid #dfdfdf
+        padding: 40px var(--global-padding)
+
+        .nav-links
+          display: flex
+          justify-content: space-between
+          max-width: 1100px
+          margin: 0 auto
+          padding: 0 5%
+
+          a
+            color: var(--color-one)
 
 @media (max-width: 700px)
   header

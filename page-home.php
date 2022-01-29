@@ -108,7 +108,7 @@ get_header('home');
           if( $query -> have_posts() ) :      
             while ( $query -> have_posts() ) :
               $query -> the_post();
-              get_template_part('template-parts/other/blog-post');
+              get_template_part('template-parts/other/home-blog-post');
             endwhile;
           else:
             printf("No posts reached");

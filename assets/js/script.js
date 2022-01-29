@@ -169,3 +169,14 @@ const openMobileMenu = (event) => {
   });
 };
 openMobileMenu();
+
+class Gallery {
+  constructor() {
+    this.gallery = document.querySelector('[data-gallery="gallery"]');
+    this.galleryItens = document.querySelectorAll('[data-gallery="list"]');
+    this.galleryMain = document.querySelector('[data-gallery="main"]');
+  }
+}
+
+const gallery = new Gallery();
+console.log(gallery);

@@ -67,37 +67,35 @@
     </section> -->
 
     <section id="main-section">
-      <h2><span>Blog</span></h2>
       <div class="wrap">        
         <?php 
           if ( have_posts() ) {
             while ( have_posts() ) {
               the_post();          
-              get_template_part('template-parts/content/content');
+              if (in_array('blog', get_body_class())) {
+                get_template_part('template-parts/other/home-blog-post');
+              } else {
+                get_template_part('template-parts/content/content');
+              }              
             }
-          
-            // $args = array(
-            //   'mid_size'           => 2,
-            //   'prev_next'          => true,
-            //   'prev_text'          => __('« Previous'),
-            //   'next_text'          => __('Next »'),
-            // );
-            // the_posts_pagination($args); 
-
           } else {
             get_template_part( 'template-parts/content/content-none' );          
           }
-
-          wp_reset_postdata();
         ?>
         
       </div>
     </section>
 
     <div id="navigation">
-      <a href="" class="previous">Previous</a>
-      <div class="count">1 2 3 4 5 6 7 8 9 10 5369...</div>
-      <a href="" class="next">Next</a>
+    <?php
+      $args = array(
+        'mid_size'           => 2,
+        'prev_next'          => true,
+        'prev_text'          => __('Previous'),
+        'next_text'          => __('Next'),
+      );
+      the_posts_pagination($args); 
+    ?>
     </div>
 
 <?php get_footer(); ?>

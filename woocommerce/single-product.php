@@ -3,12 +3,10 @@
     <?php 
       function format_single_product($id) {
         $product = wc_get_product($id);
-        // print_r($product);
 
         $gallery_ids = $product -> get_gallery_image_ids();
         $gallery = [];
         if($gallery_ids){
-          $gallery[] = wp_get_attachment_image_src($product -> get_image_id(), 'full')[0];
           foreach($gallery_ids as $img_id){
             $gallery[] = wp_get_attachment_image_src($img_id, 'full')[0];
           }
@@ -53,6 +51,7 @@
             <div class="product-single">
               <div class="product-image">
                 <img
+                  data-gallery="main"
                   src="<?php echo $product_obj['img']; ?>"
                   alt="<?php echo $product_obj['name']; ?>"
                 />                
