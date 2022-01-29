@@ -2,12 +2,10 @@
 .product {
   -webkit-box-shadow: var(--default-shadow);
           box-shadow: var(--default-shadow);
+  background: var(--color-two);
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 .product a {
@@ -899,10 +897,6 @@ footer .bottom-bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-shadow: var(--default-shadow);
-          box-shadow: var(--default-shadow);
-  background: #fff;
-  border-radius: 10px;
   overflow: hidden;
   margin: 0 0 40px 0;
 }
@@ -1102,6 +1096,54 @@ body.single-post #main-section #single-post .permalink-navigation .nav-links {
 
 body.single-post #main-section #single-post .permalink-navigation .nav-links a {
   color: var(--color-one);
+}
+
+body.single-product {
+  background: #eee;
+}
+
+#archive-product {
+  background: #eee;
+}
+
+#archive-product #main-section aside {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
+  padding-right: 30px;
+}
+
+#archive-product #main-section .box {
+  background: var(--color-two);
+  -webkit-box-shadow: var(--default-shadow);
+          box-shadow: var(--default-shadow);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+#archive-product #main-section .box h2 {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+#archive-product #main-section .box .content,
+#archive-product #main-section .box .woocommerce-widget-layered-nav-list {
+  display: none;
+  margin: 20px 0 0 0;
+}
+
+#archive-product #main-section #products-section {
+  padding-bottom: 20px;
+}
+
+#archive-product #main-section #products-section .wrap {
+  margin: 30px 0 0 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
 }
 
 @media (max-width: 700px) {

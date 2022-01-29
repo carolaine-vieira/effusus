@@ -1,12 +1,10 @@
 .product {
   -webkit-box-shadow: var(--default-shadow);
           box-shadow: var(--default-shadow);
+  background: var(--color-two);
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 .product a {
