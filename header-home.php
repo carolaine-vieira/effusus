@@ -18,8 +18,24 @@
     <header class="home-header">
       <div id="top-bar">
         <div class="ship-to">
-          <span class="label">Shipping to:</span>
-          <span class="location">United States</span>
+          <?php 
+            if( is_user_logged_in() ) :
+              $ul = effusus_get_customer_shipping_location(get_current_user_id());     
+              if( $ul['country'] ) :
+          ?>
+                <span class="label"><?php _e('Shipping to', 'effusus'); ?>:</span>              
+          <span class="location">
+            <?php            
+              endif;
+
+              $ul['country'] ? printf($ul['country']) : null; 
+              $ul['state'] ? printf(', ' . $ul['state']) : null;
+              $ul['city'] ? printf(', ' . $ul['city']) : null;
+            ?>
+          </span>
+          <?php
+            endif;
+          ?>
         </div>
         <div class="site-language">
           <span>PT</span>
@@ -100,7 +116,7 @@
                 <a href="/minha-conta/"><span class="lnr lnr-heart"></span></a>
               </li>
               <li class="cart-link">
-                <a href="<?php echo wc_get_cart_url(); ?>">
+                <a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e('My Account', 'effusus'); ?>">
                 <span class="lnr lnr-cart"></span>
                 <?php 
                   $cart_count = WC() -> cart -> get_cart_contents_count();
@@ -109,14 +125,17 @@
                   <span class="count"></span>
                 <?php endif; ?>
                 </a>                
-                <!-- <span class="count"><?php echo $cart_count ?></span> -->
               </li>
               <li class="user-profile">
-                <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
-                  ><img
-                    src="https://64.media.tumblr.com/84675567022db3104c64ebf19b74b23a/5f6e58167639110c-9f/s400x600/8c4f1a359cc2faebb51b776707be2a6b47f65142.png"
-                    alt=""
-                /></a>
+              <?php 
+                if( is_user_logged_in() ) { 
+              ?>
+                <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('My Account', 'effusus'); ?>">
+                  <img src="<?php echo get_avatar_url( get_current_user_id() ); ?>" alt="<?php bloginfo( 'name' ) ?>" />
+                </a>
+              <?php } else { ?>
+                <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"><span class="lnr lnr-user"></span></a>
+              <?php } ?>
               </li>
             </ul>
           </div>

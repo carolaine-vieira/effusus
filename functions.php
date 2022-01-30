@@ -22,8 +22,8 @@ if ( !function_exists('effusus_setup') ) {
     function register_my_menus() {
       register_nav_menus(
         array(
-          'header-menu' => __('Header Menu'),
-          'footer-menu' => __('Footer Menu'),
+          'header-menu'          => __('Header Menu'),
+          'footer-menu'          => __('Footer Menu'),
           'woo-store-categories' => __('Store Categories')
         )
       );
@@ -112,12 +112,12 @@ function effusus_format_commmon_products($products) {
   $products_final = [];
   foreach($products as $product){
     $products_final[] = [
-      'name' => $product -> get_name(),
-      'price' => $product -> get_price_html(),
-      'link' => $product -> get_permalink(),
-      'img' => wp_get_attachment_image_src($product -> get_image_id(), 'full')[0],
-      'id' => $product -> get_id(),
-      'cart_link' => $product -> add_to_cart_url(),
+      'name'        => $product -> get_name(),
+      'price'       => $product -> get_price_html(),
+      'link'        => $product -> get_permalink(),
+      'img'         => wp_get_attachment_image_src($product -> get_image_id(), 'full')[0],
+      'id'          => $product -> get_id(),
+      'cart_link'   => $product -> add_to_cart_url(),
       'is_variable' => $product -> is_type('variable'),
     ];
   }
@@ -178,6 +178,18 @@ function effusus_products_search_box() {
     <button type="submit" id="searchbutton"><span class="lnr lnr-magnifier"></span></button>
   </form>
   <?php
+}
+
+// Get customer shipping location
+function effusus_get_customer_shipping_location($user_id) {
+  $customer = new WC_Customer( $user_id );
+  $customer_address = [
+    'city'    => $customer -> get_shipping_city(),
+    'state'   => $customer -> get_shipping_state(),
+    'country' => $customer -> get_shipping_country(),
+  ];
+
+  return $customer_address;
 }
 
 // // TGM Plugin Activation Class
