@@ -825,84 +825,159 @@ body.woocommerce-account
     .wrap
       padding: 0 0 50px 0
 
-      nav.woocommerce-MyAccount-navigation
-        float: none
-        width: 100%
-        margin-bottom: 30px
-        padding-bottom: 30px
-        border-bottom: 1px solid #dfdfdf
+      .woocommerce
+        a
+          text-decoration: underline
+          color: var(--color-one)
 
-        ul
-          display: grid
-          grid-template-columns: repeat(3, 1fr)
-          grid-gap: 10px
+        a.button
+          text-decoration: none
 
-          li
-            list-style: none
+        nav.woocommerce-MyAccount-navigation
+          float: none
+          width: 100%
+          margin-bottom: 30px
+          padding-bottom: 30px
+          border-bottom: 1px solid #dfdfdf
 
-            a
-              display: flex
-              align-items: center
-              padding: 20px
-              font-weight: 400
-              border-radius: 5px
-              box-shadow: var(--default-shadow)
-              background: var(--color-two)
-              color: var(--color-one)
-              position: relative
+          ul
+            display: grid
+            grid-template-columns: repeat(3, 1fr)
+            grid-gap: 10px
 
-            a::before
-              // content: "\e873"
-              font-family: Linearicons-Free
-              speak: none
-              font-style: normal
+            li
+              list-style: none
+
+              a
+                display: flex
+                align-items: center
+                padding: 20px
+                font-weight: 400
+                border-radius: 5px
+                box-shadow: var(--default-shadow)
+                background: var(--color-two)
+                color: var(--color-one)
+                position: relative
+                text-decoration: none
+
+              a::before
+                // content: "\e873"
+                font-family: Linearicons-Free
+                speak: none
+                font-style: normal
+                font-weight: 500
+                font-variant: normal
+                text-transform: none
+                line-height: 1
+                -webkit-font-smoothing: antialiased
+                margin-right: 10px
+
+            li.is-active
+              a
+                background: var(--color-one)
+                color: var(--color-two)
+
+            li.woocommerce-MyAccount-navigation-link--dashboard
+              a::before
+                content: "\e82a"
+
+            li.woocommerce-MyAccount-navigation-link--orders
+              a::before
+                content: "\e863"
+
+            li.woocommerce-MyAccount-navigation-link--downloads
+              a::before
+                content: "\e865"
+
+            li.woocommerce-MyAccount-navigation-link--edit-account
+              a::before
+                content: "\e802"
+
+            li.woocommerce-MyAccount-navigation-link--edit-address
+              a::before
+                content: "\e833"
+
+            li.woocommerce-MyAccount-navigation-link--customer-logout
+              a
+                background: #de0d0d
+                color: #fff
+
+              a::before
+                content: "\e820"
+
+        .woocommerce-MyAccount-content
+          float: none
+          width: 100%
+          box-shadow: var(--default-shadow)
+          background: var(--color-two)
+          padding: 30px
+          border-radius: 5px
+
+          p
+            margin-bottom: 15px
+
+          p:last-child
+            margin-bottom: 0
+
+          .woocommerce-error,
+          .woocommerce-info,
+          .woocommerce-message
+            padding: 1em 2em
+            border-top-color: var(--color-one)
+
+          .woocommerce-message::before,
+          .woocommerce-info::before,
+          .woocommerce-error::before
+            display: none
+
+          .woocommerce-Addresses
+            margin-top: 20px
+            padding-top: 20px
+            border-top: 1px dotted #dfdfdf
+
+          .woocommerce-Address,
+          .woocommerce-Address-title
+            background: #eee
+
+          .woocommerce-Address
+            padding: 20px
+            border-radius: 5px
+
+            h3
               font-weight: 500
-              font-variant: normal
-              text-transform: none
-              line-height: 1
-              -webkit-font-smoothing: antialiased
-              margin-right: 10px
+              margin-bottom: 5px
 
-          li.is-active
-            a
-              background: var(--color-one)
-              color: var(--color-two)
+            a.edit
+              font-style: italic
 
-          li.woocommerce-MyAccount-navigation-link--dashboard
-            a::before
-              content: "\e800"
+          input
+            border: none
+            padding: 15px
+            border-radius: 5px
+            box-shadow: var(--default-shadow)
+            color: var(--color-one)
+            font-family: var(--default-font)
 
-          li.woocommerce-MyAccount-navigation-link--orders
-            a::before
-              content: "\e863"
+          fieldset
+            margin: 30px 0
+            display: block
+            padding: 20px
+            border-radius: 5px
+            border: none
+            border: 1px solid #dfdfdf
 
-          li.woocommerce-MyAccount-navigation-link--downloads
-            a::before
-              content: "\e865"
+            legend
+              padding: 0 15px
 
-          li.woocommerce-MyAccount-navigation-link--edit-account
-            a::before
-              content: "\e82a"
+          .edit-account
+            .button
+              padding: 20px
 
-          li.woocommerce-MyAccount-navigation-link--edit-address
-            a::before
-              content: "\e833"
+          .woocommerce-address-fields__field-wrapper
+            margin-bottom: 30px
 
-          li.woocommerce-MyAccount-navigation-link--customer-logout
-            a
-              background: #de0d0d
-              color: #fff
-
-            a::before
-              content: "\e820"
-
-      .woocommerce-MyAccount-content
-        float: none
-        width: 100%
-        box-shadow: var(--default-shadow)
-        background: var(--color-two)
-        padding: 30px
-        border-radius: 5px
+            .button
+              padding: 20px
 
 @media (max-width: 700px)
   header
