@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap')
-@import 'product.sass'
-@import 'blog-post.sass'
 
 \:root
   --body-font: 'Montserrat', sans-serif
@@ -8,7 +6,9 @@
   --global-padding: 5%
   --color-one: #111
   --color-two: #fff
-  --default-shadow: 0 1px 4px 1px #dfdfdf
+  --color-three: #dfdfdf
+  --color-four: #eee
+  --default-shadow: 0 1px 4px 1px var(--color-three)
 
 *
   margin: 0
@@ -36,20 +36,15 @@ body
   .woocommerce-ordering
     margin: 0 !important
 
-.transition-3ms
-  -webkit-transition: all 0.3s ease-in-out
-  -moz-transition: all 0.3s ease-in-out
-  -ms-transition: all 0.3s ease-in-out
-  -o-transition: all 0.3s ease-in-out
-  transition: all 0.3s ease-in-out
+  .woocommerce-Price-currencySymbol
+    display: inline-block !important
 
-body.blog
-  #main-section
-    padding: 50px var(--global-padding) 0 var(--global-padding)
-
-    .wrap
-      display: flex
-      flex-wrap: wrap
+  .transition-3ms
+    -webkit-transition: all 0.3s ease-in-out
+    -moz-transition: all 0.3s ease-in-out
+    -ms-transition: all 0.3s ease-in-out
+    -o-transition: all 0.3s ease-in-out
+    transition: all 0.3s ease-in-out
 
 header
   z-index: 5
@@ -147,7 +142,7 @@ header
               left: 0
               padding: 30px var(--global-padding)
               visibility: hidden
-              border-bottom: 1px solid #eee
+              border-bottom: 1px solid var(--color-four)
               display: flex
               @extend .transition-3ms
 
@@ -485,7 +480,7 @@ header
       margin: 0 0 0 40px
 
 #contact
-  background: #eee
+  background: var(--color-four)
   padding: 40px
   border-radius: 10px
   margin: 30px var(--global-padding) 0 var(--global-padding)
@@ -565,9 +560,6 @@ footer
 
 #products-section
   display: flex
-  // box-shadow: var(--default-shadow)
-  // background: #fff
-  // border-radius: 10px
   overflow: hidden
   margin: 0 0 40px 0
 
@@ -600,7 +592,7 @@ footer
   .product-buttons
     flex: 1 0 30%
     padding: 30px
-    border-right: 1px solid #dfdfdf
+    border-right: 1px solid var(--color-three)
 
     .top-content
       display: flex
@@ -679,10 +671,487 @@ footer
         border-radius: 5px
 
 #contact
-  background: #dfdfdf
+  background: var(--color-three)
+
+// Default Search Template
+
+.products-search-box
+  position: relative
+  width: 100%
+  display: flex
+  align-items: center
+
+  input[type="text"]
+    width: 100%
+    border-radius: 5px
+    border: none
+    box-shadow: var(--default-shadow)
+    padding: 15px 50px 15px 20px
+    font-family: var(--default-font)
+    font-size: 16px
+    display: block
+    width: 100%
+    outline: none
+
+  .hidden
+    display: none !important
+
+  button[type="submit"]
+    position: absolute
+    border: none
+    background: transparent
+    font-size: 17px
+    right: 20px
+    margin: 2px 0 0 0
+    opacity: 0.6
+    cursor: pointer
+
+  button[type="submit"]:hover
+    opacity: 1
+
+// Default product template 
+
+.product
+  box-shadow: var(--default-shadow)
+  background: var(--color-two)
+  border-radius: 5px
+  overflow: hidden
+  position: relative
+
+  a
+    color: var(--color-one)
+
+    .product-info
+      padding: 25px
+
+      span
+        display: inline-block
+
+      .brand
+        font-size: 13px
+        opacity: 0.6
+        font-weight: 600
+        margin-bottom: 8px
+
+      h3
+        font-family: 'Playfair Display', serif
+        font-weight: 500
+        font-size: 22px
+        margin: 0
+
+      .price
+        font-family: 'Libre Baskerville', serif
+        font-size: 16px
+        margin: 7px 0 0 0
+
+  .buttons
+    position: absolute
+    padding: 30px 20px
+    top: 0
+    right: 0
+
+    ul
+      li
+        list-style: none
+        margin-bottom: 30px
+        text-align: center
+
+        a
+          background: var(--color-two)
+          color: var(--color-one)
+          padding: 10px 10px 8px 10px
+          border-radius: 5px
+          font-size: 25px
+
+      li.add-to-cart
+        a:hover
+          background: var(--color-one)
+          color: var(--color-two)
+
+      li.add-to-favs
+        opacity: 0
+
+        a:hover
+          background: red
+          color: var(--color-two)
+
+.product:hover
+  .buttons
+    ul
+      li.add-to-favs
+        opacity: 1
+
+.product:hover
+  transform: rotate(0deg)
+
+// Blog post template
+
+.blog-post
+  position: relative
+  height: 40vw
+  overflow: hidden
+  width: calc( 100% / 3 - 20px)
+  background-size: cover
+  margin: 0 30px 30px 0
+  border-radius: 5px
+  @extend .transition-3ms
+
+  .container
+    position: absolute
+    height: 100%
+    width: 100%
+    padding: 40px
+    top: 0
+    display: flex
+    align-items: flex-end
+    justify-content: flex-start
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.9) 7%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%)
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.9) 7%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%)
+    background: linear-gradient(0deg, rgba(0,0,0,0.9) 7%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1)
+    @extend .transition-3ms
+
+    .info
+      color: var(--color-two)
+
+      h2
+        font-family: var(--default-font) !important
+        text-align: left !important
+        font-size: 24px !important
+        font-weight: 500
+        margin: 0 0 20px 0
+
+      p
+        opacity: 0.7
+        display: block
+        margin: 0 0 30px 0
+        font-size: 15px
+        line-height: 1.3em
+
+      a
+        color: var(--color-two)
+        font-weight: 500
+        display: inline-block
+        font-size: 17px
+
+      a:hover
+        text-decoration: underline
+
+.blog-post:hover
+  .container
+    backdrop-filter: blur(2px) grayscale(1)
+    padding-bottom: 60px
+
+body.home
+  .blog-post:last-child
+    margin-right: 0 !important
+
+body.blog
+  .blog-post:nth-child(3n+0)
+    margin-right: 0
+
+body.blog
+  #main-section
+    padding: 50px var(--global-padding) 0 var(--global-padding)
+
+    .wrap
+      display: flex
+      flex-wrap: wrap
+
+// Home Page
+
+body.home
+  #home-main-section
+    display: flex
+    padding: 50px var(--global-padding) 100px var(--global-padding)
+
+    .left-container
+      flex: 0 0 50%
+      padding-right: calc(var(--global-padding) + 30px)
+
+      h1
+        font-family: 'Playfair Display', serif
+        font-size: 40px
+
+      .bottom
+        padding-top: 100px
+
+        .links
+          ul
+            display: flex
+            justify-content: space-between
+            margin: 20px 0 0 0
+
+            li
+              list-style: none
+              flex: 0 0 49%
+
+              a
+                display: block
+                padding: 15px
+                border-radius: 5px
+                text-align: center
+                font-weight: 500
+
+            li.log-in
+              a
+                background: var(--color-three)
+                color: var(--color-one)
+
+            li.best-sellers
+              a
+                background: var(--color-one)
+                color: var(--color-two)
+
+    .right-container
+      flex: 0 0 50%
+      display: flex
+
+      .product
+        flex: 0 0 calc(50% - 30px)
+        transform: rotate(3deg)
+        transition: all 0.3s ease-in-out
+
+      .product:nth-child(1)
+        margin: 0 30px 0 0
+
+      .product:first-child
+        top: 50px
+
+  #slide-one
+    overflow: hidden
+    position: relative
+    margin: 30px auto 0 auto
+
+    .content
+      margin: 0 auto
+      width: calc( 100% - var(--global-padding) - 70px )
+      position: relative
+
+      .slide-wrap
+        display: flex
+        overflow: hidden
+        position: relative
+        height: 100%
+        margin-left: -4px
+        border-radius: 10px
+
+        .slide
+          position: relative
+          height: 400px
+          overflow: hidden
+          width: calc( 100% / 1 )
+          display: inline-block
+          background-size: cover
+          flex-shrink: 0
+          margin-left: 4px
+          border-radius: 10px
+
+          .container
+            position: absolute
+            height: 100%
+            width: 100%
+            padding: 40px
+            top: 0
+            display: flex
+            align-items: center
+            justify-content: center
+
+            .info
+              width: 60%
+              text-align: center
+
+              h2
+                font-family: 'Playfair Display', serif
+                color: var(--color-two)
+                font-size: 36px
+                font-weight: 500
+
+              a
+                color: var(--color-two)
+                font-weight: 500
+                background: rgba(255, 255, 255, 0.3)
+                border-radius: 5px
+                padding: 10px
+                display: inline-block
+                margin: 20px 0 0 0
+                min-width: 150px
+                backdrop-filter: blur(2px)
+
+              a:hover
+                outline-width: 1px
+                outline-style: solid
+
+        .previous,
+        .next
+          position: absolute
+          height: 100%
+          z-index: 1
+          display: flex
+          align-items: center
+
+          a
+            color: var(--color-two)
+            background: var(--color-one)
+            display: inline-block
+            padding: 10px
+
+        .previous
+          left: 0px
+
+        .next
+          right: 0px
+          justify-content: flex-end
+
+    .content::before,
+    .content::after
+      content: ""
+      height: 100%
+      width: 50%
+      top: 0
+      background: var(--color-four)
+      border-radius: 10px
+      position: absolute
+
+    .content::before
+      left: 0
+      margin-left: calc( 0% - (50% + 10px))
+
+    .content::after
+      right: 0
+      margin-right: calc( 0% - (50% + 10px))
+
+  header
+    #bottom-bar
+      box-shadow: unset
+      padding-top: 10px
+
+      h1
+        font-size: 18px
+
+      .right-content
+        nav
+          ul
+            li
+              ol
+                border-top: 1px solid var(--color-four)
+
+  #best-sellers
+    display: flex
+    padding: 80px var(--global-padding) 3% var(--global-padding)
+
+    .left-container
+      flex: 0 0 35%
+      display: flex
+      align-items: center
+      padding-right: 6%
+
+      .container
+        h2
+          font-family: 'Playfair Display', serif
+          font-size: 36px
+          position: relative
+          display: inline-block
+          margin: 0 0 20px 0
+
+        h2::before
+          content: ""
+          height: 3px
+          width: 40%
+          max-width: 40px
+          background: var(--color-one)
+          position: absolute
+          bottom: -20px
+
+        p,
+        a
+          display: block
+
+        p
+          margin: 24px 0 0 0
+
+        a
+          font-weight: 600
+          margin-top: 30px
+          color: var(--color-one)
+
+    .right-container
+      flex: 0 0 65%
+      display: flex
+
+      .block-left
+        flex: 0 0 50%
+        padding-right: 30px
+        display: flex
+        align-items: center
+
+        .product
+          margin: -20px 0 0 0
+
+      .block-right
+        flex: 0 0 50%
+        display: flex
+        flex-wrap: wrap
+
+        .product
+          flex: 0 0 calc(50% - 30px)
+          margin: 0 30px 30px 0
+
+          a
+            color: var(--color-one)
+
+            .product-info
+              padding: 20px
+
+          .buttons
+            padding: 25px 15px
+
+            ul
+              li
+                margin-bottom: 20px
+
+                a
+                  padding: 8px 8px 5px 8px
+                  font-size: 18px
+
+                a:hover
+                  color: var(--color-two)
+
+  #blog
+    padding: 10px var(--global-padding) 50px var(--global-padding)
+
+    h2
+      text-align: center
+      margin: 0 0 10px 0
+      font-size: 36px
+      font-family: 'Playfair Display', serif
+
+    .wrap
+      display: flex
+      overflow-x: hidden
+      position: relative
+      height: 100%
+      flex-wrap: wrap
+      justify-content: flex-end
+
+    .read-more
+      width: calc( 100% / 3 - 20px )
+      margin: 30px 0 0 auto
+
+      a
+        background: var(--color-one)
+        color: var(--color-two)
+        border-radius: 5px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 18px
+        font-size: 18px
+
+// Single Post Page
 
 body.single-post
-  background: #eee
+  background: var(--color-four)
 
   #main-section
     padding: 50px var(--global-padding) 60px var(--global-padding)
@@ -705,7 +1174,7 @@ body.single-post
           margin-bottom: 15px
 
       .permalink-navigation
-        border-top: 1px solid #dfdfdf
+        border-top: 1px solid var(--color-three)
         padding: 40px var(--global-padding)
 
         .nav-links
@@ -718,11 +1187,10 @@ body.single-post
           a
             color: var(--color-one)
 
-body.single-product
-  background: #eee
+// Products Archive Page
 
-#archive-product
-  background: #eee
+body.post-type-archive-product
+  background: var(--color-four)
 
   #main-section
     aside
@@ -773,8 +1241,6 @@ body.single-product
         grid-template-columns: repeat(3, 1fr)
         grid-gap: 30px
 
-        .product
-
   #navigation
     margin: 30px 0 0 0
 
@@ -784,42 +1250,10 @@ body.single-product
     background: #fff
     border-radius: 10px
 
-.products-search-box
-  position: relative
-  width: 100%
-  display: flex
-  align-items: center
-
-  input[type="text"]
-    width: 100%
-    border-radius: 5px
-    border: none
-    box-shadow: var(--default-shadow)
-    padding: 15px 50px 15px 20px
-    font-family: var(--default-font)
-    font-size: 16px
-    display: block
-    width: 100%
-    outline: none
-
-  .hidden
-    display: none !important
-
-  button[type="submit"]
-    position: absolute
-    border: none
-    background: transparent
-    font-size: 17px
-    right: 20px
-    margin: 2px 0 0 0
-    opacity: 0.6
-    cursor: pointer
-
-  button[type="submit"]:hover
-    opacity: 1
+// Customer My Account Page
 
 body.woocommerce-account
-  background: #eee
+  background: var(--color-four)
 
   #main-section
     .wrap
@@ -839,7 +1273,7 @@ body.woocommerce-account
           border: none
           padding: 15px
           border-radius: 5px
-          border: 1px solid #dfdfdf
+          border: 1px solid var(--color-three)
           color: var(--color-one)
           font-family: var(--default-font)
           font-size: 15px
@@ -866,7 +1300,7 @@ body.woocommerce-account
           width: 100%
           margin-bottom: 30px
           padding-bottom: 30px
-          border-bottom: 1px solid #dfdfdf
+          border-bottom: 1px solid var(--color-three)
 
           ul
             display: grid
@@ -889,7 +1323,6 @@ body.woocommerce-account
                 text-decoration: none
 
               a::before
-                // content: "\e873"
                 font-family: Linearicons-Free
                 speak: none
                 font-style: normal
@@ -961,11 +1394,11 @@ body.woocommerce-account
           .woocommerce-Addresses
             margin-top: 20px
             padding-top: 20px
-            border-top: 1px dotted #dfdfdf
+            border-top: 1px dotted var(--color-three)
 
           .woocommerce-Address,
           .woocommerce-Address-title
-            background: #eee
+            background: var(--color-four)
 
           .woocommerce-Address
             padding: 20px
@@ -984,7 +1417,7 @@ body.woocommerce-account
             padding: 20px
             border-radius: 5px
             border: none
-            border: 1px solid #dfdfdf
+            border: 1px solid var(--color-three)
 
             legend
               padding: 0 15px
@@ -1011,8 +1444,10 @@ body.woocommerce-account
           .lost_password
             margin-top: 10px
 
+// Cart Page
+
 body.woocommerce-cart
-  background: #eee
+  background: var(--color-four)
 
   #main-section
     .wrap
@@ -1024,7 +1459,7 @@ body.woocommerce-cart
           box-shadow: var(--default-shadow)
 
           .input-text
-            border: 1px solid #dfdfdf
+            border: 1px solid var(--color-three)
 
           .qty
             padding: 2px 5px
@@ -1057,6 +1492,8 @@ body.woocommerce-cart
           color: var(--color-two)
           font-size: 16px
           font-weight: 500
+
+// Tablet
 
 @media (max-width: 700px)
   header

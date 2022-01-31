@@ -1,13 +1,14 @@
 <?php
 
-// // Enqueue scripts and styles
-// function effusus_theme_scripts() {
-//   wp_enqueue_style('global template', get_template_directory_uri().'/assets/css/style.css', array(), '1.0', 'all');	
-//   wp_enqueue_script('global scripts', get_template_directory_uri().'/assets/js/script.js', array(), '1.0', 'all');
-//   wp_enqueue_script('isotope masonry', 'https://npmcdn.com/isotope-layout@3.0.6/dist/isotope.pkgd.js', array(), '3.0.6', 'all');
-//   wp_enqueue_script('awesome icons', "https://kit.fontawesome.com/eb5e14c15e.js", array(), '5.15', 'all');
-// }
-// add_action('wp_enqueue_scripts', 'effusus_theme_scripts');
+// Enqueue scripts and styles
+function effusus_theme_scripts() {
+  wp_enqueue_style('global template', get_template_directory_uri().'/assets/css/style.css', array(), '1.0', 'all');	
+  wp_enqueue_style('linear icons', 'https://cdn.linearicons.com/free/1.0.0/icon-font.min.css', array(), '1.0.0', 'all');
+  wp_enqueue_script('global scripts', get_template_directory_uri().'/assets/js/script.js', array(), '1.0', 'all');  
+  wp_enqueue_script('awesome icons', 'https://kit.fontawesome.com/eb5e14c15e.js', array(), '5.15', 'all');  
+  // wp_enqueue_script('isotope masonry', 'https://npmcdn.com/isotope-layout@3.0.6/dist/isotope.pkgd.js', array(), '3.0.6', 'all');
+}
+add_action('wp_enqueue_scripts', 'effusus_theme_scripts');
 
 // Twisted theme setup
 if ( !function_exists('effusus_setup') ) {

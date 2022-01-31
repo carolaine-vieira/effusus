@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-  <div id="archive-product">
     <section id="main-section">
       <div id="content-info">
         <div class="category">
@@ -107,5 +106,4 @@
       </div>
     </section>    
 
-    <?php get_footer(); ?>
-  </div>
+<?php get_footer(); ?>
