@@ -826,6 +826,34 @@ body.woocommerce-account
       padding: 0 0 50px 0
 
       .woocommerce
+        .login
+          border: none
+          box-shadow: var(--default-shadow)
+          background: #fff
+          padding: 30px
+
+        h2
+          font-family: var(--alt-font)
+
+        input
+          border: none
+          padding: 15px
+          border-radius: 5px
+          border: 1px solid #dfdfdf
+          color: var(--color-one)
+          font-family: var(--default-font)
+          font-size: 15px
+
+        input:focus
+          border-color: var(--color-one)
+
+        .woocommerce-form__input-checkbox
+          box-shadow: none
+
+        .show-password-input
+          right: 1em
+          top: 1em
+
         a
           text-decoration: underline
           color: var(--color-one)
@@ -950,14 +978,6 @@ body.woocommerce-account
             a.edit
               font-style: italic
 
-          input
-            border: none
-            padding: 15px
-            border-radius: 5px
-            box-shadow: var(--default-shadow)
-            color: var(--color-one)
-            font-family: var(--default-font)
-
           fieldset
             margin: 30px 0
             display: block
@@ -971,13 +991,72 @@ body.woocommerce-account
 
           .edit-account
             .button
-              padding: 20px
+              padding: 16px 20px
 
           .woocommerce-address-fields__field-wrapper
             margin-bottom: 30px
 
             .button
-              padding: 20px
+              padding: 16px 20px
+
+        .woocommerce-form-login
+          .password-input
+            margin-bottom: 20px
+
+          .woocommerce-form-login__submit
+            // padding: 15px 20px
+            background: var(--color-one)
+            color: var(--color-two)
+
+          .lost_password
+            margin-top: 10px
+
+body.woocommerce-cart
+  background: #eee
+
+  #main-section
+    .wrap
+      .woocommerce
+        color: var(--color-one)
+
+        .shop_table
+          background: #fff
+          box-shadow: var(--default-shadow)
+
+          .input-text
+            border: 1px solid #dfdfdf
+
+          .qty
+            padding: 2px 5px
+            border-radius: 3px
+            min-width: 40px
+            text-align: center
+
+          th
+            padding: 12px
+
+          .coupon
+            input
+              padding: 9px
+              border-radius: 3px
+              width: 120px
+
+          td
+            a
+              color: var(--color-one)
+
+        .cart_totals
+          margin-top: 20px
+
+          h2
+            font-weight: 500
+            margin: 0 0 20px 0
+
+        .checkout-button
+          background: var(--color-one)
+          color: var(--color-two)
+          font-size: 16px
+          font-weight: 500
 
 @media (max-width: 700px)
   header

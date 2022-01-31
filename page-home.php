@@ -14,7 +14,7 @@ get_header('home');
           </div>
           <div class="links">
             <ul>
-              <li class="best-sellers"><a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">Shop Now</a></li>
+              <li class="best-sellers"><a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">Shop Now</a></li>              
               <li class="log-in"><a href="/minha-conta/">Log In</a></li>              
             </ul>
           </div>
