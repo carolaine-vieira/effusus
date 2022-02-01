@@ -24,7 +24,8 @@ if ( !function_exists('effusus_setup') ) {
       register_nav_menus(
         array(
           'header-menu'          => __('Header Menu'),
-          'footer-menu'          => __('Footer Menu'),
+          'footer-menu-1'        => __('Footer Menu 1'),
+          'footer-menu-2'        => __('Footer Menu 2'),
           'woo-store-categories' => __('Store Categories')
         )
       );

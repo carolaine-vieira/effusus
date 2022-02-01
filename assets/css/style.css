@@ -708,9 +708,9 @@ footer .container {
 }
 
 footer .container .site-info {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 25%;
-          flex: 0 0 25%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 20%;
+          flex: 1 0 20%;
 }
 
 footer .container .site-info h2 {
@@ -720,22 +720,44 @@ footer .container .site-info h2 {
 }
 
 footer .container .links {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  padding: 0 5%;
+  -webkit-column-gap: 50px;
+          column-gap: 50px;
+}
+
+footer .container .links .footer-links {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 50%;
-          flex: 0 0 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0 10%;
+      -ms-flex: 0 0 60%;
+          flex: 0 0 60%;
+}
+
+footer .container .links .footer-links .label {
+  display: block;
+  margin: 0 0 25px 0;
+  opacity: 0.7;
+}
+
+footer .container .links .footer-links ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+footer .container .links .footer-links ul li a {
+  color: var(--color-two);
+}
+
+footer .container .links .footer-links ul li:last-child {
+  margin-bottom: 0;
 }
 
 footer .container .payment-methods {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 25%;
-          flex: 0 0 25%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 20%;
+          flex: 1 0 20%;
 }
 
 footer .bottom-bar {
@@ -1505,7 +1527,7 @@ body.home #blog .wrap {
 
 body.home #blog .read-more {
   width: calc( 100% / 3 - 20px);
-  margin: 30px 0 0 auto;
+  margin: 0 0 0 auto;
 }
 
 body.home #blog .read-more a {
