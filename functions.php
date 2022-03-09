@@ -32,7 +32,7 @@ if ( !function_exists('effusus_setup') ) {
     }
     add_action('init', 'register_my_menus');    
 
-    // traducao
+    // Translate
     $textdomain = 'effusus';
     load_theme_textdomain( $textdomain, get_stylesheet_directory().'/languages/');
     load_theme_textdomain( $textdomain, get_template_directory().'/languages/');    
@@ -92,14 +92,10 @@ function slide_custom_post_type() {
 }
 add_action('init', 'slide_custom_post_type');
 
-/**
- * Change number of products that are displayed per page (shop page)
- */
+// Change number of products that are displayed per page (shop page)
 add_filter( 'loop_shop_per_page', 'effusus_new_loop_shop_per_page', 20 );
 
 function effusus_new_loop_shop_per_page( $cols ) {
-  // $cols contains the current number of products per page based on the value stored on Options –> Reading
-  // Return the number of products you wanna show per page.
   $cols = 20;
   return $cols;
 }
@@ -107,9 +103,7 @@ function effusus_new_loop_shop_per_page( $cols ) {
 /* filter added to prevent automatic regeneration of thumbnail images and causing server hikes  */
 add_filter( 'woocommerce_background_image_regeneration', '__return_false' );
 
-/**
- * Create a basic form of Effusus Theme products
- */
+// Create a basic form of Effusus Theme products
 function effusus_format_commmon_products($products) {
   $products_final = [];
   foreach($products as $product){
@@ -175,7 +169,7 @@ add_filter( 'excerpt_length', 'effusus_custom_excerpt_length', 999 );
 function effusus_products_search_box() {
   ?>
   <form action="<?php bloginfo('url'); ?>/loja/" method="get" class="products-search-box">
-    <input type="text" name="s" id="s" placeholder="Buscar" value="<?php the_search_query(); ?>">
+    <input type="text" name="s" id="s" placeholder="<?php _e("Search", "effusus"); ?>" value="<?php the_search_query(); ?>">
     <input type="text" name="post_type" value="product" class="hidden">
     <button type="submit" id="searchbutton"><span class="lnr lnr-magnifier"></span></button>
   </form>
@@ -193,6 +187,33 @@ function effusus_get_customer_shipping_location($user_id) {
 
   return $customer_address;
 }
+
+// Register Sidebars
+function effusus_register_custom_sidebar() {
+	$woo_archive_sidebar = array(
+		'id'            => 'effusus-woo-archive-sidebar',
+		'name'          => __('WooCommerce Store', 'effusus'),
+		'description'   => __('Widgets to be displayed in the WooCommerce store page.', 'effusus'),
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+		'before_widget' => '<div id="%1$s" class="box box-%2$s">',
+		'after_widget'  => '</div>',
+	);
+
+  $blog_index = array(
+		'id'            => 'effusus-blog-index-sidebar',
+		'name'          => __('Blog Page', 'effusus'),
+		'description'   => __('Widgets to be displayed in the Blog page.', 'effusus'),
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+		'before_widget' => '<div id="%1$s" class="box box-%2$s">',
+		'after_widget'  => '</div>',
+	);
+
+	register_sidebar( $woo_archive_sidebar );
+  register_sidebar( $blog_index );
+}
+add_action( 'widgets_init', 'effusus_register_custom_sidebar' );
 
 // // TGM Plugin Activation Class
 // require_once locate_template('/lib/TGM-Plugin-Activation-2.6.1/class-tgm-plugin-activation.php');

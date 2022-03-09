@@ -1,5 +1,5 @@
           <div
-            class="slide active"
+            class="slide"
             style="background-image: url('<?php the_post_thumbnail_url(); ?>')"
           >
             <div class="container">

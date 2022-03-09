@@ -8,7 +8,7 @@
               <p>
               <?php echo the_excerpt(); ?>
               </p>
-              <a href="<?php echo the_permalink(); ?>"><?php _e('View'); ?></a>
+              <a href="<?php echo the_permalink(); ?>"><?php _e('View', 'effusus'); ?></a>
             </div>
           </div>
         </div>

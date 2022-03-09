@@ -61,6 +61,8 @@ header
     font-size: 13px
     font-weight: 500
     text-transform: uppercase
+    position: relative
+    z-index: 1
 
     .ship-to
       span
@@ -555,7 +557,7 @@ footer
         .label
           display: block
           margin: 0 0 25px 0
-          opacity: 0.7
+          font-weight: 500
 
         ul
           li
@@ -564,6 +566,10 @@ footer
 
             a
               color: var(--color-two)
+              opacity: 0.7
+
+            a:hover
+              opacity: 1
 
           li:last-child
             margin-bottom: 0
@@ -965,6 +971,7 @@ body.home
           flex-shrink: 0
           margin-left: 4px
           border-radius: 10px
+          display: none
 
           .container
             position: absolute
@@ -1001,6 +1008,9 @@ body.home
                 outline-width: 1px
                 outline-style: solid
 
+        .active
+          display: block
+
         .previous,
         .next
           position: absolute
@@ -1021,6 +1031,20 @@ body.home
         .next
           right: 0px
           justify-content: flex-end
+
+      .navigation-bullets
+        position: absolute
+        top: 0
+        right: 0
+        height: 100%
+        display: flex
+        align-items: center
+
+        a
+          width: 15px
+          height: 15px
+          background: rgba(255, 255, 255, 0.5)
+          border-radius: 100%
 
     .content::before,
     .content::after
@@ -1164,8 +1188,8 @@ body.home
         display: flex
         align-items: center
         justify-content: space-between
-        padding: 18px
-        font-size: 18px
+        padding: 17px 20px
+        font-size: 16px
 
 // Single Post Page
 
@@ -1176,7 +1200,7 @@ body.single-post
     padding: 50px var(--global-padding) 60px var(--global-padding)
 
     #single-post
-      background: #fff
+      background: var(--color-two)
       border-shadow: var(--default-shadow)
       border-radius: 10px
       overflow: hidden
@@ -1223,7 +1247,7 @@ body.post-type-archive-product
         border-radius: 5px
         padding: 18px
 
-        h2
+        h3
           font-size: 16px
           font-weight: 500
           display: flex
@@ -1231,7 +1255,7 @@ body.post-type-archive-product
           align-items: center
           position: relative
 
-        h2::after
+        h3::after
           content: "\e873"
           font-family: Linearicons-Free
           speak: none
@@ -1248,7 +1272,7 @@ body.post-type-archive-product
           margin: 20px 0 0 0
 
       .box.active
-        h2::after
+        h3::after
           content: "\e874"
 
     .right-content
@@ -1263,11 +1287,61 @@ body.post-type-archive-product
   #navigation
     margin: 30px 0 0 0
 
+// Single Product Page
+
 body.single-product
+  background: var(--color-four)
+
   #products-section
     box-shadow: var(--default-shadow)
-    background: #fff
+    background: var(--color-two)
     border-radius: 10px
+
+  .woocommerce-error,
+  .woocommerce-info,
+  .woocommerce-message
+    margin: 0
+    border-top-color: var(--color-one)
+    background: var(--color-two)
+    box-shadow: var(--default-shadow)
+
+  .woocommerce-error::before,
+  .woocommerce-info::before,
+  .woocommerce-message::before
+    color: var(--color-one)
+
+  .add-to-cart-button
+    margin: 30px 0 0 0
+
+    .qty,
+    button[type="submit"]
+      font-size: 16px
+      font-weight: 500
+      font-family: var(--body-font)
+      text-transform: uppercase
+
+    p.stock,
+    p.in-stock
+      margin: 0 0 5px 0
+      display: block
+
+    .quantity
+      position: relative
+
+      .qty
+        display: block
+        width: 100%
+        border: none
+        background: #EDEDED
+        padding: 10px
+
+    button[type="submit"]
+      margin: 10px 0 0 0
+      width: 100%
+      background: var(--color-one)
+      color: var(--color-two)
+      border-radius: 0
+      padding: 14px
 
 // Customer My Account Page
 
@@ -1282,7 +1356,7 @@ body.woocommerce-account
         .login
           border: none
           box-shadow: var(--default-shadow)
-          background: #fff
+          background: --color-two
           padding: 30px
 
         h2
@@ -1380,7 +1454,7 @@ body.woocommerce-account
             li.woocommerce-MyAccount-navigation-link--customer-logout
               a
                 background: #de0d0d
-                color: #fff
+                color: var(--color-two)
 
               a::before
                 content: "\e820"
@@ -1473,8 +1547,13 @@ body.woocommerce-cart
       .woocommerce
         color: var(--color-one)
 
+        .woocommerce-cart-form,
+        .shop_table,
+        .shop_table_responsive
+          background: var(--color-two)
+
         .shop_table
-          background: #fff
+          background: --color-two
           box-shadow: var(--default-shadow)
 
           .input-text

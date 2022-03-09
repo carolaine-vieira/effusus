@@ -94,7 +94,7 @@
             </ul>
           </div>
 
-          <div class="">
+          <div class="add-to-cart-button">
             <?php woocommerce_template_single_add_to_cart(); ?>
           </div>
         </div>          

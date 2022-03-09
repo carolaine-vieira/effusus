@@ -20,13 +20,13 @@
         <?php if( has_nav_menu('footer-menu-1') || has_nav_menu('footer-menu-2') ) : ?>
         <div class="links">
           <?php 
-            $mn_locations = get_nav_menu_locations(); 
+            $menu_locations = get_nav_menu_locations(); 
 
             if( has_nav_menu('footer-menu-1') ) :
-              $effu_menu_1 = wp_get_nav_menu_object($mn_locations['footer-menu-1']) -> name;
+              $effusus_menu_1 = wp_get_nav_menu_object($menu_locations['footer-menu-1']) -> name;
               
               echo '<div class="footer-links">';
-                echo '<span class="label">' . $effu_menu_1 . '</span>';
+                echo '<span class="label">' . $effusus_menu_1 . '</span>';
                 wp_nav_menu(
                   array( 
                     'theme_location' => 'footer-menu-1',
@@ -37,10 +37,10 @@
             endif;
            
             if( has_nav_menu('footer-menu-2') ) :
-              $effu_menu_2 = wp_get_nav_menu_object($mn_locations['footer-menu-2']) -> name;
+              $effusus_menu_2 = wp_get_nav_menu_object($menu_locations['footer-menu-2']) -> name;
               
               echo '<div class="footer-links">';
-                echo '<span class="label">' . $effu_menu_2 . '</span>';
+                echo '<span class="label">' . $effusus_menu_2 . '</span>';
                 wp_nav_menu(
                   array( 
                     'theme_location' => 'footer-menu-2',

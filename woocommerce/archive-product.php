@@ -12,8 +12,10 @@
 
       <div id="products-section">
         <aside>          
+        <?php dynamic_sidebar( 'effusus-woo-archive-sidebar' ); ?>
+
           <div class="box">
-            <h2>Categoria</h2>
+            <h3>Categoria</h3>
             <div class="content">
             <?php 
               wp_nav_menu(
@@ -44,7 +46,7 @@
           ?>             
           
           <div class="box">
-            <h2>Preço</h2>
+            <h3>Preço</h3>
             <div class="content">
               <form class="filtro-preco">
                 <?php 
@@ -66,9 +68,7 @@
         </aside>
 
         <div class="right-content">
-          <div id="search-box">
-          <?php effusus_products_search_box(); ?>
-          </div>
+          <div id="search-box"><?php effusus_products_search_box(); ?></div>
                 
           <div class="wrap">
           <?php 

@@ -2,7 +2,6 @@
 // Template Name: Home
 
 get_header('home');
-
 ?>
 
     <section id="home-main-section">
@@ -96,6 +95,7 @@ get_header('home');
     </section>
 
     <section id="blog">
+      <h2><span><?php _e('Blog'); ?></span></h2>
       <div class="wrap">
         <?php
           $args = array(
@@ -119,7 +119,7 @@ get_header('home');
       </div>
       
       <div class="read-more">
-        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>"><?php _e('Read More'); ?><span class="lnr lnr-arrow-right"></span></a>
+        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>"><?php _e('More Posts'); ?><span class="lnr lnr-arrow-right"></span></a>
       </div>
     </section>
 
