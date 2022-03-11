@@ -181,57 +181,68 @@ class Gallery {
 }
 
 const gallery = new Gallery();
+
+const slides = document.querySelector("#slide-one").querySelectorAll(".slide");
+slides[0].style.display = "block";
+
 // console.log(gallery);
 
-class mainSlide {
-  constructor() {
-    this.slides = document.querySelectorAll("#slide-one .slide");
-    this.container = document.querySelector("#slide-one .content");
+// class mainSlide {
+//   constructor() {
+//     this.slides = document.querySelectorAll("#slide-one .slide");
+//     this.container = document.querySelector("#slide-one .content");
 
-    this.getSlides = function () {
-      return this.slides();
-    };
+//     this.getSlides = function () {
+//       return this.slides();
+//     };
 
-    this.init();
-  }
+//     this.init();
+//   }
 
-  init() {
-    console.log(this.getSlides());
-    // slides = this.slides();
-    slides[0].classList.add("active");
+//   init() {
+//     console.log(this.getSlides());
+//     // slides = this.slides();
+//     slides[0].classList.add("active");
 
-    const navigation = document.createElement("div");
-    navigation.classList.add("navigation-bullets");
-    this.container().append(navigation);
+//     const navigation = document.createElement("div");
+//     navigation.classList.add("navigation-bullets");
+//     this.container().append(navigation);
 
-    slides.forEach((slide, index) => {
-      slide.setAttribute("data-slide", index);
+//     slides.forEach((slide, index) => {
+//       slide.setAttribute("data-slide", index);
 
-      let bullet = document.createElement("a");
-      bullet.setAttribute("data-slide-target", index);
-      navigation.append(bullet);
-    });
+//       let bullet = document.createElement("a");
+//       bullet.setAttribute("data-slide-target", index);
+//       navigation.append(bullet);
+//     });
 
-    const navigationBullets = navigation.querySelectorAll("a");
-    navigationBullets.forEach((bullet) => {
-      bullet.addEventListener("click", this.selectSlide);
-    });
-  }
+//     const navigationBullets = navigation.querySelectorAll("a");
+//     navigationBullets.forEach((bullet) => {
+//       bullet.addEventListener("click", this.selectSlide);
+//     });
+//   }
 
-  selectSlide(event) {
-    let slideIndex = parseInt(event.target.getAttribute("data-slide-target"));
-    console.log(slides());
+//   selectSlide(event) {
+//     let slideIndex = parseInt(event.target.getAttribute("data-slide-target"));
+//     console.log(slides());
 
-    let t = document.querySelectorAll("#slide-one .slide");
+//     let t = document.querySelectorAll("#slide-one .slide");
 
-    t.forEach((slide) => {
-      slide.classList.remove("active");
-    });
+//     t.forEach((slide) => {
+//       slide.classList.remove("active");
+//     });
 
-    t[slideIndex].classList.add("active");
-  }
-}
+//     t[slideIndex].classList.add("active");
+//   }
+// }
 
-const main = new mainSlide();
+// const main = new mainSlide();
 
-console.log(main);
+// console.log(main);
+
+$(document).ready(function () {
+  $.getJSON('http://localhost:10016/wp-json/wc-admin/features', function(data) {
+    console.log(data);
+  });
+});
+

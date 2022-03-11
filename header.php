@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- WooCommerce Version -->
     <meta name="generator" content="WooCommerce 6.1.0" />
+    <script
+    type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+  ></script>
     <?php wp_head(); ?>
   </head>
   <body <?php body_class(); ?>>

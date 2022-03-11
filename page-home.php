@@ -5,6 +5,7 @@ get_header('home');
 ?>
 
     <section id="home-main-section">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home-decor-1.svg" id="svg-decor-1">
       <div class="left-container">
         <h1>Et harum quidem rerum facilis est et expedita distinctio</h1>
         <div class="bottom">
@@ -29,9 +30,10 @@ get_header('home');
           effusus_common_product($last_products);
         ?>
       </div>
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home-decor-2.svg" id="svg-decor-2">
     </section>
 
-    <section id="slide-one">
+    <section id="slide-one">      
       <div class="content">
         <div class="slide-wrap">
           <?php 
@@ -95,6 +97,7 @@ get_header('home');
     </section>
 
     <section id="blog">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home-decor-3.svg" id="svg-decor-3">
       <h2><span><?php _e('Blog'); ?></span></h2>
       <div class="wrap">
         <?php

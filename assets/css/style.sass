@@ -39,6 +39,18 @@ body
   .woocommerce-Price-currencySymbol
     display: inline-block !important
 
+  .woocommerce-error,
+  .woocommerce-info,
+  .woocommerce-message
+    border-top-color: var(--color-one)
+    background: var(--color-two)
+    box-shadow: var(--default-shadow)
+
+  .woocommerce-error::before,
+  .woocommerce-info::before,
+  .woocommerce-message::before
+    color: var(--color-one)
+
   .transition-3ms
     -webkit-transition: all 0.3s ease-in-out
     -moz-transition: all 0.3s ease-in-out
@@ -887,8 +899,22 @@ body.blog
 
 body.home
   #home-main-section
+    position: relative
     display: flex
     padding: 50px var(--global-padding) 100px var(--global-padding)
+
+    #svg-decor-1
+      position: absolute
+      left: 0
+      top: 0
+      margin: -90px 0 0 0
+      z-index: -1
+
+    #svg-decor-2
+      position: absolute
+      right: 0
+      bottom: -130px
+      z-index: -1
 
     .left-container
       flex: 0 0 50%
@@ -1065,6 +1091,8 @@ body.home
       margin-right: calc( 0% - (50% + 10px))
 
   header
+    background: transparent
+
     #bottom-bar
       box-shadow: unset
       padding-top: 10px
@@ -1162,6 +1190,14 @@ body.home
 
   #blog
     padding: 10px var(--global-padding) 50px var(--global-padding)
+    position: relative
+
+    #svg-decor-3
+      position: absolute
+      left: 0
+      top: 0
+      margin: -250px 0 0 0
+      z-index: -1
 
     h2
       text-align: center
@@ -1301,14 +1337,6 @@ body.single-product
   .woocommerce-info,
   .woocommerce-message
     margin: 0
-    border-top-color: var(--color-one)
-    background: var(--color-two)
-    box-shadow: var(--default-shadow)
-
-  .woocommerce-error::before,
-  .woocommerce-info::before,
-  .woocommerce-message::before
-    color: var(--color-one)
 
   .add-to-cart-button
     margin: 30px 0 0 0
@@ -1546,6 +1574,7 @@ body.woocommerce-cart
     .wrap
       .woocommerce
         color: var(--color-one)
+        margin-bottom: 40px
 
         .woocommerce-cart-form,
         .shop_table,
@@ -1584,12 +1613,18 @@ body.woocommerce-cart
           h2
             font-weight: 500
             margin: 0 0 20px 0
+            font-size: 20px
 
         .checkout-button
           background: var(--color-one)
           color: var(--color-two)
           font-size: 16px
           font-weight: 500
+
+        a.button.wc-backward
+          background: var(--color-one)
+          color: var(--color-two)
+          padding: 12px 20px
 
 // Tablet
 
