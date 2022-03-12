@@ -179,70 +179,50 @@ class Gallery {
     this.galleryMain = document.querySelector('[data-gallery="main"]');
   }
 }
-
 const gallery = new Gallery();
 
-const slides = document.querySelector("#slide-one").querySelectorAll(".slide");
-slides[0].style.display = "block";
+const SlideHome = () => {
+  const container = "#slide-one";
+  const selector = ".slide";
+  const containerWrap = document.querySelector(container).querySelector(".slide-wrap");
+  const slides = document.querySelector(container).querySelectorAll(selector);
 
-// console.log(gallery);
+  slides[0].style.display = "block";
 
-// class mainSlide {
-//   constructor() {
-//     this.slides = document.querySelectorAll("#slide-one .slide");
-//     this.container = document.querySelector("#slide-one .content");
+  const navigation = document.createElement("div");
+  navigation.classList.add("navigation-bullets");
+  containerWrap.append(navigation);
 
-//     this.getSlides = function () {
-//       return this.slides();
-//     };
+  slides.forEach((slide, index) => {
+    const bullet = document.createElement("a");
+    bullet.classList.add("bullet");
+    bullet.setAttribute("data-slide-target", index);
+    navigation.append(bullet);
 
-//     this.init();
-//   }
+    if( index === 0 ) bullet.classList.add("active");
+  }); 
 
-//   init() {
-//     console.log(this.getSlides());
-//     // slides = this.slides();
-//     slides[0].classList.add("active");
+  const bullets = navigation.querySelectorAll(".bullet");  
+  bullets.forEach(bullet => {
+    bullet.addEventListener("click", (e) => {
+      selectSlide(e.target);
+    })
+  })
+  
+  const selectSlide = (targetBullet) => {
+    bullets.forEach(bullet => bullet.classList.remove("active"));
+    targetBullet.classList.add("active");
 
-//     const navigation = document.createElement("div");
-//     navigation.classList.add("navigation-bullets");
-//     this.container().append(navigation);
+    const targetSlideIndex = targetBullet.getAttribute("data-slide-target");
+    slides.forEach(slide => slide.style.display = "none");
+    slides[targetSlideIndex].style.display = "block";
+  }
+}
+SlideHome();
 
-//     slides.forEach((slide, index) => {
-//       slide.setAttribute("data-slide", index);
-
-//       let bullet = document.createElement("a");
-//       bullet.setAttribute("data-slide-target", index);
-//       navigation.append(bullet);
-//     });
-
-//     const navigationBullets = navigation.querySelectorAll("a");
-//     navigationBullets.forEach((bullet) => {
-//       bullet.addEventListener("click", this.selectSlide);
-//     });
-//   }
-
-//   selectSlide(event) {
-//     let slideIndex = parseInt(event.target.getAttribute("data-slide-target"));
-//     console.log(slides());
-
-//     let t = document.querySelectorAll("#slide-one .slide");
-
-//     t.forEach((slide) => {
-//       slide.classList.remove("active");
-//     });
-
-//     t[slideIndex].classList.add("active");
-//   }
-// }
-
-// const main = new mainSlide();
-
-// console.log(main);
-
-$(document).ready(function () {
-  $.getJSON('http://localhost:10016/wp-json/wc-admin/features', function(data) {
-    console.log(data);
-  });
-});
+// $(document).ready(function () {
+//   $.getJSON('http://localhost:10016/wp-json/wc-admin/features', function(data) {
+//     console.log(data);
+//   });
+// });
 

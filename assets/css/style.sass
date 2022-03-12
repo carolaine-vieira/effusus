@@ -586,6 +586,13 @@ footer
           li:last-child
             margin-bottom: 0
 
+          li.current-menu-item,
+          li.current_page_item
+            a
+              opacity: 1
+              text-decoration: underline
+              text-decoration-color: rgba(255, 255, 255, 0.3)
+
     .payment-methods
       flex: 1 0 20%
 
@@ -998,6 +1005,8 @@ body.home
           margin-left: 4px
           border-radius: 10px
           display: none
+          animation-name: slide-home
+          animation-duration: 0.8s
 
           .container
             position: absolute
@@ -1064,13 +1073,19 @@ body.home
         right: 0
         height: 100%
         display: flex
-        align-items: center
+        justify-content: center
+        flex-direction: column
+        margin: 0 var(--global-padding) 0 0
 
         a
-          width: 15px
-          height: 15px
+          width: 13px
+          height: 13px
           background: rgba(255, 255, 255, 0.5)
           border-radius: 100%
+          margin-bottom: 8px
+
+        a.active
+          background: rgba(255, 255, 255, 1)
 
     .content::before,
     .content::after
@@ -1191,6 +1206,7 @@ body.home
   #blog
     padding: 10px var(--global-padding) 50px var(--global-padding)
     position: relative
+    text-align: center
 
     #svg-decor-3
       position: absolute
@@ -1199,11 +1215,22 @@ body.home
       margin: -250px 0 0 0
       z-index: -1
 
-    h2
-      text-align: center
-      margin: 0 0 10px 0
-      font-size: 36px
+    h2.section-title
       font-family: 'Playfair Display', serif
+      font-size: 36px
+      position: relative
+      display: inline-flex
+      justify-content: center
+      margin: 0 auto 50px auto
+
+    h2.section-title::before
+      content: ""
+      height: 3px
+      width: 40%
+      max-width: 40px
+      background: var(--color-one)
+      position: absolute
+      bottom: -20px
 
     .wrap
       display: flex
@@ -1212,6 +1239,7 @@ body.home
       height: 100%
       flex-wrap: wrap
       justify-content: flex-end
+      text-align: left
 
     .read-more
       width: calc( 100% / 3 - 20px )
@@ -1685,3 +1713,12 @@ body.woocommerce-cart
 
         #search-products
           display: none
+
+// Animations
+
+@keyframes slide-home
+  from
+    bottom: -50px
+
+  to
+    bottom: 0

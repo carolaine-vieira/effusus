@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php
 
+get_header(); 
 
-<?php get_footer(); ?>
+get_template_part('template-parts/content/empty');
+
+get_footer();

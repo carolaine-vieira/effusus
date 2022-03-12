@@ -167,8 +167,9 @@ add_filter( 'excerpt_length', 'effusus_custom_excerpt_length', 999 );
 
 // Effusus products search box
 function effusus_products_search_box() {
+  $shop_page_url = get_permalink( woocommerce_get_page_id('shop') );
   ?>
-  <form action="<?php bloginfo('url'); ?>/loja/" method="get" class="products-search-box">
+  <form action="<?php echo $shop_page_url; ?>" method="get" class="products-search-box">
     <input type="text" name="s" id="s" placeholder="<?php _e("Search", "effusus"); ?>" value="<?php the_search_query(); ?>">
     <input type="text" name="post_type" value="product" class="hidden">
     <button type="submit" id="searchbutton"><span class="lnr lnr-magnifier"></span></button>

@@ -62,6 +62,8 @@ get_header('home');
           <p>
             Temporibus autem quibusdam et aut officiis debitis aut rerum
             necessitatibus saepe eveniet ut et voluptatesrepellat.
+
+            <?php echo $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>
           </p>
           <a href="">View All</a>
         </div>
@@ -98,7 +100,7 @@ get_header('home');
 
     <section id="blog">
       <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home-decor-3.svg" id="svg-decor-3">
-      <h2><span><?php _e('Blog'); ?></span></h2>
+      <h2 class="section-title"><span><?php _e('Blog'); ?></span></h2>
       <div class="wrap">
         <?php
           $args = array(
@@ -114,7 +116,7 @@ get_header('home');
               get_template_part('template-parts/other/home-blog-post');
             endwhile;
           else:
-            printf("No posts reached");
+            get_template_part('template-parts/content/empty');
           endif;
 
           wp_reset_postdata();
