@@ -195,7 +195,7 @@ function effusus_register_custom_sidebar() {
 		'id'            => 'effusus-woo-archive-sidebar',
 		'name'          => __('WooCommerce Store', 'effusus'),
 		'description'   => __('Widgets to be displayed in the WooCommerce store page.', 'effusus'),
-		'before_title'  => '<h3 class="widget-title">',
+		'before_title'  => '<h3 class="product-archive-widget-title">',
 		'after_title'   => '</h3>',
 		'before_widget' => '<div id="%1$s" class="box box-%2$s">',
 		'after_widget'  => '</div>',
@@ -215,6 +215,8 @@ function effusus_register_custom_sidebar() {
   register_sidebar( $blog_index );
 }
 add_action( 'widgets_init', 'effusus_register_custom_sidebar' );
+
+add_filter( 'show_admin_bar', '__return_false' );
 
 // // TGM Plugin Activation Class
 // require_once locate_template('/lib/TGM-Plugin-Activation-2.6.1/class-tgm-plugin-activation.php');

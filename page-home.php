@@ -62,10 +62,7 @@ get_header('home');
           <p>
             Temporibus autem quibusdam et aut officiis debitis aut rerum
             necessitatibus saepe eveniet ut et voluptatesrepellat.
-
-            <?php echo $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>
           </p>
-          <a href="">View All</a>
         </div>
       </div>
       <div class="right-container">

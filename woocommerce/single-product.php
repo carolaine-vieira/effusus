@@ -41,7 +41,13 @@
         <div class="category">
         <?php woocommerce_breadcrumb(['delimiter' => ' > ']); ?>
         </div>
-        <span class="model">SKU: <?php echo $product_obj['sku']; ?></span>
+        <?php 
+          if( $product_obj['sku'] ):
+            echo '<span class="model">SKU: ';
+              echo $product_obj['sku'];
+            echo '</span>';
+          endif;
+        ?>        
       </div>
 
       <div id="products-section">
@@ -52,20 +58,21 @@
                 data-gallery="main"
                 src="<?php echo $product_obj['img']; ?>"
                 alt="<?php echo $product_obj['name']; ?>"
-              />                
+              />      
+                        
+              <?php 
+                if($product_obj['gallery']) : 
+                  echo "<div class='wrap' data-gallery='gallery'>";
+                  foreach($product_obj['gallery'] as $img) {
+              ?>                    
+                    <div class="gallery-item">
+                      <img src="<?php echo $img ?>" alt="<?php echo $product_obj['name']; ?>" data-gallery="list">
+                    </div>                 
+              <?php                                      
+                  }
+                  echo "</div>";
+                endif; ?>
             </div>
-            <?php 
-              if($product_obj['gallery']) : 
-                echo "<div class='wrap' data-gallery='gallery'>";
-                foreach($product_obj['gallery'] as $img) {
-            ?>                    
-                  <div class="gallery-item">
-                    <img src="<?php echo $img ?>" alt="<?php echo $product_obj['name']; ?>" data-gallery="list">
-                  </div>                 
-            <?php                                      
-                }
-                echo "</div>";
-              endif; ?>
           </div>
         </div>
 
@@ -83,21 +90,21 @@
           </div>
 
           <div class="size">
-            <h2>Size</h2>
+            <h2 class="box-label">Size</h2>
             <ul>
               <li><a href="" class="active">S</a></li>
               <li><a href="">M</a></li>
               <li><a href="">X</a></li>
-              <li><a href="">XX</a></li>
-              <li><a href="">XXX</a></li>
-              <li><a href="">XXXX</a></li>
             </ul>
           </div>
 
           <div class="add-to-cart-button">
+            <h2 class="box-label">Quantity</h2>
             <?php woocommerce_template_single_add_to_cart(); ?>
           </div>
-        </div>          
+
+          <a id="product-description-link"><?php _e('Description', 'effusus'); ?></a>
+        </div>                  
 
         <div class="product-recomendation">
           <h4>Related products</h4>
@@ -135,6 +142,11 @@
             ?>                    
           </div>
         </div>
+      </div>
+
+      <div id="product-description">
+        <h2 class="section-title"><?php _e('Product description', 'effusus'); ?></h2>
+        <p><?php echo $product_obj['description']; ?></p>
       </div>
     </section>
 

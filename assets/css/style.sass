@@ -17,6 +17,7 @@
 
 body
   font-family: var(--body-font)
+  background-color: var(--color-two)
 
   a,
   a:hover
@@ -57,6 +58,29 @@ body
     -ms-transition: all 0.3s ease-in-out
     -o-transition: all 0.3s ease-in-out
     transition: all 0.3s ease-in-out
+
+  #scroll-top
+    position: fixed
+    z-index: 5
+    display: none
+    bottom: 10px
+    right: 10px
+    color: var(--color-two)
+    background: var(--color-one)
+    padding: 10px 13px
+    animation-name: scroll-top
+    animation-duration: 0.5s
+    border-radius: 2px
+    @extend .transition-3ms
+
+  #scroll-top:hover
+    bottom: 20px
+
+  .woocommerce
+    .product
+      span.price
+        span
+          color: var(--color-one) !important
 
 header
   z-index: 5
@@ -590,8 +614,6 @@ footer
           li.current_page_item
             a
               opacity: 1
-              text-decoration: underline
-              text-decoration-color: rgba(255, 255, 255, 0.3)
 
     .payment-methods
       flex: 1 0 20%
@@ -637,6 +659,7 @@ footer
     flex: 1 0 30%
     padding: 30px
     border-right: 1px solid var(--color-three)
+    position: relative
 
     .top-content
       display: flex
@@ -672,13 +695,13 @@ footer
         a:hover
           color: #de0d0d
 
+    .box-label
+      font-weight: 500
+      font-size: 18px
+      margin: 0 0 15px 0
+
     .size
       margin: 30px 0 0 0
-
-      h2
-        font-weight: 500
-        font-size: 18px
-        margin: 0 0 15px 0
 
       ul
         li
@@ -780,13 +803,14 @@ footer
       h3
         font-family: 'Playfair Display', serif
         font-weight: 500
-        font-size: 22px
-        margin: 0
+        font-size: 18px
+        margin: 5px 0 0 0
 
       .price
         font-family: 'Libre Baskerville', serif
-        font-size: 16px
-        margin: 7px 0 0 0
+        font-size: 20px
+        margin: 9px 0 0 0
+        color: var(--color-one) !important
 
   .buttons
     position: absolute
@@ -1120,7 +1144,11 @@ body.home
           ul
             li
               ol
-                border-top: 1px solid var(--color-four)
+                border: none
+                box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1)
+                border-radius: 10px
+                left: 40px
+                width: calc( 100% - 80px )
 
   #best-sellers
     display: flex
@@ -1149,17 +1177,9 @@ body.home
           position: absolute
           bottom: -20px
 
-        p,
-        a
-          display: block
-
         p
+          display: block
           margin: 24px 0 0 0
-
-        a
-          font-weight: 600
-          margin-top: 30px
-          color: var(--color-one)
 
     .right-container
       flex: 0 0 65%
@@ -1301,8 +1321,36 @@ body.post-type-archive-product
 
   #main-section
     aside
-      flex: 0 0 25%
+      flex: 0 0 28%
       padding-right: 30px
+      overflow: hidden
+
+      .ui-widget-content
+        background-color: var(--color-four)
+
+      .ui-slider-range,
+      .ui-slider-handle
+        background-color: var(--color-one)
+
+      .ui-slider-horizontal
+        height: 0.3em
+
+      .ui-slider-handle
+        top: -0.15em
+        width: 0.6em
+        height: 0.6em
+
+      .price_slider_amount
+        display: flex
+        flex-direction: column-reverse
+        margin-top: -10px
+
+        .price_label
+          text-align: center
+
+        .button
+          margin-top: 10px
+          font-weight: 500
 
       .box
         background: var(--color-two)
@@ -1311,28 +1359,30 @@ body.post-type-archive-product
         border-radius: 5px
         padding: 18px
 
-        h3
+        .woocommerce-widget-layered-nav-list
+          a
+            color: var(--color-one)
+            opacity: 0.7
+
+        .woocommerce-widget-layered-nav-list
+          a:hover
+            opacity: 1
+
+        .product-archive-widget-title
           font-size: 16px
           font-weight: 500
           display: flex
           justify-content: space-between
           align-items: center
           position: relative
-
-        h3::after
-          content: "\e873"
-          font-family: Linearicons-Free
-          speak: none
-          font-style: normal
-          font-weight: 400
-          font-variant: normal
-          text-transform: none
-          line-height: 1
-          -webkit-font-smoothing: antialiased
+          margin: -18px 0 18px -18px
+          width: calc(100% + 36px)
+          border-bottom: 1px solid var(--color-four)
+          padding: 18px
 
         .content,
         .woocommerce-widget-layered-nav-list
-          display: none
+          // display: none
           margin: 20px 0 0 0
 
       .box.active
@@ -1341,6 +1391,7 @@ body.post-type-archive-product
 
     .right-content
       padding-bottom: 10px
+      flex: 0 0 72%
 
       .wrap
         margin: 30px 0 0 0
@@ -1352,7 +1403,6 @@ body.post-type-archive-product
     margin: 30px 0 0 0
 
 // Single Product Page
-
 body.single-product
   background: var(--color-four)
 
@@ -1360,6 +1410,28 @@ body.single-product
     box-shadow: var(--default-shadow)
     background: var(--color-two)
     border-radius: 10px
+
+    .product-image
+      position: relative
+
+    [data-gallery="gallery"]
+      position: absolute
+      right: 30px
+      top: 30px
+
+      .gallery-item
+        width: 50px
+        height: 50px
+        background-size: cover
+        margin-bottom: 8px
+        border-radius: 100%
+        overflow: hidden
+        cursor: pointer
+
+        img
+          width: 50px
+          height: 50px
+          object-fit: cover
 
   .woocommerce-error,
   .woocommerce-info,
@@ -1391,6 +1463,9 @@ body.single-product
         background: #EDEDED
         padding: 10px
 
+    .product-description-link
+      display: block
+
     button[type="submit"]
       margin: 10px 0 0 0
       width: 100%
@@ -1398,9 +1473,88 @@ body.single-product
       color: var(--color-two)
       border-radius: 0
       padding: 14px
+      text-align: left
+      font-weight: 400
+      position: relative
+      display: flex
+      align-items: center
+
+    button[type="submit"]::after
+      content: "\e82e"
+      font-family: Linearicons-Free
+      speak: none
+      font-style: normal
+      font-weight: 500
+      font-variant: normal
+      text-transform: none
+      line-height: 1
+      -webkit-font-smoothing: antialiased
+      position: absolute
+      right: 14px
+
+  a#product-description-link
+    margin: 30px 0 0 0
+    // width: calc(100% - 58px)
+    background: var(--color-three)
+    color: var(--color-one)
+    padding: 14px
+    display: flex
+    align-items: center
+    text-transform: uppercase
+    font-size: 15px
+    font-weight: 400
+    position: relative
+    // position: absolute
+    // bottom: 30px
+
+  a#product-description-link::before
+    content: "i"
+    text-transform: lowercase
+    position: absolute
+    right: 22px
+    color: var(--color-one)
+
+  a#product-description-link::after
+    content: ""
+    border: 1px solid var(--color-one)
+    height: 18px
+    width: 18px
+    position: absolute
+    right: 14px
+    border-radius: 100%
+
+  #product-description
+    box-shadow: var(--default-shadow)
+    background: var(--color-two)
+    border-radius: 5px
+    padding: 30px
+    margin-bottom: 40px
+
+    h2.section-title
+      margin: -30px 0 30px -30px
+      padding: 20px 30px
+      width: calc( 100% + 60px )
+      border-bottom: 1px solid var(--color-four)
+      font-size: 20px
+
+// Checkout Page
+body.woocommerce-checkout
+  background: var(--color-four)
+
+  #main-section
+    .wrap
+      padding: 0 0 50px 0
+
+      .woocommerce
+        background: var(--color-two)
+        box-shadow: var(--default-shadow)
+        padding: 30px
+        border-radius: 10px
+
+        #order_review_heading
+          margin: 30px 0 20px 0
 
 // Customer My Account Page
-
 body.woocommerce-account
   background: var(--color-four)
 
@@ -1533,7 +1687,6 @@ body.woocommerce-account
           .woocommerce-info,
           .woocommerce-message
             padding: 1em 2em
-            border-top-color: var(--color-one)
 
           .woocommerce-message::before,
           .woocommerce-info::before,
@@ -1714,11 +1867,23 @@ body.woocommerce-cart
         #search-products
           display: none
 
+// 404 content
+#content-not-found
+  width: 100%
+  padding: var(--global-padding)
+
 // Animations
 
 @keyframes slide-home
   from
-    bottom: -50px
+    transform: translateY(-50px)
 
   to
+    transform: translateY(0px)
+
+@keyframes scroll-top
+  from
     bottom: 0
+
+  to
+    bottom: 10px

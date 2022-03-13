@@ -1,12 +1,6 @@
-// $(document).ready(function () {});
+$(document).ready();
 
-/**
- * Slide is a function to display a carrousel of divs or anything else.
- * @param  {String} container anchor for the element with .slide-container class.
- * @param  {Integer} slidesCount number of elements per view.
- * @param  {Boolean} specialSize configured custom size following the quantity per view.
- * @return {void}
- */
+/** Related products slide. Used in page 'single-product' */
 const Slide = (props) => {
   const container = props.container;
   const slidesCount = props.slidesCount;
@@ -63,51 +57,10 @@ const Slide = (props) => {
     eventType.forEach((event) => {
       nextButton.addEventListener(event, handleNextItem);
     });
-
-    const grabItens = () => {
-      let draggedIndex;
-      let movedFirst = false;
-
-      slides.forEach((slide) => {
-        const moveSlide = (e) => {
-          slide.style.cursor = "grabbing";
-          console.log(e.offsetX);
-
-          if (e.offsetX > 150) {
-          }
-        };
-
-        const grab = (e) => {
-          console.log(e.offsetX);
-          slide.addEventListener("mousemove", moveSlide);
-        };
-
-        slide.addEventListener("mousedown", grab);
-
-        window.addEventListener("mouseup", () => {
-          slide.style.cursor = "grab";
-          console.log("mouse up");
-
-          slide.removeEventListener("mousemove", moveSlide);
-        });
-      });
-    };
   }
 };
 
-// const s1 = Slide({
-//   container: "#recommended",
-//   slidesCount: 6,
-//   specialSize: false,
-// });
-
-// const s2 = Slide({
-//   container: "#main-slide",
-//   slidesCount: 3,
-//   specialSize: true,
-// });
-
-// Dropdown menus
+/** Slide displayed in 'page-home' */
 const dropdown = () => {
   const html = document.documentElement;
   const dropdownMenus = document.querySelectorAll("[data-dropdown]");
@@ -159,7 +112,6 @@ dropdown();
 const menuButton = document.querySelector('[data-menu="button"]');
 const menuList = document.querySelector('[data-menu="list"');
 const bottomBar = document.querySelector("#bottom-bar");
-console.log(menuList);
 
 const openMobileMenu = (event) => {
   const eventType = ["touchstart", "click"];
@@ -172,53 +124,90 @@ const openMobileMenu = (event) => {
 };
 openMobileMenu();
 
-class Gallery {
-  constructor() {
-    this.gallery = document.querySelector('[data-gallery="gallery"]');
-    this.galleryItens = document.querySelectorAll('[data-gallery="list"]');
-    this.galleryMain = document.querySelector('[data-gallery="main"]');
-  }
-}
-const gallery = new Gallery();
+/** Page single-product gallery */
+const gallery = () => {
+  const isSingleProduct = Array.from(document.body.classList).includes("single-product");
 
-const SlideHome = () => {
-  const container = "#slide-one";
-  const selector = ".slide";
-  const containerWrap = document.querySelector(container).querySelector(".slide-wrap");
-  const slides = document.querySelector(container).querySelectorAll(selector);
+  if( isSingleProduct ) {
+    const gallery = document.querySelector('[data-gallery="gallery"]');
+    let galleryItens = document.querySelectorAll('[data-gallery="list"]');
+    let galleryMain = document.querySelector('[data-gallery="main"]');
 
-  slides[0].style.display = "block";
-
-  const navigation = document.createElement("div");
-  navigation.classList.add("navigation-bullets");
-  containerWrap.append(navigation);
-
-  slides.forEach((slide, index) => {
-    const bullet = document.createElement("a");
-    bullet.classList.add("bullet");
-    bullet.setAttribute("data-slide-target", index);
-    navigation.append(bullet);
-
-    if( index === 0 ) bullet.classList.add("active");
-  }); 
-
-  const bullets = navigation.querySelectorAll(".bullet");  
-  bullets.forEach(bullet => {
-    bullet.addEventListener("click", (e) => {
-      selectSlide(e.target);
+    galleryItens.forEach(item => {
+      item.addEventListener("click", () => {
+        const src = item.getAttribute("src");
+        item.setAttribute("src", galleryMain.getAttribute("src"));
+        galleryMain.setAttribute("src", src);      
+        item.classList.add("active");
+      })
     })
-  })
-  
-  const selectSlide = (targetBullet) => {
-    bullets.forEach(bullet => bullet.classList.remove("active"));
-    targetBullet.classList.add("active");
-
-    const targetSlideIndex = targetBullet.getAttribute("data-slide-target");
-    slides.forEach(slide => slide.style.display = "none");
-    slides[targetSlideIndex].style.display = "block";
   }
 }
-SlideHome();
+gallery();
+
+/** Slide displayed in 'page-home' */
+const slideHome = () => {
+  const isHome = Array.from(document.body.classList).includes("home");
+  
+  if( isHome ) {
+    const container = "#slide-one";
+    const selector = ".slide";
+    const containerWrap = document.querySelector(container).querySelector(".slide-wrap");
+    const slides = document.querySelector(container).querySelectorAll(selector);
+  
+    slides[0].style.display = "block";
+  
+    const navigation = document.createElement("div");
+    navigation.classList.add("navigation-bullets");
+    containerWrap.append(navigation);
+  
+    slides.forEach((slide, index) => {
+      const bullet = document.createElement("a");
+      bullet.classList.add("bullet");
+      bullet.setAttribute("data-slide-target", index);
+      navigation.append(bullet);
+  
+      if( index === 0 ) bullet.classList.add("active");
+    }); 
+  
+    const bullets = navigation.querySelectorAll(".bullet");  
+    bullets.forEach(bullet => {
+      bullet.addEventListener("click", (e) => {
+        selectSlide(e.target);
+      })
+    })
+    
+    const selectSlide = (targetBullet) => {
+      bullets.forEach(bullet => bullet.classList.remove("active"));
+      targetBullet.classList.add("active");
+  
+      const targetSlideIndex = targetBullet.getAttribute("data-slide-target");
+      slides.forEach(slide => slide.style.display = "none");
+      slides[targetSlideIndex].style.display = "block";
+    }
+  }
+}
+slideHome();
+
+/** Scroll to top */
+$(window).scroll(
+  (scrollTop = () => {
+    const windowPos = window.pageYOffset;
+    if (windowPos >= 300) {
+      $("#scroll-top").show();
+
+      $("#scroll-top").click(function (e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    } else {
+      $("#scroll-top").hide();
+    }
+  })
+);
 
 // $(document).ready(function () {
 //   $.getJSON('http://localhost:10016/wp-json/wc-admin/features', function(data) {
