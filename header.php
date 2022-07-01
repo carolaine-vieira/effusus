@@ -40,7 +40,7 @@
         </div>
       </div>
       <div id="bottom-bar">
-        <h1><a href="/"><?php bloginfo('name'); ?></a></h1>
+        <h1><a href="<?php echo get_home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
         <div class="right-content">
           <nav>
             <button
